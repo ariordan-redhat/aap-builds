@@ -447,9 +447,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_installing_online_or_offline">2. Installing online or offline</a></li>
 <li><a href="#_editing_the_inventory_file">3. Editing the inventory file</a>
 <ul class="sectlevel2">
-<li><a href="#assembly-hub-connect-existing-sso">3.1. Connecting automation hub to an existing Red Hat Single Sign-On environment</a>
+<li><a href="#assembly-hub-connect-sso">3.1. Connecting automation hub to a Red Hat Single Sign-On environment</a>
 <ul class="sectlevel3">
-<li><a href="#ref-variables-connect-hub-existing-sso">3.1.1. Inventory file variables for connecting automation hub to an existing Red Hat Single Sign-On instance</a></li>
+<li><a href="#ref-variables-connect-hub-sso">3.1.1. Inventory file variables for connecting automation hub to a Red Hat Single Sign-On instance</a></li>
 </ul>
 </li>
 </ul>
@@ -743,21 +743,26 @@ automationhub_pg_sslmode='prefer'
 </ol>
 </div>
 <div class="sect2">
-<h3 id="assembly-hub-connect-existing-sso">3.1. Connecting automation hub to an existing Red Hat Single Sign-On environment</h3>
+<h3 id="assembly-hub-connect-sso">3.1. Connecting automation hub to a Red Hat Single Sign-On environment</h3>
 <div class="paragraph">
-<p>To connect automation hub to an existing Red Hat Single Sign-On installation, configure variables in the inventory file.</p>
+<p>To connect automation hub to a Red Hat Single Sign-On installation, configure inventory variables in the <code>inventory</code> file before you run the installer setup script.</p>
 </div>
 <div class="paragraph">
 <p>You must configure a different set of variables for connecting to an Red Hat Single Sign-On installation managed by Ansible Automation Platform than for connecting to an external Red Hat Single Sign-On installation.</p>
 </div>
-<div class="paragraph">
-<p>Run the installer setup script after you have configured the appropriate inventory variables.</p>
-</div>
 <div class="sect3">
-<h4 id="ref-variables-connect-hub-existing-sso">3.1.1. Inventory file variables for connecting automation hub to an existing Red Hat Single Sign-On instance</h4>
+<h4 id="ref-variables-connect-hub-sso">3.1.1. Inventory file variables for connecting automation hub to a Red Hat Single Sign-On instance</h4>
 <div class="paragraph">
-<p>To connect automation hub to an existing Red Hat Single Sign-On installation that is managed by Ansible Automation Platform, you must configure variables in the <code>inventory</code> file.
-For more information about these inventory variables, refer to <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_installation_guide/appendix-inventory-files-vars#ref-hub-variables">Ansible automation hub variables</a> in the <em>Red Hat Ansible Automation Platform Installation Guide</em>.</p>
+<p>If you are installing automation hub and Red Hat Single Sign-On together for the first time, configure the variables for Ansible Automation Platform managed Red Hat Single Sign-On.</p>
+</div>
+<div class="paragraph">
+<p>If have an existing Ansible Automation Platform managed Red Hat Single Sign-On and you are re-running the installer or upgrading your automation hub deployment, configure the variables for Ansible Automation Platform managed Red Hat Single Sign-On.</p>
+</div>
+<div class="paragraph">
+<p>If you are installing automation hub and you intend to connect it to an existing externally managed Red Hat Single Sign-On instance, configure the variables for externally managed Red Hat Single Sign-On.</p>
+</div>
+<div class="paragraph">
+<p>For more information about these inventory variables, refer to <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_installation_guide/appendix-inventory-files-vars#ref-hub-variables">Ansible automation hub variables</a> in the <em>Red Hat Ansible Automation Platform Installation Guide</em>.</p>
 </div>
 <div class="paragraph">
 <p>The following variables can be configured for both Ansible Automation Platform managed and external Red Hat Single Sign-On:</p>
@@ -999,7 +1004,7 @@ For more information about these inventory variables, refer to <a href="https://
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-21 10:58:22 UTC
+Last updated 2023-03-21 14:02:39 UTC
 </div>
 </div>
 </body>
