@@ -3067,24 +3067,19 @@ It is used to encrypt certain fields in the database (such as credentials.)
 If not specified, a new key will be generated.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SSO admin password.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_username</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSO admin username.</p>
+<p class="tableblock">Default = <code>admin</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_keystore_file</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Keystore file to install in SSO node.</p>
-<p class="tableblock"><code>/path/to/sso.jks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_password</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSO admin password.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_host</code></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Automation services catalog requires SSO and SSO administration credentials for
 authentication.</p>
 <p class="tableblock">If SSO is not provided in the inventory for configuration, then you must use this variable to define the SSO host.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether a keystore password is required for https enabled SSO.</p>
-<p class="tableblock">The default install deploys SSO with <code>sso_use_https=true</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_redirect_host</code></strong></p></td>
@@ -3097,14 +3092,19 @@ authentication.</p>
 <p class="tableblock">Default = <code>true</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_username</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SSO admin username.</p>
-<p class="tableblock">Default = <code>admin</code></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_ssl_validate_certs</code></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set to <code>true</code> if the cert is to be validated during connection.</p>
 <p class="tableblock">Default = <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_name</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of keystore for SSO.</p>
+<p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_password</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether a keystore password is required for https enabled SSO.</p>
+<p class="tableblock">The default install deploys SSO with <code>sso_use_https=true</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_custom_keystore_file</code></strong></p></td>
@@ -3114,11 +3114,6 @@ authentication.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_file_remote</code></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set to <code>true</code> if the customer-provided keystore is on a remote node.</p>
 <p class="tableblock">Default = <code>false</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_name</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of keystore for SSO.</p>
-<p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_realm</code></strong></p></td>
@@ -3132,8 +3127,9 @@ authentication.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_login_theme</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the theme files.</p>
-<p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the directory where theme files are located.</p>
+<p class="tableblock">If changing this variable, you must provide your own theme files.
+Default = <code>ansible-automation-platform</code></p></td>
 </tr>
 </tbody>
 </table>
