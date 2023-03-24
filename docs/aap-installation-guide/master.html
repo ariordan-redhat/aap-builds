@@ -3067,69 +3067,93 @@ It is used to encrypt certain fields in the database (such as credentials.)
 If not specified, a new key will be generated.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_username</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SSO admin username.</p>
-<p class="tableblock">Default = <code>admin</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SSO admin password.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_host</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Automation services catalog requires SSO and SSO administration credentials for
-authentication.</p>
-<p class="tableblock">If SSO is not provided in the inventory for configuration, then you must use this variable to define the SSO host.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_redirect_host</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>sso_redirect_host</code> is set, it is used by the application to connect to SSO for authentication.</p>
-<p class="tableblock">This must be reachable from client machines.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_use_https</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If Single Sign On uses https.</p>
-<p class="tableblock">Default = <code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_ssl_validate_certs</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set to <code>true</code> if the cert is to be validated during connection.</p>
-<p class="tableblock">Default = <code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_name</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of keystore for SSO.</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_login_theme</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
+<p class="tableblock">Path to the directory where theme files are located.
+If changing this variable, you must provide your own theme files.</p>
 <p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether a keystore password is required for https enabled SSO.</p>
-<p class="tableblock">The default install deploys SSO with <code>sso_use_https=true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_custom_keystore_file</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Customer-provided keystore for SSO.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_file_remote</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set to <code>true</code> if the customer-provided keystore is on a remote node.</p>
-<p class="tableblock">Default = <code>false</code></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_realm</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the realm in SSO.</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
+<p class="tableblock">The name of the realm in SSO.</p>
 <p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_realm_displayname</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name for the realm.</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
+<p class="tableblock">Display name for the realm.</p>
 <p class="tableblock">Default = <code>Ansible Automation Platform</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_login_theme</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the directory where theme files are located.</p>
-<p class="tableblock">If changing this variable, you must provide your own theme files.
-Default = <code>ansible-automation-platform</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_username</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
+<p class="tableblock">SSO admin username.</p>
+<p class="tableblock">Default = <code>admin</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_password</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Required</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
+<p class="tableblock">SSO admin password.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_custom_keystore_file</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed Red Hat Single Sign-On only.</p>
+<p class="tableblock">Customer-provided keystore for SSO.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_host</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Required</em></p>
+<p class="tableblock">Used for Ansible Automation Platform externally managed Red Hat Single Sign-On only.</p>
+<p class="tableblock">Automation hub requires SSO and SSO administration credentials for
+authentication.</p>
+<p class="tableblock">If SSO is not provided in the inventory for configuration, then you must use this variable to define the SSO host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_file_remote</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed Red Hat Single Sign-On only.</p>
+<p class="tableblock">Set to <code>true</code> if the customer-provided keystore is on a remote node.</p>
+<p class="tableblock">Default = <code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_name</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed Red Hat Single Sign-On only.</p>
+<p class="tableblock">Name of keystore for SSO.</p>
+<p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_password</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Password for keystore for HTTPS enabled SSO.</p>
+<p class="tableblock">Required when using Ansible Automation Platform managed SSO and when HTTPS is enabled. The default install deploys SSO with <code>sso_use_https=true</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_redirect_host</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
+<p class="tableblock">If <code>sso_redirect_host</code> is set, it is used by the application to connect to SSO for authentication.</p>
+<p class="tableblock">This must be reachable from client machines.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_ssl_validate_certs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
+<p class="tableblock">Set to <code>true</code> if the cert is to be validated during connection.</p>
+<p class="tableblock">Default = <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_use_https</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
+<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
+<p class="tableblock">If Single Sign On uses https.</p>
+<p class="tableblock">Default = <code>true</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -3282,7 +3306,7 @@ Valid options are <code>active</code>, <code>deprovision</code> to remove a node
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>peers</code></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Peer relationships define node-to-node connections.</p>
+<p class="tableblock">The <code>peers</code> variable is used to indicate which nodes a specific host or group connects to. Wherever the peers variable is defined, an outbound connection will be established to the specific host or group.</p>
 <p class="tableblock">This variable is used to add <code>tcp-peer</code> entries in the <code>receptor.conf</code> file used for establishing network connections with other nodes.
 See <a href="https://receptor.readthedocs.io/en/latest/connecting_nodes.html?highlight=tcp-peer">Peering</a></p>
 <p class="tableblock">The peers variable can be a comma-separated list of hosts and/or groups from the inventory.
