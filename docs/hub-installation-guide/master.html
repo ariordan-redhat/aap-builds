@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Red Hat Ansible Automation Platform Installation Guide</title>
+<title>Installing and upgrading Private Automation Hub</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,132 +438,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left Role ARG Spec">
 <div id="header">
-<h1>Red Hat Ansible Automation Platform Installation Guide</h1>
+<h1>Installing and upgrading Private Automation Hub</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></li>
-<li><a href="#assembly-platform-install-overview">1. Red Hat Ansible Automation Platform installation overview</a>
+<li><a href="#_system_requirements">1. System requirements</a></li>
+<li><a href="#_installing_online_or_offline">2. Installing online or offline</a></li>
+<li><a href="#_editing_the_inventory_file">3. Editing the inventory file</a>
 <ul class="sectlevel2">
-<li><a href="#aap-installation-prereqs">1.1. Prerequisites</a></li>
+<li><a href="#assembly-hub-connect-sso">3.1. Connecting automation hub to a Red Hat Single Sign-On environment</a>
+<ul class="sectlevel3">
+<li><a href="#ref-variables-connect-hub-sso">3.1.1. Inventory file variables for connecting automation hub to a Red Hat Single Sign-On instance</a></li>
 </ul>
 </li>
-<li><a href="#assembly-platform-install-scenario">2. Installing Red Hat Ansible Automation Platform</a>
+</ul>
+</li>
+<li><a href="#assembly-hub-install-setup-script">4. Installing automation hub with the setup script</a>
 <ul class="sectlevel2">
-<li><a href="#proc-editing-installer-inventory-file_platform-install-scenario">2.1. Editing the Red Hat Ansible Automation Platform installer inventory file</a>
-<ul class="sectlevel3">
-<li><a href="#con-install-scenario-examples">2.1.1. Inventory file examples based on installation scenarios</a>
-<ul class="sectlevel4">
-<li><a href="#ref-standlone-platform-inventory_platform-install-scenario">Standalone automation controller with internal database</a></li>
-<li><a href="#ref-single-controller-ext-installer-managed-db_platform-install-scenario">Single automation controller with external (installer managed) database</a></li>
-<li><a href="#ref-single-controller-ext-customer-managed-db_platform-install-scenario">Single automation controller with external (customer provided) database</a></li>
-<li><a href="#ref-standlone-platform-ext-database-inventory_platform-install-scenario">Ansible Automation Platform with an external (installer managed) database</a></li>
-<li><a href="#ref-example-platform-ext-database-customer-provided_platform-install-scenario">Ansible Automation Platform with an external (customer provided) database</a></li>
-<li><a href="#ref-standlone-hub-inventory_platform-install-scenario">Standalone automation hub with internal database</a></li>
-<li><a href="#ref-standlone-hub-ext-database-inventory_platform-install-scenario">Single automation hub with external (installer managed) database</a></li>
-<li><a href="#ref-standalone-hub-ext-database-customer-provided_platform-install-scenario">Single automation hub with external (customer provided) database</a></li>
+<li><a href="#run-setup-script-hub">4.1. Running the setup script</a></li>
+<li><a href="#verify-sso-install">4.2. Verifying Red Hat Single Sign-On connection</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#proc-running-setup-script_platform-install-scenario">2.2. Running the Red Hat Ansible Automation Platform installer setup script</a></li>
-<li><a href="#proc-verify-controller-installation_platform-install-scenario">2.3. Verifying installation of automation controller</a>
-<ul class="sectlevel3">
-<li><a href="#_additional_automation_controller_configuration_and_resources">2.3.1. Additional automation controller configuration and resources</a></li>
-</ul>
-</li>
-<li><a href="#proc-verify-hub-installation_platform-install-scenario">2.4. Verifying installation of automation hub</a>
-<ul class="sectlevel3">
-<li><a href="#ref-hub-configs_platform-install-scenario">2.4.1. Additional automation hub configuration and resources</a></li>
-</ul>
-</li>
-<li><a href="#assembly-platform-whats-next_platform-install-scenario">2.5. Post-installation steps</a>
-<ul class="sectlevel3">
-<li><a href="#_migrating_data_to_ansible_automation_platform_2_3">2.5.1. Migrating data to Ansible Automation Platform 2.3</a>
-<ul class="sectlevel4">
-<li><a href="#_migrating_from_legacy_virtual_environments_venvs_to_automation_execution_environments">Migrating from legacy virtual environments (venvs) to automation execution environments</a></li>
-<li><a href="#_migrating_to_ansible_engine_2_9_images_using_ansible_builder">Migrating to Ansible Engine 2.9 images using Ansible Builder</a></li>
-<li><a href="#_migrating_to_ansible_core_2_13">Migrating to Ansible Core 2.13</a></li>
-</ul>
-</li>
-<li><a href="#_scale_up_your_automation_using_automation_mesh">2.5.2. Scale up your automation using automation mesh</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#disconnected-installation">3. Disconnected installation</a>
-<ul class="sectlevel2">
-<li><a href="#con-aap-installation-on-disconnected-rhel_disconnected-installation">3.1. Ansible Automation Platform installation on disconnected RHEL</a>
-<ul class="sectlevel3">
-<li><a href="#_prerequisites">3.1.1. Prerequisites</a></li>
-<li><a href="#_system_requirements">3.1.2. System Requirements</a></li>
-<li><a href="#_rpm_source">3.1.3. RPM Source</a></li>
-</ul>
-</li>
-<li><a href="#proc-synchronizing-rpm-repositories-by-using-reposync_disconnected-installation">3.2. Synchronizing RPM repositories by using reposync</a></li>
-<li><a href="#proc-creating-a-new-web-server-to-host-repositories_disconnected-installation">3.3. Creating a new web server to host repositories</a></li>
-<li><a href="#accessing-rpm-repositories-for-locally-mounted-dvd_disconnected-installation">3.4. Accessing RPM Repositories for Locally Mounted DVD</a></li>
-<li><a href="#adding-a-subscription-manifest-to-aap-without-an-internet-connection_disconnected-installation">3.5. Adding a Subscription Manifest to AAP without an Internet connection</a></li>
-<li><a href="#installing-the-aap-setup-bundle_disconnected-installation">3.6. Installing the AAP Setup Bundle</a>
-<ul class="sectlevel3">
-<li><a href="#_downloading_the_setup_bundle">3.6.1. Downloading the Setup Bundle</a>
-<ul class="sectlevel4">
-<li><a href="#_installing_the_setup_bundle">Installing the Setup Bundle</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#completing-post-installation-tasks_disconnected-installation">3.7. Completing Post Installation Tasks</a>
-<ul class="sectlevel3">
-<li><a href="#_adding_controller_subscription">3.7.1. Adding Controller Subscription</a></li>
-<li><a href="#_updating_the_ca_trust_store">3.7.2. Updating the CA trust store</a>
-<ul class="sectlevel4">
-<li><a href="#_self_signed_certificates">Self-Signed Certificates</a></li>
-<li><a href="#_copying_the_root_certificate_on_the_private_automation_hub_to_the_automation_controller_using_secure_copy_scp">Copying the root certificate on the private automation hub to the automation controller using secure copy (SCP)</a></li>
-<li><a href="#_copying_and_pasting">Copying and Pasting</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#importing-collections-into-private-automation-hub_disconnected-installation">3.8. Importing Collections into Private Automation Hub</a>
-<ul class="sectlevel3">
-<li><a href="#_downloading_collection_from_red_hat_automation_hub">3.8.1. Downloading collection from Red Hat Automation Hub</a></li>
-</ul>
-</li>
-<li><a href="#creating-collection-namespace_disconnected-installation">3.9. Creating Collection Namespace</a>
-<ul class="sectlevel3">
-<li><a href="#_importing_the_collection_tarball_with_gui">3.9.1. Importing the collection tarball with GUI</a>
-<ul class="sectlevel4">
-<li><a href="#_importing_the_collection_tarball_using_ansible_galaxy_via_cli">Importing the collection tarball using ansible-galaxy via CLI</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#approving-the-imported-collection_disconnected-installation">3.10. Approving the Imported Collection</a>
-<ul class="sectlevel3">
-<li><a href="#_custom_execution_environments">3.10.1. Custom Execution Environments</a>
-<ul class="sectlevel4">
-<li><a href="#_transferring_a_custom_ee_images_across_a_disconnected_boundary">Transferring a Custom EE Images Across a Disconnected Boundary</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#building-an-execution-environment-in-a-disconnected-environment_disconnected-installation">3.11. Building an Execution Environment in a Disconnected Environment</a></li>
-<li><a href="#installing-the-ansible-builder-rpm_disconnected-installation">3.12. Installing the ansible-builder RPM</a>
-<ul class="sectlevel3">
-<li><a href="#_workflow_for_upgrading_between_minor_aap_releases">3.12.1. Workflow for upgrading between minor AAP releases</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#appendix-inventory-files-vars">Appendix A: Inventory file variables</a>
-<ul class="sectlevel2">
-<li><a href="#ref-genera-inventory-variables">A.1. General variables</a></li>
-<li><a href="#ref-hub-variables">A.2. Ansible automation hub variables</a></li>
-<li><a href="#ref-controller-variables">A.3. Automation controller variables</a></li>
-<li><a href="#ref-ansible-inventory-variables">A.4. Ansible variables</a></li>
-</ul>
-</li>
+<li><a href="#_verifying_installation">5. Verifying installation</a></li>
+<li><a href="#_upgrading_to_the_latest_version">6. Upgrading to the latest version</a></li>
 </ul>
 </div>
 </div>
@@ -571,10 +469,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Thank you for your interest in Red Hat Ansible Automation Platform. Ansible Automation Platform is a commercial offering that helps teams manage complex multi-tier deployments by adding control, knowledge, and delegation to Ansible-powered environments.</p>
-</div>
-<div class="paragraph">
-<p>This guide helps you to understand the installation requirements and processes behind installing Ansible Automation Platform. This document has been updated to include information for the latest release of Ansible Automation Platform.</p>
+<p>You can install Private Automation Hub or upgrade to a new version on a Red Hat Enterprise Linux 7 or 8 virtual or physical machine with a valid Red Hat Ansible Automation Platform subscription.</p>
 </div>
 </div>
 </div>
@@ -590,135 +485,171 @@ For more details, see <a href="https://www.redhat.com/en/blog/making-open-source
 </div>
 </div>
 <div class="sect1">
-<h2 id="assembly-platform-install-overview">1. Red Hat Ansible Automation Platform installation overview</h2>
+<h2 id="_system_requirements">1. System requirements</h2>
 <div class="sectionbody">
-<div class="paragraph _abstract">
-<p>The Red Hat Ansible Automation Platform installation program offers you flexibility, allowing you to install Ansible Automation Platform using a number of supported installation scenarios.</p>
+<div class="paragraph">
+<p>Installing a Private Automation Hub instance requires the following:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. System Requirements</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Subscription</p></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Valid Red Hat Ansible Automation Platform</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">OS</p></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Red Hat Enterprise Linux 7.7 or later 64-bit (x86) or 8.2 or later 64-bit (x86)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Ansible</p></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>version 2.9 required</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">RAM</p></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>4 GB minimum</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CPUs</p></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>2 minimum</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Disk</p></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>20 GB dedicated hard disk space</p>
 </div>
 <div class="paragraph">
-<p>Regardless of the installation scenario you choose, installing Ansible Automation Platform involves the following steps:</p>
+<p>Dependent on size of collections stored</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Browser</p></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A currently supported version of Mozilla FireFox or Google Chrome</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Database</p></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>PostgreSQL version 10</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You cannot install Ansible Tower and a Private Automation Hub instance on the same node. The <code>inventory</code> file can handle the installation of both Ansible Tower and Automation Hub. These instructions are only for the installation of Automation Hub.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><a href="#proc-editing-installer-inventory-file_platform-install-scenario">Editing the Red Hat Ansible Automation Platform installer inventory file</a></dt>
-<dd>
-<p>The Ansible Automation Platform installer inventory file allows you to specify your installation scenario and describe host deployments to Ansible. The examples provided in this document show the parameter specifications needed to install that scenario for your deployment.</p>
-</dd>
-<dt class="hdlist1"><a href="#proc-running-setup-script_platform-install-scenario">Running the Red Hat Ansible Automation Platform installer setup script</a></dt>
-<dd>
-<p>The setup script installs your Private Automation Hub using the required parameters defined in the inventory file.</p>
-</dd>
-<dt class="hdlist1"><a href="#proc-verify-controller-installation_platform-install-scenario">Verifying automation controller installation</a></dt>
-<dd>
-<p>After installing Ansible Automation Platform, you can verify that the installation has been successful by logging in to the automation controller.</p>
-</dd>
-<dt class="hdlist1"><a href="#proc-verify-hub-installation_platform-install-scenario">Verifying automation hub installation</a></dt>
-<dd>
-<p>After installing Ansible Automation Platform, you can verify that the installation has been successful by logging in to the automation hub.</p>
-</dd>
-<dt class="hdlist1"><a href="#assembly-platform-whats-next_platform-install-scenario">Post-installation steps</a></dt>
-<dd>
-<p>After successful installation, you can begin using the features of Ansible Automation Platform.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph _additional-resources">
-<div class="title">Additional resources</div>
-<p>For more information about the supported installation scenarios, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_planning_guide/index">Red Hat Ansible Automation Platform Planning Guide</a>.</p>
-</div>
-<div class="sect2">
-<h3 id="aap-installation-prereqs">1.1. Prerequisites</h3>
-<div class="ulist _abstract">
-<ul>
-<li>
-<p>You chose and obtained a platform installer from the <a href="https://access.redhat.com/downloads/content/480/ver=2.3/rhel---9/2.3/x86_64/product-software">Red Hat Ansible Automation Platform Product Software</a>.</p>
-</li>
-<li>
-<p>You are installing on a machine that meets base system requirements.</p>
-</li>
-<li>
-<p>You have created a Red Hat Registry Service Account, using the instructions in the <a href="https://access.redhat.com/RegistryAuthentication#creating-registry-service-accounts-6">Creating Registry Service Accounts guide</a>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph _additional-resources">
-<div class="title">Additional resources</div>
-<p>For more information about obtaining a platform installer or system requirements, refer to the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_planning_guide/platform-system-requirements">Red Hat Ansible Automation Platform system requirements</a> in the <em>Red Hat Ansible Automation Platform Planning Guide</em>.</p>
-</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="assembly-platform-install-scenario">2. Installing Red Hat Ansible Automation Platform</h2>
+<h2 id="_installing_online_or_offline">2. Installing online or offline</h2>
 <div class="sectionbody">
-<div class="paragraph _abstract">
-<p>Ansible Automation Platform is a modular platform and you can deploy automation controller with other automation platform components, such as automation hub. For more information about the components provided with Ansible Automation Platform, see <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_planning_guide/planning-installation#ref-platform-components">Red Hat Ansible Automation Platform components</a> in the Red Hat Ansible Automation Platform Planning Guide.</p>
+<div class="paragraph">
+<p>Choose the Ansible Automation Platform installer you need to install Private Automation Hub based on your Red Hat Enterprise Linux environment internet connectivity. Review the scenarios below and determine which Ansible Automation Platform installer meets your needs.</p>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Important</div>
+<div class="title">Note</div>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>With the Ansible Automation Platform installer, you can deploy <strong>only one</strong> automation hub per inventory. You can use the Ansible Automation Platform installer for a standalone instance of automation hub and run the installer any number of times with any number of different inventories to deploy multiple automation hub nodes.</p>
+<p>A valid Red Hat customer account is required to access Ansible Automation Platform installer downloads on the Red Hat Customer Portal.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>There are a number of supported installation scenarios for Red Hat Ansible Automation Platform. To install Red Hat Ansible Automation Platform, you must edit the inventory file parameters to specify your installation scenario using one of the following examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#ref-standlone-platform-inventory_platform-install-scenario">Standalone automation controller with internal database</a></p>
-</li>
-<li>
-<p><a href="#ref-single-controller-ext-installer-managed-db_platform-install-scenario">Single automation controller with external (installer managed) database</a></p>
-</li>
-<li>
-<p><a href="#ref-single-controller-ext-customer-managed-db_platform-install-scenario">Single automation controller with external (customer provided) database</a></p>
-</li>
-<li>
-<p><a href="#ref-standlone-platform-ext-database-inventory_platform-install-scenario">Ansible Automation Platform with an external (installer managed) database</a></p>
-</li>
-<li>
-<p><a href="#ref-example-platform-ext-database-customer-provided_platform-install-scenario">Ansible Automation Platform with an external (installer managed) database</a></p>
-</li>
-<li>
-<p><a href="#ref-standlone-hub-inventory_platform-install-scenario">Standalone automation hub with internal database</a></p>
-</li>
-<li>
-<p><a href="#ref-standlone-hub-ext-database-inventory_platform-install-scenario">Single automation controller with external (installer managed) database</a></p>
-</li>
-<li>
-<p><a href="#ref-standalone-hub-ext-database-customer-provided_platform-install-scenario">Single automation controller with external (customer provided) database</a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="proc-editing-installer-inventory-file_platform-install-scenario">2.1. Editing the Red Hat Ansible Automation Platform installer inventory file</h3>
-<div class="paragraph _abstract">
-<p>You can use the Red Hat Ansible Automation Platform installer inventory file to specify your installation scenario.</p>
+<div class="title">Installing with internet access</div>
+<p>Install Private Automation Hub using the Ansible Automation Platform installer if your Red Hat Enterprise Linux environment is connected to the internet. Installing with internet access will retrieve the latest required repositories, packages, and dependencies.</p>
 </div>
 <div class="olist arabic">
-<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Navigate to the installer:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<p>Navigate to <a href="https://access.redhat.com/downloads/content/480" class="bare">https://access.redhat.com/downloads/content/480</a></p>
+</li>
 <li>
-<p>[RPM installed package]</p>
+<p>Click <b class="button">Download Now</b> for the <strong>Ansible Automation Platform &lt;latest-version&gt; Setup</strong>.</p>
+</li>
+<li>
+<p>Extract the files:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ cd /opt/ansible-automation-platform/installer/</pre>
+<pre>$ tar xvzf ansible-automation-platform-setup-&lt;latest-version&gt;.tar.gz</pre>
 </div>
 </div>
 </li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Installing without internet access</div>
+<p>Install Private Automation Hub using the Ansible Automation Platform <strong>Bundle</strong> installer if you are unable to access the internet, or would prefer not to install separate components and dependencies from online repositories. Access to Red Hat Enterprise Linux repositories is still needed. All other dependencies are included in the tar archive.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to <a href="https://access.redhat.com/downloads/content/480" class="bare">https://access.redhat.com/downloads/content/480</a></p>
+</li>
+<li>
+<p>Click <b class="button">Download Now</b> for the <strong>Ansible Automation Platform &lt;latest-version&gt; Setup Bundle</strong>.</p>
+</li>
+<li>
+<p>Extract the files:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tar xvzf ansible-automation-platform-setup-bundle-&lt;latest-version&gt;.tar.gz</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_editing_the_inventory_file">3. Editing the inventory file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Edit the <code>inventory</code> file to specify an installation of Automation Hub, and update required parameters.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the installer.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>[bundled installer]</p>
 <div class="listingblock">
@@ -742,410 +673,45 @@ For more details, see <a href="https://www.redhat.com/en/blog/making-open-source
 <p>Open the <code>inventory</code> file with a text editor.</p>
 </li>
 <li>
-<p>Edit <code>inventory</code> file parameters to specify your installation scenario. Use one of the supported <a href="#con-install-scenario-examples">Installation scenario examples</a> to update your <code>inventory</code> file.</p>
+<p>Edit <code>inventory</code> file parameters to specify an installation of Automaton Hub host only. Follow the example below.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Leave <code>[automationcontroller]</code> inventory information <strong>empty</strong>.</p>
 </li>
-</ol>
-</div>
-<div class="paragraph _additional-resources">
-<div class="title">Additional resources</div>
-<p>For a comprehensive list of pre-defined variables used in Ansible installation inventory files, see <a href="#appendix-inventory-files-vars">Inventory file variables</a>.</p>
-</div>
-<div class="sect3">
-<h4 id="con-install-scenario-examples">2.1.1. Inventory file examples based on installation scenarios</h4>
-<div class="paragraph _abstract">
-<p>Red Hat supports a number of installation scenarios for Ansible Automation Platform. Review the following examples and choose those suitable for your preferred installation scenario.</p>
-</div>
-<div class="admonitionblock important">
+<li>
+<p>Add <code>[automationhub]</code> group host information.</p>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>For Red Hat Ansible Automation Platform or automation hub: Add an automation hub host in the [automationhub] group.</p>
-</li>
-<li>
-<p>Do not install automation controller and automation hub on the same node for versions of Ansible Automation Platform in a production or customer environment.
-This can cause contention issues and heavy resource use.</p>
-</li>
-<li>
-<p>Provide a reachable IP address or fully qualified domain name (FDQN) for the [automationhub] and [automationcontroller] hosts to ensure users can sync and install content from automation hub from a different node.
-Do not use 'localhost'.</p>
-</li>
-<li>
-<p>Do not use special characters for <code>pg_password</code>. It can cause the setup to fail.</p>
-</li>
-<li>
-<p>Enter your Red Hat Registry Service Account credentials in <code>registry_username</code> and <code>registry_password</code> to link to the Red Hat container registry.</p>
-</li>
-<li>
-<p>The inventory file variables <code>registry_username</code> and <code>registry_password</code> are only required if a non-bundle installer is used.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect4">
-<h5 id="ref-standlone-platform-inventory_platform-install-scenario">Standalone automation controller with internal database</h5>
-<div class="paragraph _abstract">
-<p>Use this example to populate the inventory file to install Red Hat Ansible Automation Platform.
-This installation inventory file includes a single automation controller node with an internal database.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>[automationcontroller]
-controller.acme.org
-
-[all:vars]
-admin_password='&lt;password&gt;'
-pg_host=''
-pg_port='5432'
-pg_database='awx'
-pg_username='awx'
-pg_password='&lt;password&gt;'
-pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
-
-registry_url='registry.redhat.io'
-registry_username='&lt;registry username&gt;'
-registry_password='&lt;registry password&gt;'
-
-
-# SSL-related variables
-# If set, this will install a custom CA certificate to the system trust store.
-# custom_ca_cert=/path/to/ca.crt
-# Certificate and key to install in nginx for the web UI and API
-# web_server_ssl_cert=/path/to/tower.cert
-# web_server_ssl_key=/path/to/tower.key
-# Server-side SSL settings for PostgreSQL (when we are installing it).
-# postgres_use_ssl=False
-# postgres_ssl_cert=/path/to/pgsql.crt
-# postgres_ssl_key=/path/to/pgsql.key</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref-single-controller-ext-installer-managed-db_platform-install-scenario">Single automation controller with external (installer managed) database</h5>
-<div class="paragraph _abstract">
-<p>Use this example to populate the inventory file to install Red Hat Ansible Automation Platform. This installation inventory file includes a single automation controller node with an external database on a separate node.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>[automationcontroller]
-controller.acme.org
-
-[database]
-data.acme.org
-
-[all:vars]
-admin_password='&lt;password&gt;'
-pg_host='data.acme.org'
-pg_port='5432'
-pg_database='awx'
-pg_username='awx'
-pg_password='&lt;password&gt;'
-pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
-
-registry_url='registry.redhat.io'
-registry_username='&lt;registry username&gt;'
-registry_password='&lt;registry password&gt;'
-
-# SSL-related variables
-# If set, this will install a custom CA certificate to the system trust store.
-# custom_ca_cert=/path/to/ca.crt
-# Certificate and key to install in nginx for the web UI and API
-# web_server_ssl_cert=/path/to/tower.cert
-# web_server_ssl_key=/path/to/tower.key
-# Server-side SSL settings for PostgreSQL (when we are installing it).
-# postgres_use_ssl=False
-# postgres_ssl_cert=/path/to/pgsql.crt
-# postgres_ssl_key=/path/to/pgsql.key</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref-single-controller-ext-customer-managed-db_platform-install-scenario">Single automation controller with external (customer provided) database</h5>
-<div class="paragraph _abstract">
-<p>Use this example to populate the inventory file to install Red Hat Ansible Automation Platform. This installation inventory file includes a single automation controller node with an external database on a separate node that is not managed by the platform installer.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
+<div class="title">Note</div>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This example does not have a host under the database group. This indicates to the installer that the database already exists, and is being managed elsewhere.</p>
+<p>Provide a reachable IP address for the <code>[automationhub]</code> host to ensure users can sync content from Private Automation Hub from a different node.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+</li>
+<li>
+<p>Update the values for <code>automationhub_admin_password</code> and <code>automation_pg_password</code> and any additional parameters based on your installation specifications:</p>
 <div class="listingblock">
-<div class="content">
-<pre>[automationcontroller]
-controller.acme.org
-
-[database]
-
-[all:vars]
-admin_password='&lt;password&gt;'
-
-pg_host='data.acme.org'
-pg_port='5432'
-pg_database='awx'
-pg_username='awx'
-pg_password='&lt;password&gt;'
-pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
-
-registry_url='registry.redhat.io'
-registry_username='&lt;registry username&gt;'
-registry_password='&lt;registry password&gt;'
-
-
-# SSL-related variables
-# If set, this will install a custom CA certificate to the system trust store.
-# custom_ca_cert=/path/to/ca.crt
-# Certificate and key to install in nginx for the web UI and API
-# web_server_ssl_cert=/path/to/tower.cert
-# web_server_ssl_key=/path/to/tower.key
-# Server-side SSL settings for PostgreSQL (when we are installing it).
-# postgres_use_ssl=False
-# postgres_ssl_cert=/path/to/pgsql.crt
-# postgres_ssl_key=/path/to/pgsql.key</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref-standlone-platform-ext-database-inventory_platform-install-scenario">Ansible Automation Platform with an external (installer managed) database</h5>
-<div class="paragraph _abstract">
-<p>Use this example to populate the inventory file to install Ansible Automation Platform. This installation inventory file includes two automation controller nodes, two execution nodes, and automation hub with an external managed database.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># Automation Controller Nodes
-# There are two valid node_types that can be assigned for this group.
-# A node_type=control implies that the node will only be able to run
-# project and inventory updates, but not regular jobs.
-# A node_type=hybrid will have the ability to run everything.
-# If you do not define the node_type, it defaults to hybrid.
-#
-# control.example node_type=control
-# hybrid.example  node_type=hybrid
-# hybrid2.example &lt;- this will default to hybrid
-
-[automationcontroller]
-controller1.acme.org node_type=control
-controller2.acme.org node_type=control
-
-# Execution Nodes
-# There are two valid node_types that can be assigned for this group.
-# A node_type=hop implies that the node will forward jobs to an execution node.
-# A node_type=execution implies that the node will be able to run jobs.
-# If you do not define the node_type, it defaults to execution.
-#
-# hop.example node_type=hop
-# execution.example  node_type=execution
-# execution2.example &lt;- this will default to execution
-
-[execution_nodes]
-execution1.acme.org node_type=execution
-execution2.acme.org node_type=execution
-
-[automationhub]
-automationhub.acme.org
-
-[database]
-data.acme.org
-
-[all:vars]
-admin_password='&lt;password&gt;'
-pg_host='data.acme.org'
-pg_port='5432'
-pg_database='awx'
-pg_username='awx'
-pg_password='&lt;password&gt;'
-pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
-
-registry_url='registry.redhat.io'
-registry_username='&lt;registry username&gt;'
-registry_password='&lt;registry password&gt;'
-
-# Receptor Configuration
-#
-receptor_listener_port=27199
-
-# Automation Hub Configuration
-#
-automationhub_admin_password='&lt;password&gt;'
-automationhub_pg_host='data.acme.org'
-automationhub_pg_port='5432'
-automationhub_pg_database='automationhub'
-automationhub_pg_username='automationhub'
-automationhub_pg_password='&lt;password&gt;'
-automationhub_pg_sslmode='prefer'
-
-# The default install will deploy a TLS enabled Automation Hub.
-# If for some reason this is not the behavior wanted one can
-# disable TLS enabled deployment.
-#
-# automationhub_disable_https = False
-# The default install will generate self-signed certificates for the Automation
-# Hub service. If you are providing valid certificate via automationhub_ssl_cert
-# and automationhub_ssl_key, one should toggle that value to True.
-#
-# automationhub_ssl_validate_certs = False
-# SSL-related variables
-# If set, this will install a custom CA certificate to the system trust store.
-# custom_ca_cert=/path/to/ca.crt
-# Certificate and key to install in nginx for the web UI and API
-# web_server_ssl_cert=/path/to/tower.cert
-# web_server_ssl_key=/path/to/tower.key
-# Certificate and key to install in Automation Hub node
-# automationhub_ssl_cert=/path/to/automationhub.cert
-# automationhub_ssl_key=/path/to/automationhub.key
-# Server-side SSL settings for PostgreSQL (when we are installing it).
-# postgres_use_ssl=False
-# postgres_ssl_cert=/path/to/pgsql.crt
-# postgres_ssl_key=/path/to/pgsql.key</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref-example-platform-ext-database-customer-provided_platform-install-scenario">Ansible Automation Platform with an external (customer provided) database</h5>
-<div class="paragraph _abstract">
-<p>Use this example to populate the inventory file to install Red Hat Ansible Automation Platform. This installation inventory file includes one of each node type; control, hybrid, hop, and execution, and automation hub with an external managed database that is not managed by the platform installer.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This example does not have a host under the database group. This indicates to the installer that the database already exists, and is being managed elsewhere.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># Automation Controller Nodes
-# There are two valid node_types that can be assigned for this group.
-# A node_type=control implies that the node will only be able to run
-# project and inventory updates, but not regular jobs.
-# A node_type=hybrid will have the ability to run everything.
-# If you do not define the node_type, it defaults to hybrid.
-#
-# control.example node_type=control
-# hybrid.example  node_type=hybrid
-# hybrid2.example &lt;- this will default to hybrid
-
-[automationcontroller]
-hybrid1.acme.org node_type=hybrid
-controller1.acme.org node_type=control
-
-# Execution Nodes
-# There are two valid node_types that can be assigned for this group.
-# A node_type=hop implies that the node will forward jobs to an execution node.
-# A node_type=execution implies that the node will be able to run jobs.
-# If you do not define the node_type, it defaults to execution.
-#
-# hop.example node_type=hop
-# execution.example  node_type=execution
-# execution2.example &lt;- this will default to execution
-
-[execution_nodes]
-hop1.acme.org node_type=hop
-execution1.acme.org node_type=execution
-
-[automationhub]
-automationhub.acme.org
-
-[database]
-
-[all:vars]
-admin_password='&lt;password&gt;'
-pg_host='data.acme.org'
-pg_port='5432'
-pg_database='awx'
-pg_username='awx'
-pg_password='&lt;password&gt;'
-pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
-
-registry_url='registry.redhat.io'
-registry_username='&lt;registry username&gt;'
-registry_password='&lt;registry password&gt;'
-
-# Receptor Configuration
-#
-receptor_listener_port=27199
-
-# Automation Hub Configuration
-#
-automationhub_admin_password='&lt;password&gt;'
-automationhub_pg_host='data.acme.org'
-automationhub_pg_port='5432'
-automationhub_pg_database='automationhub'
-automationhub_pg_username='automationhub'
-automationhub_pg_password='&lt;password&gt;'
-automationhub_pg_sslmode='prefer'
-
-# The default install will deploy a TLS enabled Automation Hub.
-# If for some reason this is not the behavior wanted one can
-# disable TLS enabled deployment.
-#
-# automationhub_disable_https = False
-# The default install will generate self-signed certificates for the Automation
-# Hub service. If you are providing valid certificate via automationhub_ssl_cert
-# and automationhub_ssl_key, one should toggle that value to True.
-#
-# automationhub_ssl_validate_certs = False
-# SSL-related variables
-# If set, this will install a custom CA certificate to the system trust store.
-# custom_ca_cert=/path/to/ca.crt
-# Certificate and key to install in nginx for the web UI and API
-# web_server_ssl_cert=/path/to/tower.cert
-# web_server_ssl_key=/path/to/tower.key
-# Certificate and key to install in Automation Hub node
-# automationhub_ssl_cert=/path/to/automationhub.cert
-# automationhub_ssl_key=/path/to/automationhub.key
-# Server-side SSL settings for PostgreSQL (when we are installing it).
-# postgres_use_ssl=False
-# postgres_ssl_cert=/path/to/pgsql.crt
-# postgres_ssl_key=/path/to/pgsql.key</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref-standlone-hub-inventory_platform-install-scenario">Standalone automation hub with internal database</h5>
-<div class="paragraph _abstract">
-<p>Use this example to populate the inventory file to deploy a standalone instance of automation hub with an internal database.</p>
-</div>
-<div class="listingblock">
+<div class="title">Example</div>
 <div class="content">
 <pre>[automationcontroller]
 
 
 [automationhub]
-automationhub.acme.org ansible_connection=local
+&lt;reachable-ip&gt; ansible_connection=local
 
 [all:vars]
-registry_url='registry.redhat.io'
-registry_username='&lt;registry username&gt;'
-registry_password='&lt;registry password&gt;'
-
 automationhub_admin_password= &lt;PASSWORD&gt;
 
 automationhub_pg_host=''
-automationhub_pg_port='5432'
+automationhub_pg_port=''
 
 automationhub_pg_database='automationhub'
 automationhub_pg_username='automationhub'
@@ -1170,2346 +736,268 @@ automationhub_pg_sslmode='prefer'
 # automationhub_ssl_key=/path/to/automationhub.key</pre>
 </div>
 </div>
+</li>
+</ol>
 </div>
-<div class="sect4">
-<h5 id="ref-standlone-hub-ext-database-inventory_platform-install-scenario">Single automation hub with external (installer managed) database</h5>
-<div class="paragraph _abstract">
-<p>Use this example to populate the inventory file to deploy a single instance of automation hub with an external (installer managed) database.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>[automationcontroller]
-
-[automationhub]
-automationhub.acme.org
-
-[database]
-data.acme.org
-
-[all:vars]
-registry_url='registry.redhat.io'
-registry_username='&lt;registry username&gt;'
-registry_password='&lt;registry password&gt;'
-
-automationhub_admin_password= &lt;PASSWORD&gt;
-
-automationhub_pg_host='data.acme.org'
-automationhub_pg_port='5432'
-
-automationhub_pg_database='automationhub'
-automationhub_pg_username='automationhub'
-automationhub_pg_password=&lt;PASSWORD&gt;
-automationhub_pg_sslmode='prefer'
-
-# The default install will deploy a TLS enabled Automation Hub.
-# If for some reason this is not the behavior wanted one can
-# disable TLS enabled deployment.
-#
-# automationhub_disable_https = False
-# The default install will generate self-signed certificates for the Automation
-# Hub service. If you are providing valid certificate via automationhub_ssl_cert
-# and automationhub_ssl_key, one should toggle that value to True.
-#
-# automationhub_ssl_validate_certs = False
-# SSL-related variables
-# If set, this will install a custom CA certificate to the system trust store.
-# custom_ca_cert=/path/to/ca.crt
-# Certificate and key to install in Automation Hub node
-# automationhub_ssl_cert=/path/to/automationhub.cert
-# automationhub_ssl_key=/path/to/automationhub.key</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref-standalone-hub-ext-database-customer-provided_platform-install-scenario">Single automation hub with external (customer provided) database</h5>
-<div class="paragraph _abstract">
-<p>Use this example to populate the inventory file to deploy a single instance of automation hub with an external database that is not managed by the platform installer.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This example does not have a host under the database group. This indicates to the installer that the database already exists, and is being managed elsewhere.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>[automationcontroller]
-
-[automationhub]
-automationhub.acme.org
-
-[database]
-
-[all:vars]
-registry_url='registry.redhat.io'
-registry_username='&lt;registry username&gt;'
-registry_password='&lt;registry password&gt;'
-
-automationhub_admin_password= &lt;PASSWORD&gt;
-
-automationhub_pg_host='data.acme.org'
-automationhub_pg_port='5432'
-
-automationhub_pg_database='automationhub'
-automationhub_pg_username='automationhub'
-automationhub_pg_password=&lt;PASSWORD&gt;
-automationhub_pg_sslmode='prefer'
-
-# The default install will deploy a TLS enabled Automation Hub.
-# If for some reason this is not the behavior wanted one can
-# disable TLS enabled deployment.
-#
-# automationhub_disable_https = False
-# The default install will generate self-signed certificates for the Automation
-# Hub service. If you are providing valid certificate via automationhub_ssl_cert
-# and automationhub_ssl_key, one should toggle that value to True.
-#
-# automationhub_ssl_validate_certs = False
-# SSL-related variables
-# If set, this will install a custom CA certificate to the system trust store.
-# custom_ca_cert=/path/to/ca.crt
-# Certificate and key to install in Automation Hub node
-# automationhub_ssl_cert=/path/to/automationhub.cert
-# automationhub_ssl_key=/path/to/automationhub.key</pre>
-</div>
-</div>
-</div>
-</div>
+</li>
+</ol>
 </div>
 <div class="sect2">
-<h3 id="proc-running-setup-script_platform-install-scenario">2.2. Running the Red Hat Ansible Automation Platform installer setup script</h3>
-<div class="paragraph _abstract">
-<p>After you update the inventory file with required parameters for installing your private automation hub, run the installer setup script.</p>
+<h3 id="assembly-hub-connect-sso">3.1. Connecting automation hub to a Red Hat Single Sign-On environment</h3>
+<div class="paragraph">
+<p>To connect automation hub to a Red Hat Single Sign-On installation, configure inventory variables in the <code>inventory</code> file before you run the installer setup script.</p>
 </div>
-<div class="ulist">
-<div class="title">Procedure</div>
-<ul>
+<div class="paragraph">
+<p>You must configure a different set of variables for connecting to an Red Hat Single Sign-On installation managed by Ansible Automation Platform than for connecting to an external Red Hat Single Sign-On installation.</p>
+</div>
+<div class="sect3">
+<h4 id="ref-variables-connect-hub-sso">3.1.1. Inventory file variables for connecting automation hub to a Red Hat Single Sign-On instance</h4>
+<div class="paragraph">
+<p>If you are installing automation hub and Red Hat Single Sign-On together for the first time or you have an existing Ansible Automation Platform managed Red Hat Single Sign-On, configure the variables for Ansible Automation Platform managed Red Hat Single Sign-On.</p>
+</div>
+<div class="paragraph">
+<p>If you are installing automation hub and you intend to connect it to an existing externally managed Red Hat Single Sign-On instance, configure the variables for externally managed Red Hat Single Sign-On.</p>
+</div>
+<div class="paragraph">
+<p>For more information about these inventory variables, refer to <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_installation_guide/appendix-inventory-files-vars#ref-hub-variables">Ansible automation hub variables</a> in the <em>Red Hat Ansible Automation Platform Installation Guide</em>.</p>
+</div>
+<div class="paragraph">
+<p>The following variables can be configured for both Ansible Automation Platform managed and external Red Hat Single Sign-On:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Required or optional</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_password</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_username</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_use_https</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_redirect_host</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_ssl_validate_certs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_realm</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_realm_displayname</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_login_theme</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following variables can be configured for Ansible Automation Platform managed Red Hat Single Sign-On only:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Required or optional</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_password</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required only if <code>sso_use_https</code> = <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_custom_keystore_file</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_file_remote</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_name</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following variable can be configured for external Red Hat Single Sign-On only:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_host</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="assembly-hub-install-setup-script">4. Installing automation hub with the setup script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Run the installer setup script after you have configured the appropriate inventory variables.</p>
+</div>
+<div class="sect2">
+<h3 id="run-setup-script-hub">4.1. Running the setup script</h3>
+<div class="paragraph">
+<p>You can run the setup script when you finish updating the <code>inventory</code> file with the required parameters for installing your private automation hub.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Run the <code>setup.sh</code> script</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ sudo ./setup.sh</pre>
+<pre>$ ./setup.sh</pre>
 </div>
 </div>
 </li>
-</ul>
+</ol>
 </div>
 <div class="paragraph">
-<p>Installation of Red Hat Ansible Automation Platform will begin.</p>
+<p>The installation begins.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-verify-controller-installation_platform-install-scenario">2.3. Verifying installation of automation controller</h3>
-<div class="paragraph _abstract">
-<p>Verify that you installed automation controller successfully by logging in with the admin credentials you inserted in the <code>inventory</code> file.</p>
+<h3 id="verify-sso-install">4.2. Verifying Red Hat Single Sign-On connection</h3>
+<div class="paragraph">
+<p>The installer uses the Red Hat Single Sign-On variables to setup a Keycloak realm and client.</p>
+</div>
+<div class="paragraph">
+<p>To verify that you have successfully connected to the existing Red Hat Single Sign-On installation, check that <code>settings.py</code> contains the Red Hat Single Sign-On host information, the realm name, the key, and the secret.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verifying_installation">5. Verifying installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the installation completes, you can verify your Private Automation Hub has been intalled successfully by logging in with the admin credentials you inserted into the <code>inventory</code> file.</p>
 </div>
 <div class="olist arabic">
-<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Navigate to the IP address specified for the automation controller node in the <code>inventory</code> file.</p>
+<p>Navigate to your Private Automation Hub.</p>
 </li>
 <li>
 <p>Log in with the Admin credentials you set in the <code>inventory</code> file.</p>
 </li>
 </ol>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>The automation controller server is accessible from port 80 (<strong>https://&lt;CONTROLLER_SERVER_NAME&gt;/</strong>) but redirects to port 443, so port 443 must also be available.</p>
+<p>Your Private Automation Hub is now ready for initial configuration. See the following administration guides for more:</p>
 </div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If the installation fails and you are a customer who has purchased a valid license for Red Hat Ansible Automation Platform, contact Ansible through the <a href="https://access.redhat.com/">Red Hat Customer portal</a>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Upon a successful login to automation controller, your installation of Red Hat Ansible Automation Platform 2.3 is complete.</p>
-</div>
-<div class="sect3">
-<h4 id="_additional_automation_controller_configuration_and_resources">2.3.1. Additional automation controller configuration and resources</h4>
-<div class="paragraph">
-<p>See the following resources to explore additional automation controller configurations.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Resources to configure automation controller</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Resource link</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.ansible.com/automation-controller/latest/html/quickstart/index.html">Automation Controller Quick Setup Guide</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set up automation controller and run your first playbook</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.ansible.com/automation-controller/latest/html/administration/index.html">Automation Controller Administration Guide</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Configure automation controller administration through customer scripts, management jobs, etc.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_operations_guide/assembly-configuring-proxy-support">Configuring proxy support for Red Hat Ansible Automation Platform</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set up automation controller with a proxy server</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_operations_guide/assembly-controlling-data-collection">Managing usability analytics and data collection from automation controller</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Manage what automation controller information you share with Red Hat</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.ansible.com/automation-controller/latest/html/userguide/index.html">Automation Controller User Guide</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Review automation controller functionality in more detail</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proc-verify-hub-installation_platform-install-scenario">2.4. Verifying installation of automation hub</h3>
-<div class="paragraph _abstract">
-<p>Verify that you installed your automation hub successfully by logging in with the admin credentials you inserted into the <code>inventory</code> file.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Navigate to the IP address specified for the automation hub node in the <code>inventory</code> file.</p>
-</li>
-<li>
-<p>Log in with the Admin credentials you set in the <code>inventory</code> file.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If the installation fails and you are a customer who has purchased a valid license for Red Hat Ansible Automation Platform, contact Ansible through the  <a href="https://access.redhat.com/">Red Hat Customer portal</a>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Upon a successful login to automation hub, your installation of Red Hat Ansible Automation Platform 2.3 is complete.</p>
-</div>
-<div class="sect3">
-<h4 id="ref-hub-configs_platform-install-scenario">2.4.1. Additional automation hub configuration and resources</h4>
-<div class="paragraph">
-<p>See the following resources to explore additional automation hub configurations.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Resources to configure automation controller</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Resource link</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/managing_user_access_in_private_automation_hub/index">Managing user access in private automation hub</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Configure user access for automation hub</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/managing_red_hat_certified_and_ansible_galaxy_collections_in_automation_hub/index">Managing Red Hat Certified and Ansible Galaxy collections in automation hub</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add content to your automation hub</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/publishing_proprietary_content_collections_in_automation_hub/index">Publishing proprietary content collections in automation hub</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Publish internally developed collections on your automation hub</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="assembly-platform-whats-next_platform-install-scenario">2.5. Post-installation steps</h3>
-<div class="paragraph _abstract">
-<p>Whether you are a new Ansible Automation Platform user looking to start automating, or an existing administrator looking to migrate old Ansible content to your latest installed version of Red Hat Ansible Automation Platform, explore the next steps to begin leveraging the new features of Ansible Automation Platform 2.3:</p>
-</div>
-<div class="sect3">
-<h4 id="_migrating_data_to_ansible_automation_platform_2_3">2.5.1. Migrating data to Ansible Automation Platform 2.3</h4>
-<div class="paragraph">
-<p>For platform administrators looking to complete an upgrade to the Ansible Automation Platform 2.3, there may be additional steps needed to migrate data to a new instance:</p>
-</div>
-<div class="sect4">
-<h5 id="_migrating_from_legacy_virtual_environments_venvs_to_automation_execution_environments">Migrating from legacy virtual environments (venvs) to automation execution environments</h5>
-<div class="paragraph">
-<p>Ansible Automation Platform 2.3 moves you away from custom Python virtual environments (venvs) in favor of automation execution environments - containerized images that packages the necessary components needed to execute and scale your Ansible automation. This includes Ansible Core, Ansible Content Collections, Python dependencies, Red Hat Enterprise Linux UBI 8, and any additional package dependencies.</p>
-</div>
-<div class="paragraph">
-<p>If you are looking to migrate your venvs to execution environments, you will (1) need to use the <code>awx-manage</code> command to list and export a list of venvs from your original instance, then (2) use <code>ansible-builder</code> to create execution environments.</p>
-</div>
-<div class="ulist _additional-resources">
-<div class="title">Additional resources</div>
+<div class="ulist">
 <ul>
 <li>
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_upgrade_and_migration_guide/upgrading-to-ees">Upgrading to Automation Execution Environments guide</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/managing_user_access_in_private_automation_hub/index">Managing user access in Private Automation Hub</a></p>
 </li>
 <li>
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/creating_and_consuming_execution_environments/index">Creating and Consuming Execution Environments</a>.</p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/managing_red_hat_certified_and_ansible_galaxy_collections_in_automation_hub/index">Managing Red Hat Certified and Ansible Galaxy collections in Automation Hub</a></p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_migrating_to_ansible_engine_2_9_images_using_ansible_builder">Migrating to Ansible Engine 2.9 images using Ansible Builder</h5>
-<div class="paragraph">
-<p>To migrate Ansible Engine 2.9 images for use with Ansible Automation Platform 2.3, the <code>ansible-builder</code> tool automates the process of rebuilding images (including its custom plugins and dependencies) for use with automation execution environments.</p>
-</div>
-<div class="paragraph _additional-resources">
-<div class="title">Additional resources</div>
-<p>For more information on using Ansible Builder to build execution environments, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/creating_and_consuming_execution_environments/index">Creating and Consuming Execution Environments</a>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_migrating_to_ansible_core_2_13">Migrating to Ansible Core 2.13</h5>
-<div class="paragraph">
-<p>When upgrading to Ansible Core 2.13, you need to update your playbooks, plugins, or other parts of your Ansible infrastructure in order to be supported by the latest version of Ansible Core. For instructions on updating your Ansible content for Ansible Core 2.13 compatibility, see the <a href="https://docs.ansible.com/ansible-core/devel/porting_guides/porting_guide_core_2.13.html">Ansible-core 2.13 Porting Guide</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_scale_up_your_automation_using_automation_mesh">2.5.2. Scale up your automation using automation mesh</h4>
-<div class="paragraph">
-<p>The automation mesh component of the Red Hat Ansible Automation Platform simplifies the process of distributing automation across multi-site deployments. For enterprises with multiple isolated IT environments, automation mesh provides a consistent and reliable way to deploy and scale up automation across your execution nodes using a peer-to-peer mesh communication network.</p>
-</div>
-<div class="paragraph">
-<p>When upgrading from version 1.x to the latest version of the Ansible Automation Platform, you will need to migrate the data from your legacy isolated nodes into execution nodes necessary for automation mesh. You can implement automation mesh by planning out a network of hybrid and control nodes, then editing the inventory file found in the Ansible Automation Platform installer to assign mesh-related values to each of your execution nodes.</p>
-</div>
-<div class="paragraph">
-<p>For instructions on how to migrate from isolated nodes to execution nodes, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_upgrade_and_migration_guide/index">Red Hat Ansible Automation Platform Upgrade and Migration Guide</a>.</p>
-</div>
-<div class="paragraph">
-<p>For information about automation mesh and the various ways to design your automation mesh for your environment, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.3/html/red_hat_ansible_automation_platform_automation_mesh_guide/index">Red Hat Ansible Automation Platform automation mesh guide</a>.</p>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="disconnected-installation">3. Disconnected installation</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="con-aap-installation-on-disconnected-rhel_disconnected-installation">3.1. Ansible Automation Platform installation on disconnected RHEL</h3>
-<div class="paragraph _abstract">
-<p>Install Ansible Automation Platform (AAP) automation controller and a private automation hub, with an installer-managed database located on the automation controller without an Internet connection.</p>
-</div>
-<div class="sect3">
-<h4 id="_prerequisites">3.1.1. Prerequisites</h4>
-<div class="paragraph">
-<p>To install AAP on a disconnected network, complete the following prerequisites:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create a subscription manifest.</p>
-</li>
-<li>
-<p>Download the AAP setup bundle.</p>
-</li>
-<li>
-<p>Create DNS records for the automation controller and private automation hub servers.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The setup bundle includes additional components that make installing AAP easier in a disconnected environment. These include the AAP RPMs and the default execution environment (EE) images.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_system_requirements">3.1.2. System Requirements</h4>
-<div class="paragraph">
-<p>Hardware requirements are documented in the Automation Platform Installation Guide. Reference the "Red Hat Ansible Automation Platform Installation Guide" in the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform">AAP Product Documentation</a> for your version of AAP.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_rpm_source">3.1.3. RPM Source</h4>
-<div class="paragraph">
-<p>RPM dependencies for AAP that come from the BaseOS and AppStream repositories are not included in the setup bundle.To add these dependencies, you must obtain access to BaseOS and AppStream repositories.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="/https://access.redhat.com/documentation/en-us/red_hat_satellite/6.11/html/installing_satellite_server_in_a_disconnected_network_environment/index">Satellite</a> is the recommended method from Red Hat to synchronize repositories</p>
-</li>
-<li>
-<p>reposync - Makes full copies of the required RPM repositories and hosts them on the disconnected network</p>
-</li>
-<li>
-<p>RHEL Binary DVD - Use the RPMs available on the RHEL 8 Binary DVD</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The RHEL Binary DVD method requires the DVD for supported versions of RHEL 8.4 or higher. See <a href="https://access.redhat.com/support/policy/updates/errata">Red Hat Enterprise Linux Life Cycle</a> for information on which versions of RHEL are currently supported.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proc-synchronizing-rpm-repositories-by-using-reposync_disconnected-installation">3.2. Synchronizing RPM repositories by using reposync</h3>
-<div class="paragraph">
-<p>To perform a reposync you need a RHEL host that has access to the Internet. After the repositories are synced,  you can move the repositories to the disconnected network hosted from a web server.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Attach the BaseOS and AppStream required repositories:</p>
-<div class="listingblock">
-<div class="content">
-<pre># subscription-manager repos \
-    --enable rhel-8-for-x86_64-baseos-rpms \
-    --enable rhel-8-for-x86_64-appstream-rpms</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Perform the reposync:</p>
-<div class="listingblock">
-<div class="content">
-<pre># dnf install yum-utils
-# reposync -m --download-metadata --gpgcheck \
-    -p /path/to/download</pre>
-</div>
-</div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Make certain that you use reposync with <code>--download-metadata</code> and without <code>--newest-only</code>. See [RHEL 8] Reposync.</p>
-</li>
-<li>
-<p>If not using <code>--newest-only</code> the repos downloaded will be ~90GB.</p>
-</li>
-<li>
-<p>If using <code>--newest-only</code> the repos downloaded will be ~14GB.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>If you plan to use Red Hat Single Sign-On (RHSSO) sync these repositories.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>jb-eap-7.3-for-rhel-8-x86_64-rpms</p>
-</li>
-<li>
-<p>rh-sso-7.4-for-rhel-8-x86_64-rpms</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>After the reposync is completed your repositories are ready to use with a web server.</p>
-</div>
-</li>
-<li>
-<p>Move the repositories to your disconnected network.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proc-creating-a-new-web-server-to-host-repositories_disconnected-installation">3.3. Creating a new web server to host repositories</h3>
-<div class="paragraph">
-<p>If you do not have an existing web server to host your repositories, create one with the synced repositories.</p>
-</div>
-<div class="paragraph">
-<div class="title">Procedure</div>
-<p>Use the following steps if creating a new web server.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Install prerequisites:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo dnf install httpd</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Configure httpd to serve the repo directory:</p>
-<div class="listingblock">
-<div class="content">
-<pre>/etc/httpd/conf.d/repository.conf
-
-DocumentRoot '/path/to/repos'
-
-&lt;LocationMatch "^/+$"&gt;
-    Options -Indexes
-    ErrorDocument 403 /.noindex.html
-&lt;/LocationMatch&gt;
-
-&lt;Directory '/path/to/repos'&gt;
-    Options All Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-&lt;/Directory&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Ensure that the directory is readable by an apache user:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo chown -R apache /path/to/repos</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Configure SELinux:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo semanage fcontext -a -t httpd_sys_content_t "/path/to/repos(/.*)?"
-$ sudo restorecon -ir /path/to/repos</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Enable httpd:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo systemctl enable --now httpd.service</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Open firewall:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo firewall-cmd --zone=public --add-service=http –add-service=https
---permanent
-$ sudo firewall-cmd --reload</pre>
-</div>
-</div>
-</li>
-<li>
-<p>On automation controller and automation hub, add a repo file at <em>/etc/yum.repos.d/local.repo</em>, add
-the optional repos if needed:</p>
-<div class="listingblock">
-<div class="content">
-<pre>[Local-BaseOS]
-name=Local BaseOS
-baseurl=http://&lt;webserver_fqdn&gt;/rhel-8-for-x86_64-baseos-rpms
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
-
-[Local-AppStream]
-name=Local AppStream
-baseurl=http://&lt;webserver_fqdn&gt;/rhel-8-for-x86_64-appstream-rpms
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="accessing-rpm-repositories-for-locally-mounted-dvd_disconnected-installation">3.4. Accessing RPM Repositories for Locally Mounted DVD</h3>
-<div class="paragraph">
-<p>If you are going to access the repositories from the DVD, it is necessary to set up a local repository. This section shows how to do that.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Mount DVD or ISO</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>DVD</p>
-<div class="listingblock">
-<div class="content">
-<pre># mkdir /media/rheldvd &amp;&amp; mount /dev/sr0 /media/rheldvd</pre>
-</div>
-</div>
-</li>
-<li>
-<p>ISO</p>
-<div class="listingblock">
-<div class="content">
-<pre># mkdir /media/rheldvd &amp;&amp; mount -o loop rhrhel-8.6-x86_64-dvd.iso /media/rheldvd</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Create yum repo file at <code>/etc/yum.repos.d/dvd.repo</code></p>
-<div class="listingblock">
-<div class="content">
-<pre>[dvd-BaseOS]
-name=DVD for RHEL - BaseOS
-baseurl=file:///media/rheldvd/BaseOS
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
-
-[dvd-AppStream]
-name=DVD for RHEL - AppStream
-baseurl=file:///media/rheldvd/AppStream
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Import the gpg key</p>
-<div class="listingblock">
-<div class="content">
-<pre># rpm --import /media/rheldvd/RPM-GPG-KEY-redhat-release</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If the key is not imported you will see an error similar to
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># Curl error (6): Couldn't resolve host name for
-https://www.redhat.com/security/data/fd431d51.txt [Could not resolve host:
-www.redhat.com]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In order to set up a repository see <a href="https://access.redhat.com/solutions/3776721">Need to set up yum repository for locally-mounted DVD on Red Hat Enterprise Linux 8</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="adding-a-subscription-manifest-to-aap-without-an-internet-connection_disconnected-installation">3.5. Adding a Subscription Manifest to AAP without an Internet connection</h3>
-<div class="paragraph">
-<p>In order to add a subscription to AAP without an Internet connection, create and import a subscription manifest.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Login to <strong>access.redhat.com</strong>.</p>
-</li>
-<li>
-<p>Navigate to <span class="menuseq"><b class="menu">Subscriptions</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Subscriptions</b></span>.</p>
-</li>
-<li>
-<p>Click <b class="button">Subscription Allocations</b>.</p>
-</li>
-<li>
-<p>Click <b class="button">Create New subscription allocation</b>.</p>
-</li>
-<li>
-<p>Name the new subscription allocation.</p>
-</li>
-<li>
-<p>Select <span class="menuseq"><b class="menu">Satellite 6.8</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Satellite 6.8</b></span> as the type.</p>
-</li>
-<li>
-<p>Click <b class="button">Create</b>. The Details tab will open for your subscription allocation.</p>
-</li>
-<li>
-<p>Click <b class="button">Subscriptions</b> tab.</p>
-</li>
-<li>
-<p>Click <b class="button">Add Subscription</b>.</p>
-</li>
-<li>
-<p>Find your AAP subscription, in the Entitlements box <strong>add</strong> the number of entitlements you want to assign to your environment. A single entitlement is needed for each node that will be managed by AAP: server, network device, etc.</p>
-</li>
-<li>
-<p>Click <b class="button">Submit</b>.</p>
-</li>
-<li>
-<p>Click <b class="button">Export Manifest</b>.</p>
-</li>
-<li>
-<p>This downloads a file <em>manifest_&lt;allocation name&gt;_&lt;date&gt;.zip</em> that be imported with Automation Controller after installation.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="installing-the-aap-setup-bundle_disconnected-installation">3.6. Installing the AAP Setup Bundle</h3>
-<div class="paragraph">
-<p>The “bundle” version is strongly recommended for disconnected installations as it comes with the RPM content for AAP as well as the default execution environment images that will be uploaded to your Private Automation Hub during the installation process.</p>
-</div>
-<div class="sect3">
-<h4 id="_downloading_the_setup_bundle">3.6.1. Downloading the Setup Bundle</h4>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Download the AAP setup bundle package by navigating to <a href="https://access.redhat.com/downloads/content/480" class="bare">https://access.redhat.com/downloads/content/480</a> and click <b class="button">Download Now</b> for the Ansible Automation Platform 2.3 Setup Bundle.</p>
-</li>
-</ol>
-</div>
-<div class="sect4">
-<h5 id="_installing_the_setup_bundle">Installing the Setup Bundle</h5>
-<div class="paragraph">
-<p>The download and installation of the setup bundle needs to be located on the automation controller. From the controller, untar the bundle, edit the inventory file, and run the setup.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Untar the bundle</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ tar xvf \
-   ansible-automation-platform-setup-bundle-2.3-1.2.tar.gz
-$ cd ansible-automation-platform-setup-bundle-2.3-1.2</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Edit the inventory file to include the required options</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>automationcontroller group</p>
-</li>
-<li>
-<p>automationhub group</p>
-</li>
-<li>
-<p>admin_password</p>
-</li>
-<li>
-<p>pg_password</p>
-</li>
-<li>
-<p>automationhub_admin_password</p>
-</li>
-<li>
-<p>automationhub_pg_host, automationhub_pg_port</p>
-</li>
-<li>
-<p>automationhub_pg_password</p>
-<div class="paragraph">
-<p><strong>Example Inventory</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>[automationcontroller]
-automationcontroller.example.org ansible_connection=local
-
-[automationcontroller:vars]
-peers=execution_nodes
-
-[automationhub]
-automationhub.example.org
-
-[all:vars]
-admin_password='password123'
-
-pg_database='awx'
-pg_username='awx'
-pg_password='dbpassword123'
-
-receptor_listener_port=27199
-
-automationhub_admin_password='hubpassword123'
-
-automationhub_pg_host='automationcontroller.example.org'
-automationhub_pg_port='5432'
-
-automationhub_pg_database='automationhub'
-automationhub_pg_username='automationhub'
-automationhub_pg_password='dbpassword123'
-automationhub_pg_sslmode='prefer'</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The inventory should be kept intact after installation since it is used for backup, restore, and upgrade functions.  Consider keeping a backup copy in a secure location, given that the inventory file contains passwords.
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Run the AAP setup bundle executable as the root user</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo -i
-# cd /path/to/ansible-automation-platform-setup-bundle-2.3-1.2
-# ./setup.sh</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Once installation is complete, navigate to the Fully Qualified Domain Name (FQDN) for the Automation controller node that was specified in the installation inventory file.</p>
-</li>
-<li>
-<p>Log in with the administrator credentials specified in the installation inventory file.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="completing-post-installation-tasks_disconnected-installation">3.7. Completing Post Installation Tasks</h3>
-<div class="sect3">
-<h4 id="_adding_controller_subscription">3.7.1. Adding Controller Subscription</h4>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Navigate to the FQDN of the Automation controller. Login with admin and the password you specified as <code>admin_password</code> in your inventory file.</p>
-</li>
-<li>
-<p>Click <b class="button">Browse</b> and select the <em>manifest.zip</em> you created earlier.</p>
-</li>
-<li>
-<p>Click <b class="button">Next</b>.</p>
-</li>
-<li>
-<p>Uncheck <b class="button">User analytics</b> and <b class="button">Automation analytics</b>. These rely on an Internet connection and should be turned off.</p>
-</li>
-<li>
-<p>Click <b class="button">Next</b>.</p>
-</li>
-<li>
-<p>Read the End User License Agreement and click <b class="button">Submit</b> if you agree.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_updating_the_ca_trust_store">3.7.2. Updating the CA trust store</h4>
-<div class="sect4">
-<h5 id="_self_signed_certificates">Self-Signed Certificates</h5>
-<div class="paragraph">
-<p>By default, AAP hub and controller are installed using self signed certificates. This creates an issue where the controller does not trust the hub’s certificate and will not download the execution environments from the hub. The solution is to import the hub’s CA cert as a trusted cert on the controller. You can use SCP or directly copy and paste from one file into another to perform this action. The steps below are copied from a KB article found at <a href="https://access.redhat.com/solutions/6707451" class="bare">https://access.redhat.com/solutions/6707451</a>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_copying_the_root_certificate_on_the_private_automation_hub_to_the_automation_controller_using_secure_copy_scp">Copying the root certificate on the private automation hub to the automation controller using secure copy (SCP)</h5>
-<div class="paragraph">
-<p>If SSH is available as the root user between the controller and the private automation hub, use SCP to copy the root certificate on the private automation hub to the controller and run <code>update-ca-trust</code> on the controller to update the CA trust store.</p>
-</div>
-<div class="paragraph">
-<p>On the Automation controller</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo -i
-# scp &lt;hub_fqdn&gt;:/etc/pulp/certs/root.crt
-/etc/pki/ca-trust/source/anchors/automationhub-root.crt
-# update-ca-trust</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_copying_and_pasting">Copying and Pasting</h5>
-<div class="paragraph">
-<p>If SSH is unavailable as root between the private automation hub and the controller, copy the contents of the file <em>/etc/pulp/certs/root.crt</em> on the private automation hub and paste it into a new file on the controller called <em>/etc/pki/ca-trust/source/anchors/automationhub-root.crt</em>. After the new file is created, run the command <code>update-ca-trust</code> in order to update the CA trust store with the new certificate.</p>
-</div>
-<div class="paragraph">
-<p>On the Private automation hub</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo -i
-# cat /etc/pulp/certs/root.crt
-(copy the contents of the file, including the lines with 'BEGIN CERTIFICATE' and
-'END CERTIFICATE')</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>On the Automation controller</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo -i
-# vi /etc/pki/ca-trust/source/anchors/automationhub-root.crt
-(paste the contents of the root.crt file from the private automation hub into the new file and write to disk)
-# update-ca-trust</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-collections-into-private-automation-hub_disconnected-installation">3.8. Importing Collections into Private Automation Hub</h3>
-<div class="paragraph">
-<p>You can download collection tarball files from the following sources:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Red Hat certified collections are found on <a href="https://console.redhat.com/ansible/automation-hub/">Red Hat Automation Hub</a>.</p>
-</li>
-<li>
-<p>Community collections are found on <a href="https://galaxy.ansible.com/">Ansible Galaxy</a>.</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="_downloading_collection_from_red_hat_automation_hub">3.8.1. Downloading collection from Red Hat Automation Hub</h4>
-<div class="paragraph">
-<p>This section gives instructions on how to download a collection from Red Hat Automation Hub. If the collection has dependencies, they will also need to be downloaded and installed.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Navigate to <a href="https://console.redhat.com/ansible/automation-hub/" class="bare">https://console.redhat.com/ansible/automation-hub/</a> and login with your Red Hat credentials.</p>
-</li>
-<li>
-<p>Click on the <strong>collection</strong> you wish to download.</p>
-</li>
-<li>
-<p>Click <b class="button">Download tarball</b></p>
-</li>
-<li>
-<p>To verify if a collection has dependencies, click the <strong>Dependencies</strong> tab.</p>
-</li>
-<li>
-<p>Download any dependencies needed for this collection.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="creating-collection-namespace_disconnected-installation">3.9. Creating Collection Namespace</h3>
-<div class="paragraph">
-<p>The namespace of the collection must exist for the import to be successful. You can find the namespace name by looking at the first part of the collection tarball filename.  For example the namespace of the collection <em>ansible-netcommon-3.0.0.tar.gz</em> is <em>ansible</em>.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Login to private automation hub web console.</p>
-</li>
-<li>
-<p>Navigate to <span class="menuseq"><b class="menu">Collections</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Namespaces</b></span>.</p>
-</li>
-<li>
-<p>Click <b class="button">Create</b>.</p>
-</li>
-<li>
-<p>Provide the namespace name.</p>
-</li>
-<li>
-<p>Click <b class="button">Create</b>.</p>
-</li>
-</ol>
-</div>
-<div class="sect3">
-<h4 id="_importing_the_collection_tarball_with_gui">3.9.1. Importing the collection tarball with GUI</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Login to private automation hub web console.</p>
-</li>
-<li>
-<p>Navigate to <span class="menuseq"><b class="menu">Collections</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Namespaces</b></span>.</p>
-</li>
-<li>
-<p>Click on <b class="button">View collections</b> of the namespace you will be importing the collection into.</p>
-</li>
-<li>
-<p>Click <b class="button">Upload collection</b>.</p>
-</li>
-<li>
-<p>Click the <strong>folder icon</strong> and select the tarball of the collection.</p>
-</li>
-<li>
-<p>Click <b class="button">Upload</b>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>This opens the 'My Imports' page.  You can see the status of the import and various details of the files and modules that have been imported.</p>
-</div>
-<div class="sect4">
-<h5 id="_importing_the_collection_tarball_using_ansible_galaxy_via_cli">Importing the collection tarball using ansible-galaxy via CLI</h5>
-<div class="paragraph">
-<p>You can import collections into the private automation hub by using the command-line interface rather than the GUI.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Copy the collection tarballs to the private automation hub.</p>
-</li>
-<li>
-<p>Log in to the private automation hub server via SSH.</p>
-</li>
-<li>
-<p>Add the self-signed root CA cert to the trust store on the automation hub.</p>
-<div class="listingblock">
-<div class="content">
-<pre># cp /etc/pulp/certs/root.crt \
-    /etc/pki/ca-trust/source/anchors/automationhub-root.crt
-# update-ca-trust</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Update the <code>/etc/ansible/ansible.cfg</code> file with your hub configuration.  Use either a token or a username and password for authentication.</p>
-<div class="listingblock">
-<div class="content">
-<pre>[galaxy]
-server_list = private_hub
-
-[galaxy_server.private_hub]
-url=https://&lt;hub_fqdn&gt;/api/galaxy/
-token=&lt;token_from_private_hub&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Import the collection using the ansible-galaxy command.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ ansible-galaxy collection publish &lt;collection_tarball&gt;</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Create the namespace that the collection belongs to in advance or publishing the collection will fail.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="approving-the-imported-collection_disconnected-installation">3.10. Approving the Imported Collection</h3>
-<div class="paragraph">
-<p>After you have imported collections with either the GUI or the CLI method, you must approve them by using the GUI. After they are approved, they are available for use.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Login to private automation hub web console.</p>
-</li>
-<li>
-<p>Go to <span class="menuseq"><b class="menu">Collections</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Approval</b></span>.</p>
-</li>
-<li>
-<p>Click <b class="button">Approve</b> for the collection you wish to approve.</p>
-</li>
-<li>
-<p>The collection is now available for use in your private automation hub.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The collection is added to the "Published" repository regardless of its source.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Import any dependency for the collection using these same steps.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Recommended collections depend on your use case. Ansible and Red Hat provide the following collections:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible" class="bare">https://console.redhat.com/ansible/automation-hub/repo/published/ansible</a></p>
-</li>
-<li>
-<p><a href="https://console.redhat.com/ansible/automation-hub/repo/published/redhat" class="bare">https://console.redhat.com/ansible/automation-hub/repo/published/redhat</a></p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="_custom_execution_environments">3.10.1. Custom Execution Environments</h4>
-<div class="paragraph">
-<p>Use the ansible-builder program to create custom execution environment images. For disconnected environments, custom EE images can be built in the following ways:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Build an EE image on an internet-facing system and import it to the
-disconnected environment</p>
-</li>
-<li>
-<p>Build an EE image entirely on the disconnected environment with some modifications to the normal process of using ansible-builder</p>
-</li>
-<li>
-<p>Create a minimal base container image that includes all of the necessary modifications for a disconnected environment, then build custom EE images from the base container image</p>
-</li>
-</ul>
-</div>
-<div class="sect4">
-<h5 id="_transferring_a_custom_ee_images_across_a_disconnected_boundary">Transferring a Custom EE Images Across a Disconnected Boundary</h5>
-<div class="paragraph">
-<p>A custom execution environment image can be built on an internet-facing machine using the existing documentation.  Once an execution environment has been created it is available in the local podman image cache. You can then transfer the custom EE image across a disconnected boundary. To transfer the custom EE image across a disconnected boundary, first save the image:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Save the image:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ podman image save localhost/custom-ee:latest | gzip -c custom-ee-latest.tar.gz</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Transfer the file across the disconnected boundary by using an existing mechanism such as sneakernet, one-way diode, etc..  After the image is available on the disconnected side, import it into the local podman cache, tag it, and push it to the disconnected hub:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ podman image load -i custom-ee-latest.tar.gz
-$ podman image tag localhost/custom-ee &lt;hub_fqdn&gt;/custom-ee:latest
-$ podman login &lt;hub_fqdn&gt; --tls-verify=false
-$ podman push &lt;hub_fqdn&gt;/custom-ee:latest</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="building-an-execution-environment-in-a-disconnected-environment_disconnected-installation">3.11. Building an Execution Environment in a Disconnected Environment</h3>
-<div class="paragraph">
-<p>When building a custom execution environment, the ansible-builder tool defaults
-to downloading the following requirements from the internet:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Ansible Galaxy (galaxy.ansible.com) or Automation Hub (cloud.redhat.com) for any collections added to the EE image.</p>
-</li>
-<li>
-<p>PyPI (pypi.org) for any python packages required as collection dependencies.</p>
-</li>
-<li>
-<p>The UBI repositories (cdn.redhat.com) for updating any UBI-based EE images.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The RHEL repositories might also be needed to meet certain collection requirements.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>registry.redhat.io for access to the ansible-builder-rhel8 container image.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Building an EE image in a disconnected environment requires a subset of all of these mirrored, or otherwise made available on the disconnected network.
-See <a href="#importing-collections-into-private-automation-hub_disconnected-installation">Importing Collections into Private Automation Hub</a> for information on importing collections from Galaxy or Automation Hub into a private automation hub.</p>
-</div>
-<div class="paragraph">
-<p>Mirrored PyPI content once transferred into the high-side network can be made available using a web server or an artifact repository like Nexus.</p>
-</div>
-<div class="paragraph">
-<p>The UBI repositories can be mirrored on the low-side using a tool like <code>reposync</code>, imported to the disconnected environment, and made available from Satellite or a simple web server (since the content is freely redistributable).</p>
-</div>
-<div class="paragraph">
-<p>The <code>ansible-builder-rhel8</code> container image can be imported into a private automation hub in the same way a custom EE can be imported.
-See <a href="#approving-the-imported-collection_disconnected-installation">Transferring a Custom EE Images Across a Disconnected Boundary</a> for details substituting <code>localhost/custom-ee</code> for
-<code>registry.redhat.io/ansible-automation-platform-21/ansible-builder-rhel8</code>. This will make the ansible-builder-rhel8 image available in the private automation hub registry along with the default EE images.</p>
-</div>
-<div class="paragraph">
-<p>Once all of the prerequisites are available on the high-side network,
-ansible-builder and podman can be used to create a custom execution environment image.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="installing-the-ansible-builder-rpm_disconnected-installation">3.12. Installing the ansible-builder RPM</h3>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>On a RHEL system, install the ansible-builder RPM.  This can be done in one of several  ways:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Subscribe the RHEL box to a Satellite on the disconnected network.</p>
-</li>
-<li>
-<p>Attach the Ansible Automation Platform subscription and enable the AAP repo.</p>
-</li>
-<li>
-<p>Install the ansible-builder RPM.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This is preferred if a Satellite exists because the EE images can leverage RHEL content from the Satellite if the underlying build host is registered.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Unarchive the AAP setup bundle.</p>
-</li>
-<li>
-<p>Install the ansible-builder RPM and its dependencies from the included content:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ tar -xzvf ansible-automation-platform-setup-bundle-2.3-1.2.tar.gz
-$ cd ansible-automation-platform-setup-bundle-2.3-1.2/bundle/el8/repos/
-$ sudo yum install ansible-builder-1.0.1-2.el8ap.noarch.rpm
-python38-requirements-parser-0.2.0-3.el8ap.noarch.rpm</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Create a directory for your custom EE build artifacts.</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ mkdir custom-ee
-$ cd custom-ee/</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Create an <em>execution-environment.yml</em> file that defines the requirements for your custom EE following the documentation at
-<a href="https://ansible-builder.readthedocs.io/en/stable/definition/" class="bare">https://ansible-builder.readthedocs.io/en/stable/definition/</a>.  Override the <code>EE_BASE_IMAGE</code> and <code>EE_BUILDER_IMAGE</code> variables to point to the EEs available in your private automation hub.</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ cat execution-environment.yml
----
-version: 1
-build_arg_defaults:
-  EE_BASE_IMAGE: '&lt;hub_fqdn&gt;/ee-supported-rhel8:latest'
-  EE_BUILDER_IMAGE: '&lt;hub_fqdn&gt;/ansible-builder-rhel8:latest'
-
-dependencies:
-  python: requirements.txt
-  galaxy: requirements.yml</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Create an <em>ansible.cfg</em> file that points to your private automation hub and contains credentials that allow uploading, such as an admin user token.</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ cat ansible.cfg
-[galaxy]
-server_list = private_hub
-
-[galaxy_server.private_hub]
-url=https://&lt;hub_fqdn&gt;/api/galaxy/
-token=&lt;admin_token&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Create a <em>ubi.repo</em> file that points to your disconnected UBI repo mirror (this could be your Satellite if the UBI content is hosted there).</p>
-<div class="paragraph">
-<p>This is an example output where <code>reposync</code> was used to mirror the UBI repos.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ cat ubi.repo
-[ubi-8-baseos]
-name = Red Hat Universal Base Image 8 (RPMs) - BaseOS
-baseurl = http://&lt;ubi_mirror_fqdn&gt;/repos/ubi-8-baseos
-enabled = 1
-gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
-gpgcheck = 1
-
-[ubi-8-appstream]
-name = Red Hat Universal Base Image 8 (RPMs) - AppStream
-baseurl = http://&lt;ubi_mirror_fqdn&gt;/repos/ubi-8-appstream
-enabled = 1
-gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
-gpgcheck = 1</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Add the CA certificate used to sign the private automation hub web server certificate.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>For self-signed certificates (the installer default), make a copy of the file <em>/etc/pulp/certs/root.crt</em> from your private automation hub and name it <strong>hub-root.crt</strong>.</p>
-</li>
-<li>
-<p>If an internal certificate authority was used to request and sign the private automation hub web server certificate, make a copy of that CA certificate called <strong>hub-root.crt</strong>.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Create your python requirements.txt and ansible collection requirements.yml with the content needed for your custom EE image.  Note that any collections you require should already be uploaded into your private automation hub.</p>
-</li>
-<li>
-<p>Use ansible-builder to create the context directory used to build the EE image.</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ ansible-builder create
-Complete! The build context can be found at: /home/cloud-user/custom-ee/context
-$ ls -1F
-ansible.cfg
-context/
-execution-environment.yml
-hub-root.crt
-pip.conf
-requirements.txt
-requirements.yml
-ubi.repo</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Copy the files used to override the internet-facing defaults into the context directory.</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ cp ansible.cfg hub-root.crt pip.conf ubi.repo context/</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Edit the file <strong>context/Containerfile</strong> and add the following modifications.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>In the first <strong>EE_BASE_IMAGE</strong> build section, add the <strong>ansible.cfg</strong> and <strong>hub-root.crt</strong> files and run the <code>update-ca-trust</code> command.</p>
-</li>
-<li>
-<p>In the <strong>EE_BUILDER_IMAGE</strong> build section, add the <strong>ubi.repo</strong> and <strong>pip.conf</strong> files.</p>
-</li>
-<li>
-<p>In the final <strong>EE_BASE_IMAGE</strong> build section, add the <strong>ubi.repo</strong> and pip.conf files.</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ cat context/Containerfile
-ARG EE_BASE_IMAGE=&lt;hub_fqdn&gt;/ee-supported-rhel8:latest
-ARG EE_BUILDER_IMAGE=&lt;hub_fqdn&gt;/ansible-builder-rhel8:latest
-
-FROM $EE_BASE_IMAGE as galaxy
-ARG ANSIBLE_GALAXY_CLI_COLLECTION_OPTS=
-USER root
-
-ADD _build /build
-WORKDIR /build
-
-# this section added
-ADD ansible.cfg /etc/ansible/ansible.cfg
-ADD hub-root.crt /etc/pki/ca-trust/source/anchors/hub-root.crt
-RUN update-ca-trust
-# end additions
-RUN ansible-galaxy role install -r requirements.yml \
-    --roles-path /usr/share/ansible/roles
-RUN ansible-galaxy collection install \
-    $ANSIBLE_GALAXY_CLI_COLLECTION_OPTS -r requirements.yml \
-    --collections-path /usr/share/ansible/collections
-
-FROM $EE_BUILDER_IMAGE as builder
-
-COPY --from=galaxy /usr/share/ansible /usr/share/ansible
-
-ADD _build/requirements.txt requirements.txt
-RUN ansible-builder introspect --sanitize \
-    --user-pip=requirements.txt \
-    --write-bindep=/tmp/src/bindep.txt \
-    --write-pip=/tmp/src/requirements.txt
-# this section added
-ADD ubi.repo /etc/yum.repos.d/ubi.repo
-ADD pip.conf /etc/pip.conf
-# end additions
-RUN assemble
-
-FROM $EE_BASE_IMAGE
-USER root
-
-COPY --from=galaxy /usr/share/ansible /usr/share/ansible
-# this section added
-ADD ubi.repo /etc/yum.repos.d/ubi.repo
-ADD pip.conf /etc/pip.conf
-# end additions
-
-COPY --from=builder /output/ /output/
-RUN /output/install-from-bindep &amp;&amp; rm -rf /output/wheels</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Create the EE image in the local podman cache using the <code>podman</code> command.</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ podman build -f context/Containerfile \
-    -t &lt;hub_fqdn&gt;/custom-ee:latest</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Once the custom EE image builds successfully, push it to the private
-automation hub.</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ podman push &lt;hub_fqdn&gt;/custom-ee:latest</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="sect3">
-<h4 id="_workflow_for_upgrading_between_minor_aap_releases">3.12.1. Workflow for upgrading between minor AAP releases</h4>
-<div class="paragraph">
-<p>To upgrade between minor releases of AAP 2, use this general workflow.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Download and unarchive the latest AAP 2 setup bundle.</p>
-</li>
-<li>
-<p>Take a backup of the existing installation.</p>
-</li>
-<li>
-<p>Copy the existing installation inventory file into the new setup bundle directory.</p>
-</li>
-<li>
-<p>Run <code>./setup.sh</code> to upgrade the installation.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>For example, to upgrade from version 2.2.0-7 to 2.3-1.2, make sure that both setup bundles are on the initial controller node where the installation occurred:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    $ ls -1F
-ansible-automation-platform-setup-bundle-2.2.0-7/
-ansible-automation-platform-setup-bundle-2.2.0-7.tar.gz
-ansible-automation-platform-setup-bundle-2.3-1.2/
-ansible-automation-platform-setup-bundle-2.3-1.2.tar.gz</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Back up the 2.2.0-7 installation:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ cd ansible-automation-platform-setup-bundle-2.2.0-7
-$ sudo ./setup.sh -b
-$ cd ..</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Copy the 2.2.0-7 inventory file into the 2.3-1.2 bundle directory:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ cd ansible-automation-platform-setup-bundle-2.2.0-7
-$ cp inventory ../ansible-automation-platform-setup-bundle-2.3-1.2/
-$ cd ..</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Upgrade from 2.2.0-7 to 2.3-1.2 with the setup.sh script:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ cd ansible-automation-platform-setup-bundle-2.3-1.2
-$ sudo ./setup.sh</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="appendix-inventory-files-vars">Appendix A: Inventory file variables</h2>
+<h2 id="_upgrading_to_the_latest_version">6. Upgrading to the latest version</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following tables contain information about the pre-defined variables used in Ansible installation inventory files.
-Not all of these variables are required.</p>
+<p>You can upgrade your Private Automation Hub to the latest version using the Ansible Automation Platform setup bundle installer. Perform this upgrade using the <code>inventory</code> file configured when you installed Private Automation Hub.</p>
 </div>
-<div class="sect2">
-<h3 id="ref-genera-inventory-variables">A.1. General variables</h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>enable_insights_collection</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default install registers the node to the Red Hat Insights for Red Hat Ansible Automation Platform Service if the node is registered with Subscription Manager.
-Set to <code>False</code> to disable.</p>
-<p class="tableblock">Default = <code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>registry_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>registry_password</code> is only required if a non-bundle installer is used.</p>
-<p class="tableblock">Password credential for access to <code>registry_url</code>.</p>
-<p class="tableblock">Used for both <code>[automationcontroller]</code> and <code>[automationhub]</code> groups.</p>
-<p class="tableblock">Enter your Red Hat Registry Service Account credentials in <code>registry_username</code> and <code>registry_password</code> to link to the Red Hat container registry.</p>
-<p class="tableblock">When <code>registry_url</code> is <code>registry.redhat.io</code>, username and password are required if not using bundle installer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>registry_url</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Used for both <code>[automationcontroller]</code> and <code>[automationhub]</code> groups.</p>
-<p class="tableblock">Default = <code>registry.redhat.io</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>registry_username</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>registry_username</code> is only required if a non-bundle installer is used.</p>
-<p class="tableblock">User credential for access to <code>registry_url</code>.</p>
-<p class="tableblock">Used for both <code>[automationcontroller]</code> and <code>[automationhub]</code> groups, but only if the value of <code>registry_url</code> is <code>registry.redhat.io</code>.</p>
-<p class="tableblock">Enter your Red Hat Registry Service Account credentials in <code>registry_username</code> and <code>registry_password</code> to link to the Red Hat container registry.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="ref-hub-variables">A.2. Ansible automation hub variables</h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_admin_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_api_token</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>If upgrading from Ansible Automation Platform 2.0 or earlier, you must either:</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>provide an existing Ansible automation hub token as <code>automationhub_api_token</code>, or</p>
+<p>Navigate to <a href="https://access.redhat.com/downloads/content/480" class="bare">https://access.redhat.com/downloads/content/480</a></p>
 </li>
 <li>
-<p>set <code>generate_automationhub_token</code> to <code>true</code> to generate a new token</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Generating a new token invalidates the existing token.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_authentication_backend</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>This variable is not set by default.
-Set it to <code>ldap</code> to use LDAP authentication.</p>
-</div>
-<div class="paragraph">
-<p>When this is set to <code>ldap</code>, you must also set the following variables:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>automationhub_ldap_server_uri</code></p>
+<p>Click <b class="button">Download Now</b> for the <strong>Ansible Automation Platform &lt;latest-version&gt; Setup Bundle</strong>.</p>
 </li>
 <li>
-<p><code>automationhub_ldap_bind_dn</code></p>
+<p>Extract the files:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tar xvzf ansible-automation-platform-setup-bundle-&lt;latest-version&gt;.tar.gz</pre>
+</div>
+</div>
 </li>
 <li>
-<p><code>automationhub_ldap_bind_password</code></p>
+<p>Copy configuration information from your initial installation to the <code>inventory</code> file.</p>
 </li>
 <li>
-<p><code>automationhub_ldap_user_search_base_dn</code></p>
+<p>Run the <code>setup.sh</code> script</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ ./setup.sh</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Verifying your upgrade</div>
+<p>You can verify a successful upgrade to your Private Automation Hub by reviewing the <strong>Server version</strong> information.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to your Private Automation Hub.</p>
 </li>
 <li>
-<p><code>automationhub_ldap_group_seach_base_dn</code></p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_auto_sign_collections</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If a collection signing service is enabled, collections are not signed automatically by default.</p>
-<p class="tableblock">Setting this parameter to <code>true</code> signs them by default.</p>
-<p class="tableblock">Default = <code>false</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_backup_collections</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Ansible automation hub provides artifacts in <code>/var/lib/pulp</code>.
-Automation controller automatically backs up the artifacts by default.</p>
-<p class="tableblock">You can also set <code>automationhub_backup_collections = false</code> and the backup/restore process does not then backup or restore <code>/var/lib/pulp</code>.</p>
-<p class="tableblock">Default = <code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_collection_seed_repository</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>When the bundle installer is run, validated content is uploaded to the <code>validated</code> repository, and certified content is uploaded to the <code>rh-certified</code> repository.</p>
-</div>
-<div class="paragraph">
-<p>By default, both certified and validated content are uploaded.</p>
-</div>
-<div class="paragraph">
-<p>Possible values of this variable are 'certified' or 'validated'.</p>
-</div>
-<div class="paragraph">
-<p>If you do not want to install content, set <code>automationhub_seed_collections</code> to <code>false</code> to disable the seeding.</p>
-</div>
-<div class="paragraph">
-<p>If you only want one type of content, set <code>automationhub_seed_collections</code> to <code>true</code> and <code>automationhub_collection_seed_repository</code> to the type of content you do want to include.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_collection_signing_service_key</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If a collection signing service is enabled, you must provide this variable to ensure that collections can be properly signed.</p>
-<p class="tableblock"><code>/absolute/path/to/key/to/sign</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_collection_signing_service_script</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If a collection signing service is enabled, you must provide this variable to ensure that collections can be properly signed.</p>
-<p class="tableblock"><code>/absolute/path/to/script/that/signs</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_create_default_collection_signing_service</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default install does not create a collection signing service.
-If set to <code>true</code> a signing service is created.</p>
-<p class="tableblock">Default = <code>false</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_container_signing_service_key</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If a container signing service is enabled, you must provide this variable to ensure that containers can be properly signed.</p>
-<p class="tableblock"><code>/absolute/path/to/key/to/sign</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_container_signing_service_script</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If a container signing service is enabled, you must provide this variable to ensure that containers can be properly signed.</p>
-<p class="tableblock"><code>/absolute/path/to/script/that/signs</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_create_default_container_signing_service</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default install does not create a container signing service.
-If set to <code>true</code> a signing service is created.</p>
-<p class="tableblock">Default = <code>false</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_disable_hsts</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default install deploys a TLS enabled Ansible automation hub.
-Use if automation hub is deployed with <em>HTTP Strict Transport Security</em> (HSTS) web-security policy enabled.
-Unless specified otherwise, the HSTS web-security policy mechanism is enabled.
-This setting allows you to disable it if required.</p>
-<p class="tableblock">Default = <code>false</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_disable_https</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">If Ansible automation hub is deployed with HTTPS enabled.</p>
-<p class="tableblock">Default = <code>false</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_enable_api_access_log</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">When set to <code>true</code>, creates a log file at <code>/var/log/galaxy_api_access.log</code> that logs all user actions made to the platform, including their username and IP address.</p>
-<p class="tableblock">Default = <code>false</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_enable_analytics</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A Boolean indicating whether to enable pulp analytics for the version of pulpcore used in automation hub in Ansible Automation Platform 2.3.</p>
-<p class="tableblock">To enable pulp analytics, set <code>automationhub_enable_analytics = true</code>.</p>
-<p class="tableblock">Default = <code>false</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_enable_unathenticated_collection_access</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables unauthorized users to view collections</p>
-<p class="tableblock">Default = <code>false</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_enable_unauthenticated_collection_download</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables unauthorized users to download collections.</p>
-<p class="tableblock">Default = <code>false</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_importer_settings</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Dictionary of setting to pass to galaxy-importer.</p>
-<p class="tableblock">At import time collections can go through a series of checks.</p>
-<p class="tableblock">Behavior is driven by <code>galaxy-importer.cfg</code> configuration.</p>
-<p class="tableblock">Examples are <code>ansible-doc</code>, <code>ansible-lint</code>, and <code>flake8</code>.</p>
-<p class="tableblock">This parameter enables you to drive this configuration.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_main_url</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The main automation hub URL that clients connect to.</p>
-<p class="tableblock">For example, https://&lt;load balancer host&gt;.</p>
-<p class="tableblock">If not specified, the first node in the <code>[automationhub]</code> group is used.</p>
-<p class="tableblock">Use <code>automationhub_main_url</code> to specify the main automation hub URL that clients connect to if you are implementing Red Hat Single Sign-On on your automation hub environment.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_pg_database</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Required</em></p>
-<p class="tableblock">The database name.</p>
-<p class="tableblock">Default = <code>automationhub</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_pg_host</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required if not using internal database.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_pg_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The password for the automation hub PostgreSQL database.</p>
-<p class="tableblock">Do not use special characters for <code>automationhub_pg_password</code>.
-They can cause the password to fail.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_pg_port</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required if not using internal database.</p>
-<p class="tableblock">Default = 5432</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_pg_sslmode</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required.</p>
-<p class="tableblock">Default = <code>prefer</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_pg_username</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required</p>
-<p class="tableblock">Default = <code>automationhub</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_require_content_approval</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Value is <code>true</code> if automation hub enforces the approval mechanism before collections are made available.</p>
-<p class="tableblock">By default when you upload collections to automation hub an administrator must approve it before it is made available to the users.</p>
-<p class="tableblock">If you want to disable the content approval flow, set the variable to <code>false</code>.</p>
-<p class="tableblock">Default = <code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_seed_collections</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A boolean that defines whether or not preloading is enabled.</p>
-<p class="tableblock">When the bundle installer is run, validated content is uploaded to the <code>validated</code> repository, and certified content is uploaded to the <code>rh-certified</code> repository.</p>
-<p class="tableblock">By default, both certified and validated content are uploaded.</p>
-<p class="tableblock">If you do not want to install content, set <code>automationhub_seed_collections</code> to <code>false</code> to disable the seeding.</p>
-<p class="tableblock">If you only want one type of content, set <code>automationhub_seed_collections</code> to <code>true</code> and <code>automationhub_collection_seed_repository</code> to the type of content you do want to include.</p>
-<p class="tableblock">Default = <code>true</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ssl_cert</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock"><code>/path/to/automationhub.cert</code>
-Same as <code>web_server_ssl_cert</code> but for automation hub UI and API</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ssl_key</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock"><code>/path/to/automationhub.key</code></p>
-<p class="tableblock">Same as <code>web_server_ssl_key</code> but for automation hub UI and API</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ssl_validate_certs</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For Red Hat Ansible Automation Platform 2.2 and later, this value is no longer used.</p>
-<p class="tableblock">Value is <code>true</code> if automation hub should validate certificate when requesting itself because by default, Ansible Automation Platform deploys with self-signed certificates.</p>
-<p class="tableblock">Default = <code>false</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_upgrade</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Deprecated</strong></p>
-<p class="tableblock">For Ansible Automation Platform 2.2.1 and later, the value of this has been fixed at true.</p>
-<p class="tableblock">Automation hub always updates with the latest packages.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>generate_automationhub_token</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>If upgrading from Red Hat Ansible Automation Platform 2.0 or earlier, you must either:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>provide an existing Ansible automation hub token as <code>automationhub_api_token</code> or</p>
+<p>Click the <strong>?</strong> icon in the top navigation bar.</p>
 </li>
 <li>
-<p>set <code>generate_automationhub_token</code> to <code>true</code> to generate a new token.
-Generating a new token will invalidate the existing token.</p>
+<p>Click <b class="button">About</b>.</p>
 </li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>nginx_hsts_max_age</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This variable specifies how long, in seconds, the system should be considered as a <em>HTTP Strict Transport Security</em> (HSTS) host. That is, how long HTTPS is used exclusively for communication.</p>
-<p class="tableblock">Default = 63072000 seconds, or two years.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>nginx_tls_protocols</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines support for <code>ssl_protocols</code> in Nginx.</p>
-<p class="tableblock">Default = <code>TLSv1.2</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>pulp_db_fields_key</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relative or absolute path to the Fernet symmetric encryption key you want to import.
-The path is on the Ansible management node.
-It is used to encrypt certain fields in the database (such as credentials.)
-If not specified, a new key will be generated.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_login_theme</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
-<p class="tableblock">Path to the directory where theme files are located.
-If changing this variable, you must provide your own theme files.</p>
-<p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_realm</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
-<p class="tableblock">The name of the realm in SSO.</p>
-<p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_automation_platform_realm_displayname</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
-<p class="tableblock">Display name for the realm.</p>
-<p class="tableblock">Default = <code>Ansible Automation Platform</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_username</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
-<p class="tableblock">SSO admin username.</p>
-<p class="tableblock">Default = <code>admin</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_console_admin_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Required</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
-<p class="tableblock">SSO admin password.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_custom_keystore_file</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Customer-provided keystore for SSO.</p>
-<p class="tableblock">Used for Ansible Automation Platform managed Red Hat Single Sign-On only.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_host</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Required</em></p>
-<p class="tableblock">Used for Ansible Automation Platform externally managed Red Hat Single Sign-On only.</p>
-<p class="tableblock">Automation hub requires SSO and SSO administration credentials for
-authentication.</p>
-<p class="tableblock">If SSO is not provided in the inventory for configuration, then you must use this variable to define the SSO host.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_file_remote</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed Red Hat Single Sign-On only.</p>
-<p class="tableblock">Set to <code>true</code> if the customer-provided keystore is on a remote node.</p>
-<p class="tableblock">Default = <code>false</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_name</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed Red Hat Single Sign-On only.</p>
-<p class="tableblock">Name of keystore for SSO.</p>
-<p class="tableblock">Default = <code>ansible-automation-platform</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_keystore_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Password for keystore for HTTPS enabled SSO.</p>
-<p class="tableblock">Required when using Ansible Automation Platform managed SSO and when HTTPS is enabled. The default install deploys SSO with <code>sso_use_https=true</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_redirect_host</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
-<p class="tableblock">If <code>sso_redirect_host</code> is set, it is used by the application to connect to SSO for authentication.</p>
-<p class="tableblock">This must be reachable from client machines.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_ssl_validate_certs</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
-<p class="tableblock">Set to <code>true</code> if the cert is to be validated during connection.</p>
-<p class="tableblock">Default = <code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>sso_use_https</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Used for Ansible Automation Platform managed and externally managed Red Hat Single Sign-On.</p>
-<p class="tableblock">If Single Sign On uses https.</p>
-<p class="tableblock">Default = <code>true</code></p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>For Ansible automation hub to connect to LDAP directly; the following variables must be configured.
-A list of other LDAP related variables (not covered by the <code>automationhub_ldap_xxx</code> variables below) that can be passed using the <code>ldap_extra_settings</code> variable can be found here:
-<a href="https://django-auth-ldap.readthedocs.io/en/latest/reference.html#settings" class="bare">https://django-auth-ldap.readthedocs.io/en/latest/reference.html#settings</a></p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ldap_bind_dn</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name to use when binding to the LDAP server with <code>automationhub_ldap_bind_password</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ldap_bind_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Required</em></p>
-<p class="tableblock">The password to use with <code>automationhub_ldap_bind_dn</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ldap_group_search_base_dn</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An LDAPSearch object that finds all LDAP groups that users might belong to.
-If your configuration makes any references to LDAP groups, this and <code>automationhub_ldap_group_type</code> must be set.</p>
-<p class="tableblock">Default = <code>None</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automatiohub_ldap_group_search_filter</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Search filter for finding group membership.</p>
-<p class="tableblock">Variable identifies what objectClass type to use for mapping groups with automation hub and LDAP.
-Used for installing automation hub with LDAP.</p>
-<p class="tableblock">Default = <code>(objectClass=Group)</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ldap_group_search_scope</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Scope to search for groups in an LDAP tree using the django framework for LDAP authentication.
-Used for installing automation hub with LDAP.</p>
-<p class="tableblock">Default = <code>SUBTREE</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ldap_group_type_class</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Variable identifies the group type used during group searches within the django framework for LDAP authentication.
-Used for installing automation hub with LDAP.</p>
-<p class="tableblock">Default =<code>django_auth_ldap.config:GroupOfNamesType</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ldap_server_uri</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The URI of the LDAP server.
-This can be any URI that is supported by your underlying LDAP libraries.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ldap_user_search_base_dn</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An LDAPSearch object that locates a user in the directory.
-The filter parameter should contain the placeholder %(user)s for the username.
-It must return exactly one result for authentication to succeed.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationhub_ldap_user-search_scope</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">Scope to search for users in an LDAP tree using django framework for LDAP authentication.
-Used for installing automation hub with LDAP.</p>
-<p class="tableblock">Default = <code>SUBTREE</code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="ref-controller-variables">A.3. Automation controller variables</h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>admin_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The password for an administration user to access the UI upon install completion.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationcontroller_main_url</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For an alternative front end URL needed for SSO configuration with automation services catalog, provide the URL.</p>
-<p class="tableblock">Automation services catalog requires either Controller to be installed with automation controller, or a URL to an active and routable Controller server must be provided with this variable</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationcontroller_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Password for your automation controller instance.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>automationcontroller_username</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Username for your automation controller instance.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>nginx_http_port</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The nginx HTTP server listens for inbound connections.</p>
-<p class="tableblock">Default = 80</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>nginx_https_port</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The nginx HTTPS server listens for secure connections.</p>
-<p class="tableblock">Default = 443</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>nginx_hsts_max_age</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This variable specifies how long, in seconds, the system should be considered as a <em>HTTP Strict Transport Security</em> (HSTS) host. That is, how long HTTPS is used exclusively for communication.</p>
-<p class="tableblock">Default = 63072000 seconds, or two years.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>nginx_tls_protocols</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines support for <code>ssl_protocols</code> in Nginx.</p>
-<p class="tableblock">Default = <code>TLSv1.2</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>node_state</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">The status of a node or group of nodes.
-Valid options are <code>active</code>, <code>deprovision</code> to remove a node from a cluster or <code>iso_migrate</code> to migrate a legacy isolated node to an execution node.</p>
-<p class="tableblock">Default = <code>active</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>node_type</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For <code>[automationcontroller]</code> group.</p>
-<p class="tableblock">Two valid <code>node_types</code> can be assigned for this group.</p>
-<p class="tableblock">A <code>node_type=control</code> implies that the node only runs project and inventory updates, but not regular jobs.</p>
-<p class="tableblock">A <code>node_type=hybrid</code> has the ability to run everything.</p>
-<p class="tableblock">Default for this group = <code>hybrid</code>.</p>
-<p class="tableblock">For <code>[execution_nodes]</code> group</p>
-<p class="tableblock">Two valid node_types can be assigned for this group.</p>
-<p class="tableblock">A <code>node_type=hop</code> implies that the node forwards jobs to an execution node.</p>
-<p class="tableblock">A <code>node_type=execution</code> implies that the node can run jobs.</p>
-<p class="tableblock">Default for this group = <code>execution</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>peers</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock">The <code>peers</code> variable is used to indicate which nodes a specific host or group connects to. Wherever the peers variable is defined, an outbound connection will be established to the specific host or group.</p>
-<p class="tableblock">This variable is used to add <code>tcp-peer</code> entries in the <code>receptor.conf</code> file used for establishing network connections with other nodes.
-See <a href="https://receptor.readthedocs.io/en/latest/connecting_nodes.html?highlight=tcp-peer">Peering</a></p>
-<p class="tableblock">The peers variable can be a comma-separated list of hosts and/or groups from the inventory.
-This is resolved into a set of hosts that is used to construct the <code>receptor.conf</code> file.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>pg_database</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the postgres database.</p>
-<p class="tableblock">Default = <code>awx</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>pg_host</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The postgreSQL host, which can be an externally managed database.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>pg_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The password for the postgreSQL database.</p>
-<p class="tableblock">Do not use special characters for <code>pg_password</code>.
-They can cause the password to fail.</p>
-<p class="tableblock">NOTE</p>
-<p class="tableblock">You no longer have to provide a <code>pg_hashed_password</code> in your inventory file at the time of installation because PostgreSQL 13 can now store user passwords more securely.</p>
-<p class="tableblock">When you supply <code>pg_password</code> in the inventory file for the installer, PostgreSQL uses the SCRAM-SHA-256 hash to secure that password as part of the installation process.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>pg_port</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The postgreSQL port to use.</p>
-<p class="tableblock">Default = 5432</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>pg_ssl_mode</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">One of <code>prefer</code> or <code>verify-full</code>.</p>
-<p class="tableblock">Set to <code>verify-full</code> for client-side enforced SSL.</p>
-<p class="tableblock">Default = <code>prefer</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>pg_username</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your postgres database username.</p>
-<p class="tableblock">Default = <code>awx</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>postgres_ssl_cert</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">location of postgres ssl certificate.</p>
-<p class="tableblock"><code>/path/to/pgsql_ssl.cert</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>postgres_ssl_key</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">location of postgres ssl key.</p>
-<p class="tableblock"><code>/path/to/pgsql_ssl.key</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>postgres_use_cert</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Location of postgres user certificate.</p>
-<p class="tableblock"><code>/path/to/pgsql.crt</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>postgres_use_key</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Location of postgres user key.</p>
-<p class="tableblock"><code>/path/to/pgsql.key</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>postgres_use_ssl</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If postgres is to use SSL.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>receptor_listener_port</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Port to use for recptor connection.</p>
-<p class="tableblock">Default = 27199.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>routable_hostname</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>routable hostname</code> is used if the machine running the installer can only route to the target host through a specific URL,
-for example, if you use shortnames in your inventory, but the node running the installer can only resolve that host using FQDN.</p>
-<p class="tableblock">If <code>routable_hostname</code> is not set, it should default to <code>ansible_host</code>. Then if, and only if <code>ansible_host</code> is not set, <code>inventory_hostname</code> is used as a last resort.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>supervisor_start_retry_count</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">When specified (no default value exists), adds <code>startretries = &lt;value specified&gt;</code> to the supervisor config file (/etc/supervisord.d/tower.ini).</p>
-<p class="tableblock">See <a href="http://supervisord.org/configuration.html#program-x-section-values">program:x Section Values</a> for further explanation about <code>startretries</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>web_server_ssl_cert</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock"><code>/path/to/webserver.cert</code></p>
-<p class="tableblock">Same as <code>automationhub_ssl_cert</code> but for web server UI and API.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>web_server_ssl_key</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em></p>
-<p class="tableblock"><code>/path/to/webserver.key</code></p>
-<p class="tableblock">Same as <code>automationhub_server_ssl_key</code> but for web server UI and API.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="ref-ansible-inventory-variables">A.4. Ansible variables</h3>
-<div class="paragraph">
-<p>The following variables control how Ansible Automation Platform interacts with remote hosts.</p>
-</div>
-<div class="paragraph">
-<p>Additional information on variables specific to certain plugins can be found at <a href="https://docs.ansible.com/ansible-core/devel/collections/ansible/builtin/index.html" class="bare">https://docs.ansible.com/ansible-core/devel/collections/ansible/builtin/index.html</a></p>
-</div>
-<div class="paragraph">
-<p>A list of global configuration options can be found at <a href="https://docs.ansible.com/ansible-core/devel/reference_appendices/config.html" class="bare">https://docs.ansible.com/ansible-core/devel/reference_appendices/config.html</a></p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_connection</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The connection plugin used for the task on the target host.</p>
-<p class="tableblock">This can be the name of any of ansible connection plugin.
-SSH protocol types are <code>smart</code>, <code>ssh</code> or <code>paramiko</code>.</p>
-<p class="tableblock">Default = <code>smart</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_host</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ip or name of the target host to use instead of <strong><code>inventory_hostname</code></strong>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_port</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The connection port number, if not, the default (22 for ssh).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_user</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The user name to use when connecting to the host.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_password</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The password to use to authenticate to the host.</p>
-<p class="tableblock">Never store this variable in plain text.</p>
-<p class="tableblock">Always use a vault.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_ssh_private_key_file</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private key file used by ssh.
-Useful if using multiple keys and you do not want to use an SSH agent.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_ssh_common_args</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This setting is always appended to the default command line for <code>sftp</code>, <code>scp</code>, and <code>ssh</code>.
-Useful to configure a ProxyCommand for a certain host (or group).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_sftp_extra_args</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This setting is always appended to the default <code>sftp</code> command line.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_scp_extra_args</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This setting is always appended to the default <code>scp</code> command line.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_ssh_extra_args</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This setting is always appended to the default <code>ssh</code> command line.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_ssh_pipelining</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Determines if SSH pipelining is used.
-This can override the pipelining setting in <code>ansible.cfg</code>.
-If using SSH key-based authentication, then the key must be managed by an SSH agent.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_ssh_executable</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(added in version 2.2)</p>
-<p class="tableblock">This setting overrides the default behavior to use the system ssh.
-This can override the ssh_executable setting in <code>ansible.cfg</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_shell_type</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The shell type of the target system.
-You should not use this setting unless you have set the <code>ansible_shell_executable</code> to a non-Bourne (sh) compatible shell.
-By default commands are formatted using sh-style syntax.
-Setting this to <code>csh</code> or <code>fish</code> causes commands executed on target systems to follow the syntax of those shells instead.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>ansible_shell_executable</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This sets the shell that the ansible controller uses on the target machine, and overrides the executable in <code>ansible.cfg</code> which defaults to <code>/bin/sh</code>.</p>
-<p class="tableblock">You should only change if it is not possible to use <code>/bin/sh</code>, that is, if <code>/bin/sh</code> is not installed on the target machine or cannot be run from sudo.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>inventory_hostname</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This variable takes the hostname of the machine from the inventory script or the ansible configuration file.</p>
-<p class="tableblock">You cannot set the value of this variable.</p>
-<p class="tableblock">Because the value is taken from the configuration file, the actual runtime hostname value can vary from what is returned by this variable.</p></td>
-</tr>
-</tbody>
-</table>
+<li>
+<p>Verify that the <strong>server version</strong> matches the version you upgraded to.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-03 16:06:32 UTC
+Last updated 2023-03-21 14:02:39 UTC
 </div>
 </div>
 </body>
