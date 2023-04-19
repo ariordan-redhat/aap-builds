@@ -5,3 +5,8 @@ Add `.html` files to subdirectories within the `docs/` directory in the `gh-page
 The file is published in https://ariordan-redhat.github.io/aap-builds/subdirectory/file.html
 
 That is, `docs` does not appear in the URL.
+
+For example:
+
+https://ariordan-redhat.github.io/aap-builds/hub-installation-guide/master.html
+
