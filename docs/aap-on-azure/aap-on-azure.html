@@ -446,30 +446,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></li>
 <li><a href="#intro-to-aap-on-azure">1. Introduction to Ansible Automation Platform on Microsoft Azure</a>
 <ul class="sectlevel2">
-<li><a href="#con-aap-azure-about_aap-azure-intro">1.1. About Red Hat Ansible Automation Platform on Microsoft Azure</a></li>
-<li><a href="#con-aap-azure-architecture_aap-azure-intro">1.2. Application Architecture</a>
+<li><a href="#con-azure-about_azure-intro">1.1. About Red Hat Ansible Automation Platform on Microsoft Azure</a></li>
+<li><a href="#con-azure-architecture_azure-intro">1.2. Application Architecture</a>
 <ul class="sectlevel3">
-<li><a href="#con-aap-public-access_aap-azure-intro">1.2.1. Public deployment</a></li>
-<li><a href="#con-aap-private-access_aap-azure-intro">1.2.2. Private deployment</a></li>
+<li><a href="#con-aap-public-access_azure-intro">1.2.1. Public deployment</a></li>
+<li><a href="#con-aap-private-access_azure-intro">1.2.2. Private deployment</a></li>
 </ul>
 </li>
-<li><a href="#con-aap-azure-network_aap-azure-intro">1.3. Network</a>
+<li><a href="#con-azure-disaster-recovery_azure-intro">1.3. Disaster Recovery</a></li>
+<li><a href="#con-azure-network_azure-intro">1.4. Network</a>
 <ul class="sectlevel3">
-<li><a href="#azure-vnet-cidr_aap-azure-intro">1.3.1. VNet CIDR blocks</a></li>
-<li><a href="#azure_aks-cidr_aap-azure-intro">1.3.2. AKS CIDR Blocks</a></li>
+<li><a href="#azure-vnet-cidr_azure-intro">1.4.1. VNet CIDR blocks</a></li>
+<li><a href="#azure_aks-cidr_azure-intro">1.4.2. AKS CIDR Blocks</a></li>
 </ul>
 </li>
-<li><a href="#con-aap-azure-infrastructure-usage_aap-azure-intro">1.4. Ansible Automation Platform on Microsoft Azure infrastructure usage</a></li>
-<li><a href="#con-aap-azure-lifecycle_aap-azure-intro">1.5. Lifecycle management</a></li>
-<li><a href="#con-aap-azure-scaling_aap-azure-intro">1.6. Ansible Automation Platform on Microsoft Azure scaling</a></li>
-<li><a href="#con-aap-azure-migration_aap-azure-intro">1.7. Migration</a></li>
+<li><a href="#con-azure-infrastructure-usage_azure-intro">1.5. Ansible Automation Platform on Microsoft Azure infrastructure usage</a></li>
+<li><a href="#con-azure-lifecycle_azure-intro">1.6. Lifecycle management</a></li>
+<li><a href="#con-azure-scaling_azure-intro">1.7. Ansible Automation Platform on Microsoft Azure scaling</a></li>
+<li><a href="#con-azure-migration_azure-intro">1.8. Migration</a></li>
 </ul>
 </li>
-<li><a href="#aap-azure-install">2. Installing Red Hat Ansible Automation Platform on Microsoft Azure</a>
+<li><a href="#azure-install">2. Installing Red Hat Ansible Automation Platform on Microsoft Azure</a>
 <ul class="sectlevel2">
 <li><a href="#_prerequisites">2.1. Prerequisites</a>
 <ul class="sectlevel3">
-<li><a href="#proc-azure-resource-quotas_aap-azure-install">2.1.1. Azure resource quotas and infrastructure limits</a>
+<li><a href="#proc-azure-resource-quotas_azure-install">2.1.1. Azure resource quotas and infrastructure limits</a>
 <ul class="sectlevel4">
 <li><a href="#_regional_vcpu_limits">Regional vCPU limits</a></li>
 <li><a href="#_regional_standardcore_limits">Regional StandardCore limits</a></li>
@@ -477,62 +478,62 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#proc-azure-create-service-principal_aap-azure-install">2.2. Creating a service principal</a>
+<li><a href="#proc-azure-create-service-principal_azure-install">2.2. Creating a service principal</a>
 <ul class="sectlevel3">
 <li><a href="#_maintaining_your_service_principals">2.2.1. Maintaining your service principals</a></li>
 </ul>
 </li>
-<li><a href="#proc-azure-proc-azure-deploy-aap_aap-azure-install">2.3. Deploying Ansible Automation Platform from Azure Marketplace</a>
+<li><a href="#proc-azure-proc-azure-deploy-aap_azure-install">2.3. Deploying Ansible Automation Platform from Azure Marketplace</a>
 <ul class="sectlevel3">
-<li><a href="#proc-azure-podidentity_aap-azure-install">2.3.1. Enabling PodIdentityPreview capability in Azure</a></li>
-<li><a href="#proc-azure-locate-aap-marketplace_aap-azure-install">2.3.2. Locating Ansible Automation Platform in Azure Marketplace</a></li>
-<li><a href="#proc-azure-provisioning-aap_aap-azure-install">2.3.3. Provisioning Red Hat Ansible Automation Platform on Microsoft Azure</a></li>
-<li><a href="#azure-monitor-deployment-engine_aap-azure-install">2.3.4. Monitoring deployments on the Ansible Automation Platform Deployment Engine</a></li>
-<li><a href="#azure-cancel-deployment_aap-azure-install">2.3.5. Canceling Red Hat Ansible Automation Platform on Microsoft Azure deployments</a></li>
+<li><a href="#proc-azure-podidentity_azure-install">2.3.1. Enabling PodIdentityPreview capability in Azure</a></li>
+<li><a href="#proc-azure-locate-aap-marketplace_azure-install">2.3.2. Locating Ansible Automation Platform in Azure Marketplace</a></li>
+<li><a href="#proc-azure-provisioning-aap_azure-install">2.3.3. Provisioning Red Hat Ansible Automation Platform on Microsoft Azure</a></li>
+<li><a href="#azure-monitor-deployment-engine_azure-install">2.3.4. Monitoring deployments on the Ansible Automation Platform Deployment Engine</a></li>
+<li><a href="#azure-cancel-deployment_azure-install">2.3.5. Canceling Red Hat Ansible Automation Platform on Microsoft Azure deployments</a></li>
 </ul>
 </li>
-<li><a href="#proc-azure-accessing-aap_aap-azure-install">2.4. Accessing Red Hat Ansible Automation Platform on Microsoft Azure</a>
+<li><a href="#proc-azure-accessing-aap_azure-install">2.4. Accessing Red Hat Ansible Automation Platform on Microsoft Azure</a>
 <ul class="sectlevel3">
-<li><a href="#proc-azure-license-association_aap-azure-install">2.4.1. License association</a></li>
-<li><a href="#proc-azure-configure-ad-sso_aap-azure-install">2.4.2. Azure Active Directory (Azure AD) SSO configuration</a></li>
+<li><a href="#proc-azure-license-association_azure-install">2.4.1. License association</a></li>
+<li><a href="#proc-azure-configure-ad-sso_azure-install">2.4.2. Azure Active Directory (Azure AD) SSO configuration</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#aap-azure-network-peering">3. Private network peering</a>
+<li><a href="#azure-network-peering">3. Private network peering</a>
 <ul class="sectlevel2">
-<li><a href="#aap-azure-hub-spoke-peering">3.1. Hub-and-spoke peering (Transit routes)</a>
+<li><a href="#azure-hub-spoke-peering">3.1. Hub-and-spoke peering (Transit routes)</a>
 <ul class="sectlevel3">
-<li><a href="#proc-azure-hub-spoke-peering_aap-azure-hub-spoke-peering">3.1.1. Hub-and-spoke peering process overview</a>
+<li><a href="#proc-azure-hub-spoke-peering_azure-hub-spoke-peering">3.1.1. Hub-and-spoke peering process overview</a>
 <ul class="sectlevel4">
-<li><a href="#proc-azure-find-cluster-cidr_aap-azure-hub-spoke-peering">Finding the CIDR Block of the managed resource group</a></li>
-<li><a href="#proc-azure-nw-peering-aap-subnet_aap-azure-hub-spoke-peering">Configuring network peering with the Ansible Automation Platform subnet</a></li>
-<li><a href="#proc-azure-update-route-tables_aap-azure-hub-spoke-peering">Updating the route tables</a></li>
+<li><a href="#proc-azure-find-cluster-cidr_azure-hub-spoke-peering">Finding the CIDR Block of the managed resource group</a></li>
+<li><a href="#proc-azure-nw-peering-aap-subnet_azure-hub-spoke-peering">Configuring network peering with the Ansible Automation Platform subnet</a></li>
+<li><a href="#proc-azure-update-route-tables_azure-hub-spoke-peering">Updating the route tables</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#aap-azure-vwan-peering">3.2. Azure Virtual WAN (VWAN)</a>
+<li><a href="#azure-vwan-peering">3.2. Azure Virtual WAN (VWAN)</a>
 <ul class="sectlevel3">
-<li><a href="#proc-peer-vwan-hub-to-aap_aap-azure-vwan-peering">3.2.1. Peering a VWAN Hub to the Ansible Automation Platform on Microsoft Azure Network</a></li>
+<li><a href="#proc-peer-vwan-hub-to-aap_azure-vwan-peering">3.2.1. Peering a VWAN Hub to the Ansible Automation Platform on Microsoft Azure Network</a></li>
 </ul>
 </li>
-<li><a href="#aap-azure-direct-peering">3.3. Direct peering</a>
+<li><a href="#azure-direct-peering">3.3. Direct peering</a>
 <ul class="sectlevel3">
-<li><a href="#proc-azure-nw-direct-peering_aap-azure-direct-peering">3.3.1. Configuring direct network peering</a></li>
+<li><a href="#proc-azure-nw-direct-peering_azure-direct-peering">3.3.1. Configuring direct network peering</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#aap-azure-connecting-to-aap">4. Connecting to Red Hat Ansible Automation Platform</a>
+<li><a href="#azure-connecting-to-aap">4. Connecting to Red Hat Ansible Automation Platform</a>
 <ul class="sectlevel2">
-<li><a href="#proc-azure-nw-access-details_aap-azure-connecting-to-aap">4.1. Access details</a></li>
-<li><a href="#proc-azure-nw-public-deploy_aap-azure-connecting-to-aap">4.2. Public Deployments</a></li>
-<li><a href="#proc-azure-nw-private-deploy_aap-azure-connecting-to-aap">4.3. Private deployments</a>
+<li><a href="#proc-azure-nw-access-details_azure-connecting-to-aap">4.1. Access details</a></li>
+<li><a href="#proc-azure-nw-public-deploy_azure-connecting-to-aap">4.2. Public Deployments</a></li>
+<li><a href="#proc-azure-nw-private-deploy_azure-connecting-to-aap">4.3. Private deployments</a>
 <ul class="sectlevel3">
-<li><a href="#proc-azure-nw-private-deploy-az-hosted-vm_aap-azure-connecting-to-aap">4.3.1. Azure hosted virtual machine</a></li>
-<li><a href="#proc-azure-nw-private-deploy-vpn_aap-azure-connecting-to-aap">4.3.2. VPN</a></li>
-<li><a href="#proc-azure-nw-private-deploy-ssh-tunnel_aap-azure-connecting-to-aap">4.3.3. SSH tunnel</a></li>
+<li><a href="#proc-azure-nw-private-deploy-az-hosted-vm_azure-connecting-to-aap">4.3.1. Azure hosted virtual machine</a></li>
+<li><a href="#proc-azure-nw-private-deploy-vpn_azure-connecting-to-aap">4.3.2. VPN</a></li>
+<li><a href="#proc-azure-nw-private-deploy-ssh-tunnel_azure-connecting-to-aap">4.3.3. SSH tunnel</a></li>
 </ul>
 </li>
 </ul>
@@ -564,7 +565,7 @@ For more details, see <a href="https://www.redhat.com/en/blog/making-open-source
 <h2 id="intro-to-aap-on-azure"><a class="anchor" href="#intro-to-aap-on-azure"></a>1. Introduction to Ansible Automation Platform on Microsoft Azure</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="con-aap-azure-about_aap-azure-intro"><a class="anchor" href="#con-aap-azure-about_aap-azure-intro"></a>1.1. About Red Hat Ansible Automation Platform on Microsoft Azure</h3>
+<h3 id="con-azure-about_azure-intro"><a class="anchor" href="#con-azure-about_azure-intro"></a>1.1. About Red Hat Ansible Automation Platform on Microsoft Azure</h3>
 <div class="paragraph _abstract">
 <p>Red Hat Ansible Automation Platform on Microsoft Azure is a managed application that you can deploy from the <a href="https://azure.microsoft.com/en-us/marketplace/">Azure Marketplace</a> portal to a resource group in your Azure tenant.
 Ansible Automation Platform on Microsoft Azure provides access to a library of Ansible content collections, and it is integrated with key Azure services, so you can start deploying, configuring, and managing infrastructure and applications quickly.</p>
@@ -613,7 +614,7 @@ Ansible Automation Platform on Microsoft Azure provides access to a library of A
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-aap-azure-architecture_aap-azure-intro"><a class="anchor" href="#con-aap-azure-architecture_aap-azure-intro"></a>1.2. Application Architecture</h3>
+<h3 id="con-azure-architecture_azure-intro"><a class="anchor" href="#con-azure-architecture_azure-intro"></a>1.2. Application Architecture</h3>
 <div class="paragraph">
 <p>Red Hat Ansible Automation Platform on Microsoft Azure is installed as a managed application.
 Red Hat manages both the underlying Azure resources and the software running on it while that infrastructure runs in your Azure tenant.</p>
@@ -674,7 +675,7 @@ This affects how users can access the Ansible Automation Platform user interface
 You can configure network peering from Ansible Automation Platform on Microsoft Azure to your private Azure VNets and to on-premises or multi-cloud networks where transit routing with Azure exists.</p>
 </div>
 <div class="sect3">
-<h4 id="con-aap-public-access_aap-azure-intro"><a class="anchor" href="#con-aap-public-access_aap-azure-intro"></a>1.2.1. Public deployment</h4>
+<h4 id="con-aap-public-access_azure-intro"><a class="anchor" href="#con-aap-public-access_azure-intro"></a>1.2.1. Public deployment</h4>
 <div class="paragraph">
 <p>Public deployments permit ingress to the Ansible Automation Platform on Microsoft Azure user interfaces over the public internet.
 Upon deployment, a domain name is issued to the Ansible Automation Platform on Microsoft Azure instance.
@@ -692,7 +693,7 @@ The IP ranges change based on the networking address range you set on deployment
 </div>
 </div>
 <div class="sect3">
-<h4 id="con-aap-private-access_aap-azure-intro"><a class="anchor" href="#con-aap-private-access_aap-azure-intro"></a>1.2.2. Private deployment</h4>
+<h4 id="con-aap-private-access_azure-intro"><a class="anchor" href="#con-aap-private-access_azure-intro"></a>1.2.2. Private deployment</h4>
 <div class="paragraph">
 <p>A private deployment of Ansible Automation Platform resides in an isolated Azure VNet with no access from external sources: traffic to and from the public internet and other Azure VNets and subnets is blocked.</p>
 </div>
@@ -729,7 +730,28 @@ The IP ranges change based on the networking address range you set on deployment
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-aap-azure-network_aap-azure-intro"><a class="anchor" href="#con-aap-azure-network_aap-azure-intro"></a>1.3. Network</h3>
+<h3 id="con-azure-disaster-recovery_azure-intro"><a class="anchor" href="#con-azure-disaster-recovery_azure-intro"></a>1.3. Disaster Recovery</h3>
+<div class="paragraph">
+<p>When you deploy Ansible Automation Platform on Microsoft Azure, you must enable or disable Disaster Recovery in the <code>Business Continuity</code> tab of the form.
+There is no default setting for Disaster Recovery.</p>
+</div>
+<div class="paragraph">
+<p>If you want to enable Disaster Recovery on an existing instance of Ansible Automation Platform on Microsoft Azure, contact Red Hat customer support.</p>
+</div>
+<div class="paragraph">
+<p>The Disaster Recovery feature creates a nightly backup of your managed application and stores it in a paired region that is geographically distant to your primary region.
+For information about regional pairings, refer to <a href="https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies">Azure cross-region replication pairings for all geographies</a> in the Azure reliability documentation.</p>
+</div>
+<div class="paragraph">
+<p>The Disaster Recovery feature incurs additional Azure infrastructure costs.
+See <a href="#con-azure-infrastructure-usage_azure-intro">Azure infrastructure usage</a> for details of the Service Shape of the Storage account.</p>
+</div>
+<div class="paragraph">
+<p>For information about recovering your application after a service-impacting event, see the <a href="https://access.redhat.com/articles/7010302">Disaster Recovery for Ansible Automation Platform on Azure</a> article on the Red Hat customer portal.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="con-azure-network_azure-intro"><a class="anchor" href="#con-azure-network_azure-intro"></a>1.4. Network</h3>
 <div class="paragraph">
 <p>When you deploy Ansible Automation Platform on Microsoft Azure, you can configure the following networks in the <code>Networking</code> tab of the form:</p>
 </div>
@@ -758,7 +780,7 @@ The IP ranges change based on the networking address range you set on deployment
 </table>
 </div>
 <div class="sect3">
-<h4 id="azure-vnet-cidr_aap-azure-intro"><a class="anchor" href="#azure-vnet-cidr_aap-azure-intro"></a>1.3.1. VNet CIDR blocks</h4>
+<h4 id="azure-vnet-cidr_azure-intro"><a class="anchor" href="#azure-vnet-cidr_azure-intro"></a>1.4.1. VNet CIDR blocks</h4>
 <div class="paragraph">
 <p>You can configure the networking address range (CIDR block) for the VNet that your Ansible Automation Platform on Microsoft Azure application uses.
 You set the CIDR block for the application in the <code>Configure virtual networks</code> section of the form when you deploy Ansible Automation Platform on Microsoft Azure.</p>
@@ -844,7 +866,7 @@ Do not accept these defaults. Instead, use the network configuration that you ha
 </div>
 </div>
 <div class="sect3">
-<h4 id="azure_aks-cidr_aap-azure-intro"><a class="anchor" href="#azure_aks-cidr_aap-azure-intro"></a>1.3.2. AKS CIDR Blocks</h4>
+<h4 id="azure_aks-cidr_azure-intro"><a class="anchor" href="#azure_aks-cidr_azure-intro"></a>1.4.2. AKS CIDR Blocks</h4>
 <div class="paragraph">
 <p>You can configure the AKS network CIDR blocks.
 Traffic that originates from the AKS cluster will appear to come from the range configured in AKS, not from the VNET.</p>
@@ -934,7 +956,7 @@ The settings have the following requirements:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-aap-azure-infrastructure-usage_aap-azure-intro"><a class="anchor" href="#con-aap-azure-infrastructure-usage_aap-azure-intro"></a>1.4. Ansible Automation Platform on Microsoft Azure infrastructure usage</h3>
+<h3 id="con-azure-infrastructure-usage_azure-intro"><a class="anchor" href="#con-azure-infrastructure-usage_azure-intro"></a>1.5. Ansible Automation Platform on Microsoft Azure infrastructure usage</h3>
 <div class="paragraph">
 <p>When you install Ansible Automation Platform on Microsoft Azure, the following infrastructure is deployed into your Azure subscription:</p>
 </div>
@@ -987,7 +1009,17 @@ The settings have the following requirements:</p>
 <dd>
 <p>The Azure service is used for file and block storage for local storage of projects, containers, etc.</p>
 <div class="paragraph">
-<p><strong>Service Shape:</strong> StorageV2 - Standard_LRS</p>
+<p><strong>Service Shape:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>StorageV2 - Standard_LRS if Disaster Recovery is not enabled</p>
+</li>
+<li>
+<p>StorageV2 - Standard_GRS if Disaster Recovery is enabled</p>
+</li>
+</ul>
 </div>
 </dd>
 <dt class="hdlist1">Virtual network</dt>
@@ -1008,14 +1040,14 @@ Red Hat has configured an example scenario in the pricing calculator: use the <a
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-aap-azure-lifecycle_aap-azure-intro"><a class="anchor" href="#con-aap-azure-lifecycle_aap-azure-intro"></a>1.5. Lifecycle management</h3>
+<h3 id="con-azure-lifecycle_azure-intro"><a class="anchor" href="#con-azure-lifecycle_azure-intro"></a>1.6. Lifecycle management</h3>
 <div class="paragraph">
 <p>Red Hat Ansible is responsible for the monitoring, health, and maintenance of the underlying services and Ansible Automation Platform on Microsoft Azure core systems as well as the operation of Ansible Automation Platform on Microsoft Azure itself.
 This includes lifecycle management of the components.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-aap-azure-scaling_aap-azure-intro"><a class="anchor" href="#con-aap-azure-scaling_aap-azure-intro"></a>1.6. Ansible Automation Platform on Microsoft Azure scaling</h3>
+<h3 id="con-azure-scaling_azure-intro"><a class="anchor" href="#con-azure-scaling_azure-intro"></a>1.7. Ansible Automation Platform on Microsoft Azure scaling</h3>
 <div class="paragraph">
 <p>Ansible Automation Platform on Microsoft Azure default configuration of <a href="https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler#about-the-cluster-autoscaler">Microsoft Azure cluster autoscaler</a> for autoscaling, with the following settings to limit the number of nodes:</p>
 </div>
@@ -1031,7 +1063,7 @@ This includes lifecycle management of the components.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-aap-azure-migration_aap-azure-intro"><a class="anchor" href="#con-aap-azure-migration_aap-azure-intro"></a>1.7. Migration</h3>
+<h3 id="con-azure-migration_azure-intro"><a class="anchor" href="#con-azure-migration_azure-intro"></a>1.8. Migration</h3>
 <div class="paragraph">
 <p>Red Hat does not provide a solution to migrate existing deployments to Ansible Automation Platform on Microsoft Azure.</p>
 </div>
@@ -1039,7 +1071,7 @@ This includes lifecycle management of the components.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="aap-azure-install"><a class="anchor" href="#aap-azure-install"></a>2. Installing Red Hat Ansible Automation Platform on Microsoft Azure</h2>
+<h2 id="azure-install"><a class="anchor" href="#azure-install"></a>2. Installing Red Hat Ansible Automation Platform on Microsoft Azure</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>2.1. Prerequisites</h3>
@@ -1069,18 +1101,18 @@ This includes lifecycle management of the components.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-resource-quotas_aap-azure-install"><a class="anchor" href="#proc-azure-resource-quotas_aap-azure-install"></a>2.1.1. Azure resource quotas and infrastructure limits</h4>
+<h4 id="proc-azure-resource-quotas_azure-install"><a class="anchor" href="#proc-azure-resource-quotas_azure-install"></a>2.1.1. Azure resource quotas and infrastructure limits</h4>
 <div class="paragraph">
 <p>Microsoft imposes resource limits within each Azure region. The CPU limit is the most likely to impact Red Hat Ansible Automation Platform on Microsoft Azure.</p>
 </div>
 <div class="paragraph">
 <p>Before you install Ansible Automation Platform on Microsoft Azure, ensure that you have capacity to deploy the managed application into your desired region.
-Refer to <a href="#con-aap-azure-infrastructure-usage_aap-azure-intro">Azure infrastructure usage</a> for infrastructure requirements.</p>
+Refer to <a href="#con-azure-infrastructure-usage_azure-intro">Azure infrastructure usage</a> for infrastructure requirements.</p>
 </div>
 <div class="sect4">
 <h5 id="_regional_vcpu_limits"><a class="anchor" href="#_regional_vcpu_limits"></a>Regional vCPU limits</h5>
 <div class="paragraph">
-<p>The Azure resources used during the deployment of the managed application temporarily exceed the resource requirements in <a href="#con-aap-azure-infrastructure-usage_aap-azure-intro">Azure infrastructure usage</a>.
+<p>The Azure resources used during the deployment of the managed application temporarily exceed the resource requirements in <a href="#con-azure-infrastructure-usage_azure-intro">Azure infrastructure usage</a>.
 The <code>Total Regional vCPUs</code> quota is temporarily consumed when deploying the managed application.</p>
 </div>
 <div class="paragraph">
@@ -1160,7 +1192,7 @@ Only submit a quota increase request if you encounter a deployment failure due t
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-azure-create-service-principal_aap-azure-install"><a class="anchor" href="#proc-azure-create-service-principal_aap-azure-install"></a>2.2. Creating a service principal</h3>
+<h3 id="proc-azure-create-service-principal_azure-install"><a class="anchor" href="#proc-azure-create-service-principal_azure-install"></a>2.2. Creating a service principal</h3>
 <div class="paragraph _abstract">
 <p>To enable the Ansible Automation Platform application to access and manage Azure resources, you must provide authorization credentials after deployment.
 The Microsoft Azure collection supports service principal authentication.</p>
@@ -1198,7 +1230,7 @@ Your Ansible Automation Platform on Microsoft Azure deployment will be provision
   "appId": "xxxxxxx-xxx-xxxx",
   "displayName": "ansible",
   "name": "xxxxxxx-xxx-xxxx",
-  "pass": "xxxxxxx-xxx-xxxx",
+  "password": "xxxxxxx-xxx-xxxx",
   "tenant": "xxxxxxx-xxx-xxxx"
 }</pre>
 </div>
@@ -1233,9 +1265,9 @@ You can create a new one when needed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-azure-proc-azure-deploy-aap_aap-azure-install"><a class="anchor" href="#proc-azure-proc-azure-deploy-aap_aap-azure-install"></a>2.3. Deploying Ansible Automation Platform from Azure Marketplace</h3>
+<h3 id="proc-azure-proc-azure-deploy-aap_azure-install"><a class="anchor" href="#proc-azure-proc-azure-deploy-aap_azure-install"></a>2.3. Deploying Ansible Automation Platform from Azure Marketplace</h3>
 <div class="sect3">
-<h4 id="proc-azure-podidentity_aap-azure-install"><a class="anchor" href="#proc-azure-podidentity_aap-azure-install"></a>2.3.1. Enabling PodIdentityPreview capability in Azure</h4>
+<h4 id="proc-azure-podidentity_azure-install"><a class="anchor" href="#proc-azure-podidentity_azure-install"></a>2.3.1. Enabling PodIdentityPreview capability in Azure</h4>
 <div class="paragraph">
 <p>Ansible Automation Platform on Microsoft Azure uses Azure features that require enablement.
 Run the following command from the Azure CLI or Cloud Console to enable those features:</p>
@@ -1250,7 +1282,7 @@ Run the following command from the Azure CLI or Cloud Console to enable those fe
 </div>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-locate-aap-marketplace_aap-azure-install"><a class="anchor" href="#proc-azure-locate-aap-marketplace_aap-azure-install"></a>2.3.2. Locating Ansible Automation Platform in Azure Marketplace</h4>
+<h4 id="proc-azure-locate-aap-marketplace_azure-install"><a class="anchor" href="#proc-azure-locate-aap-marketplace_azure-install"></a>2.3.2. Locating Ansible Automation Platform in Azure Marketplace</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1272,7 +1304,7 @@ Run the following command from the Azure CLI or Cloud Console to enable those fe
 </div>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-provisioning-aap_aap-azure-install"><a class="anchor" href="#proc-azure-provisioning-aap_aap-azure-install"></a>2.3.3. Provisioning Red Hat Ansible Automation Platform on Microsoft Azure</h4>
+<h4 id="proc-azure-provisioning-aap_azure-install"><a class="anchor" href="#proc-azure-provisioning-aap_azure-install"></a>2.3.3. Provisioning Red Hat Ansible Automation Platform on Microsoft Azure</h4>
 <div class="paragraph _abstract">
 <p>When you initiate the deployment of the Red Hat Ansible Automation Platform managed app from Azure marketplace, a form is displayed in the <strong>Create Red Hat Ansible Automation Platform on Microsoft Azure</strong> window.</p>
 </div>
@@ -1291,7 +1323,7 @@ Run the following command from the Azure CLI or Cloud Console to enable those fe
 </div>
 <div class="paragraph">
 <p>You create the network configuration for the Ansible Automation Platform on Microsoft Azure VNet when you initiate the deployment.
-Refer to your network configuration plan before deploying the managed application. For information about planning your network configuration, see <a href="#con-aap-azure-network_aap-azure-intro">Network</a>.</p>
+Refer to your network configuration plan before deploying the managed application. For information about planning your network configuration, see <a href="#con-azure-network_azure-intro">Network</a>.</p>
 </div>
 <div class="paragraph">
 <p>Complete the form to provision Red Hat Ansible Automation Platform infrastructure and resources into your Azure tenant.</p>
@@ -1299,7 +1331,7 @@ Refer to your network configuration plan before deploying the managed applicatio
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Enter values for your deployment in the following fields in the form:</p>
+<p>Click the <strong>Basics</strong> tab and enter values for your deployment in the following fields in the form:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1345,6 +1377,15 @@ Refer to your network configuration plan before deploying the managed applicatio
 <p>Follow the steps in <a href="https://access.redhat.com/articles/6973251">Red Hat Ansible Automation Platform on Microsoft Azure VNet Preparation</a> to configure your network configuration.</p>
 </li>
 <li>
+<p>Click btn:[Next].</p>
+</li>
+<li>
+<p>Click the <strong>Business continuity</strong> tab.</p>
+</li>
+<li>
+<p>From the <strong>Disaster Recovery</strong> list, select an option to enable or disable Disaster Recovery.</p>
+</li>
+<li>
 <p>Click btn:[Review + Create].</p>
 </li>
 <li>
@@ -1363,7 +1404,7 @@ Refer to your network configuration plan before deploying the managed applicatio
 </div>
 <div class="paragraph">
 <p>You can use the deployment engine to view the progress of your deployment a few minutes after the Azure console displays "Your deployment is complete".
-See <a href="#azure-monitor-deployment-engine_aap-azure-install">Monitoring deployments on the Ansible Automation Platform Deployment Engine</a> for more information.</p>
+See <a href="#azure-monitor-deployment-engine_azure-install">Monitoring deployments on the Ansible Automation Platform Deployment Engine</a> for more information.</p>
 </div>
 <div class="paragraph">
 <p>It may take 30 minutes or longer for the infrastructure and software to fully provision.</p>
@@ -1373,7 +1414,7 @@ See <a href="#azure-monitor-deployment-engine_aap-azure-install">Monitoring depl
 </div>
 </div>
 <div class="sect3">
-<h4 id="azure-monitor-deployment-engine_aap-azure-install"><a class="anchor" href="#azure-monitor-deployment-engine_aap-azure-install"></a>2.3.4. Monitoring deployments on the Ansible Automation Platform Deployment Engine</h4>
+<h4 id="azure-monitor-deployment-engine_azure-install"><a class="anchor" href="#azure-monitor-deployment-engine_azure-install"></a>2.3.4. Monitoring deployments on the Ansible Automation Platform Deployment Engine</h4>
 <div class="paragraph _abstract">
 <p>The deployment engine displays information about your Ansible Automation Platform on Microsoft Azure deployment.
 You can monitor the progress of the deployment, restart failed deployment steps, and cancel the deployment.</p>
@@ -1425,7 +1466,7 @@ Icons indicate the steps that have been completed, the steps that are in progres
 </div>
 </div>
 <div class="sect3">
-<h4 id="azure-cancel-deployment_aap-azure-install"><a class="anchor" href="#azure-cancel-deployment_aap-azure-install"></a>2.3.5. Canceling Red Hat Ansible Automation Platform on Microsoft Azure deployments</h4>
+<h4 id="azure-cancel-deployment_azure-install"><a class="anchor" href="#azure-cancel-deployment_azure-install"></a>2.3.5. Canceling Red Hat Ansible Automation Platform on Microsoft Azure deployments</h4>
 <div class="paragraph _abstract">
 <p>You can gracefully cancel a Red Hat Ansible Automation Platform on Microsoft Azure deployment.</p>
 </div>
@@ -1434,7 +1475,7 @@ Icons indicate the steps that have been completed, the steps that are in progres
 <ol class="arabic">
 <li>
 <p>Login to the deployment engine to display the progress of the deployment steps in the <strong>Ansible Automation Platform Deployment Engine</strong> page.
-Refer to <a href="#azure-monitor-deployment-engine_aap-azure-install">Monitoring deployments on the Ansible Automation Platform Deployment Engine</a> for information on accessing and logging into the <strong>Ansible Automation Platform Deployment Engine</strong> page.</p>
+Refer to <a href="#azure-monitor-deployment-engine_azure-install">Monitoring deployments on the Ansible Automation Platform Deployment Engine</a> for information on accessing and logging into the <strong>Ansible Automation Platform Deployment Engine</strong> page.</p>
 </li>
 <li>
 <p>To cancel the deployment, click btn:[Cancel Deployment] and confirm.</p>
@@ -1470,7 +1511,7 @@ For more information about deleting resources, refer to <a href="https://learn.m
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-azure-accessing-aap_aap-azure-install"><a class="anchor" href="#proc-azure-accessing-aap_aap-azure-install"></a>2.4. Accessing Red Hat Ansible Automation Platform on Microsoft Azure</h3>
+<h3 id="proc-azure-accessing-aap_azure-install"><a class="anchor" href="#proc-azure-accessing-aap_azure-install"></a>2.4. Accessing Red Hat Ansible Automation Platform on Microsoft Azure</h3>
 <div class="paragraph _abstract">
 <p>When you initiate the deployment of the Red Hat Ansible Automation Platform managed app from Azure marketplace, a form is displayed in the <strong>Create Red Hat Ansible Automation Platform on Microsoft Azure</strong> window.
 Complete the form to provision Ansible Automation Platform infrastructure and resources into your Azure tenant.</p>
@@ -1508,7 +1549,7 @@ Complete the form to provision Ansible Automation Platform infrastructure and re
 <p>The first time you login to Ansible Automation Platform on Microsoft Azure, you must configure a subscription and agree to the terms and conditions.</p>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-license-association_aap-azure-install"><a class="anchor" href="#proc-azure-license-association_aap-azure-install"></a>2.4.1. License association</h4>
+<h4 id="proc-azure-license-association_azure-install"><a class="anchor" href="#proc-azure-license-association_azure-install"></a>2.4.1. License association</h4>
 <div class="paragraph">
 <p>Red Hat provided a specific subscription entitlement manifest when you subscribed to Red Hat Ansible Automation Platform on Microsoft Azure.</p>
 </div>
@@ -1517,7 +1558,7 @@ Complete the form to provision Ansible Automation Platform infrastructure and re
 </div>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-configure-ad-sso_aap-azure-install"><a class="anchor" href="#proc-azure-configure-ad-sso_aap-azure-install"></a>2.4.2. Azure Active Directory (Azure AD) SSO configuration</h4>
+<h4 id="proc-azure-configure-ad-sso_azure-install"><a class="anchor" href="#proc-azure-configure-ad-sso_azure-install"></a>2.4.2. Azure Active Directory (Azure AD) SSO configuration</h4>
 <div class="paragraph _abstract">
 <p>Follow the procedures below to configure SSO with Azure Active Directory (Azure AD). If your organization does not use Azure AD for application authorization, you can create users in the user management system in Ansible Automation Platform.</p>
 </div>
@@ -1734,7 +1775,7 @@ Complete the form to provision Ansible Automation Platform infrastructure and re
 </div>
 </div>
 <div class="sect1">
-<h2 id="aap-azure-network-peering"><a class="anchor" href="#aap-azure-network-peering"></a>3. Private network peering</h2>
+<h2 id="azure-network-peering"><a class="anchor" href="#azure-network-peering"></a>3. Private network peering</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Ansible Automation Platform on Microsoft Azure is deployed into an independent managed resource group with its own Azure virtual network (VNet).</p>
@@ -1795,7 +1836,7 @@ This hub network has mechanisms to route traffic through transit routing. Cloud 
 <p>Refer to <a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/vnet-peering">Choose between virtual network peering and VPN gateways</a> in the Microsoft <em>Application architecture fundamentals guide</em> to determine the correct peering approach for your organization.</p>
 </div>
 <div class="sect2">
-<h3 id="aap-azure-hub-spoke-peering"><a class="anchor" href="#aap-azure-hub-spoke-peering"></a>3.1. Hub-and-spoke peering (Transit routes)</h3>
+<h3 id="azure-hub-spoke-peering"><a class="anchor" href="#azure-hub-spoke-peering"></a>3.1. Hub-and-spoke peering (Transit routes)</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1811,7 +1852,7 @@ This hub network has mechanisms to route traffic through transit routing. Cloud 
 </table>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-hub-spoke-peering_aap-azure-hub-spoke-peering"><a class="anchor" href="#proc-azure-hub-spoke-peering_aap-azure-hub-spoke-peering"></a>3.1.1. Hub-and-spoke peering process overview</h4>
+<h4 id="proc-azure-hub-spoke-peering_azure-hub-spoke-peering"><a class="anchor" href="#proc-azure-hub-spoke-peering_azure-hub-spoke-peering"></a>3.1.1. Hub-and-spoke peering process overview</h4>
 <div class="ulist">
 <div class="title">Prerequisites</div>
 <ul>
@@ -1835,7 +1876,7 @@ This hub network has mechanisms to route traffic through transit routing. Cloud 
 <p>The CIDR block(s) of your existing VNets (including VPNs &amp; direct connects) that will contain hosts or endpoints for Ansible automation.</p>
 </li>
 <li>
-<p>The CIDR blocks of the Ansible Automation Platform on Microsoft Azure VNet from the managed resource group of the application. Refer to <a href="#proc-azure-find-cluster-cidr_aap-azure-hub-spoke-peering">Finding the CIDR Block of the managed resource group</a> for instructions.</p>
+<p>The CIDR blocks of the Ansible Automation Platform on Microsoft Azure VNet from the managed resource group of the application. Refer to <a href="#proc-azure-find-cluster-cidr_azure-hub-spoke-peering">Finding the CIDR Block of the managed resource group</a> for instructions.</p>
 </li>
 </ul>
 </div>
@@ -1849,10 +1890,10 @@ This hub network has mechanisms to route traffic through transit routing. Cloud 
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Find the CIDR Block for the Ansible Automation Platform on Microsoft Azure managed application Kubernetes cluster. See <a href="#proc-azure-find-cluster-cidr_aap-azure-hub-spoke-peering">Finding the CIDR Block of the managed application Kubernetes cluster</a>.</p>
+<p>Find the CIDR Block for the Ansible Automation Platform on Microsoft Azure managed application Kubernetes cluster. See <a href="#proc-azure-find-cluster-cidr_azure-hub-spoke-peering">Finding the CIDR Block of the managed application Kubernetes cluster</a>.</p>
 </li>
 <li>
-<p>Configure Network Peering with the Ansible Automation Platform Subnet. See <a href="#proc-azure-nw-peering-aap-subnet_aap-azure-hub-spoke-peering">Configuring Network Peering with the Ansible Automation Platform Subnet</a>.</p>
+<p>Configure Network Peering with the Ansible Automation Platform Subnet. See <a href="#proc-azure-nw-peering-aap-subnet_azure-hub-spoke-peering">Configuring Network Peering with the Ansible Automation Platform Subnet</a>.</p>
 </li>
 <li>
 <p>Update the route tables:</p>
@@ -1872,7 +1913,7 @@ See <a href="#routing-to-private-nw">Routing to your VNets</a>.</p>
 </ol>
 </div>
 <div class="sect4">
-<h5 id="proc-azure-find-cluster-cidr_aap-azure-hub-spoke-peering"><a class="anchor" href="#proc-azure-find-cluster-cidr_aap-azure-hub-spoke-peering"></a>Finding the CIDR Block of the managed resource group</h5>
+<h5 id="proc-azure-find-cluster-cidr_azure-hub-spoke-peering"><a class="anchor" href="#proc-azure-find-cluster-cidr_azure-hub-spoke-peering"></a>Finding the CIDR Block of the managed resource group</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1894,7 +1935,7 @@ See <a href="#routing-to-private-nw">Routing to your VNets</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="proc-azure-nw-peering-aap-subnet_aap-azure-hub-spoke-peering"><a class="anchor" href="#proc-azure-nw-peering-aap-subnet_aap-azure-hub-spoke-peering"></a>Configuring network peering with the Ansible Automation Platform subnet</h5>
+<h5 id="proc-azure-nw-peering-aap-subnet_azure-hub-spoke-peering"><a class="anchor" href="#proc-azure-nw-peering-aap-subnet_azure-hub-spoke-peering"></a>Configuring network peering with the Ansible Automation Platform subnet</h5>
 <div class="paragraph">
 <p>Within the Azure console, the Azure virtual network (VNet) is known as <em>this virtual network</em>, and the VNet that you want to peer with is known as <em>remote virtual network</em>.</p>
 </div>
@@ -1948,9 +1989,9 @@ See <a href="#routing-to-private-nw">Routing to your VNets</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="proc-azure-update-route-tables_aap-azure-hub-spoke-peering"><a class="anchor" href="#proc-azure-update-route-tables_aap-azure-hub-spoke-peering"></a>Updating the route tables</h5>
+<h5 id="proc-azure-update-route-tables_azure-hub-spoke-peering"><a class="anchor" href="#proc-azure-update-route-tables_azure-hub-spoke-peering"></a>Updating the route tables</h5>
 <div class="paragraph">
-<p>Before you update the route tables, confirm that you satisfy the <a href="#proc-azure-hub-spoke-peering_aap-azure-hub-spoke-peering">prerequisites</a> for the hub-and-spoke peering process.</p>
+<p>Before you update the route tables, confirm that you satisfy the <a href="#proc-azure-hub-spoke-peering_azure-hub-spoke-peering">prerequisites</a> for the hub-and-spoke peering process.</p>
 </div>
 <div id="routing-to-aap" class="olist arabic">
 <div class="title">Routing to Ansible Automation Platform on Microsoft Azure</div>
@@ -2174,9 +2215,9 @@ Blocking this communication prevents successful certificate renewal.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="aap-azure-vwan-peering"><a class="anchor" href="#aap-azure-vwan-peering"></a>3.2. Azure Virtual WAN (VWAN)</h3>
+<h3 id="azure-vwan-peering"><a class="anchor" href="#azure-vwan-peering"></a>3.2. Azure Virtual WAN (VWAN)</h3>
 <div class="sect3">
-<h4 id="proc-peer-vwan-hub-to-aap_aap-azure-vwan-peering"><a class="anchor" href="#proc-peer-vwan-hub-to-aap_aap-azure-vwan-peering"></a>3.2.1. Peering a VWAN Hub to the Ansible Automation Platform on Microsoft Azure Network</h4>
+<h4 id="proc-peer-vwan-hub-to-aap_azure-vwan-peering"><a class="anchor" href="#proc-peer-vwan-hub-to-aap_azure-vwan-peering"></a>3.2.1. Peering a VWAN Hub to the Ansible Automation Platform on Microsoft Azure Network</h4>
 <div class="paragraph">
 <p>Before peering, you must connect a hub network, and at least one spoke network, to the hub network of the Azure VWAN to which you intend to connect Ansible Automation Platform on Microsoft Azure.</p>
 </div>
@@ -2263,7 +2304,7 @@ Blocking this communication prevents successful certificate renewal.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="aap-azure-direct-peering"><a class="anchor" href="#aap-azure-direct-peering"></a>3.3. Direct peering</h3>
+<h3 id="azure-direct-peering"><a class="anchor" href="#azure-direct-peering"></a>3.3. Direct peering</h3>
 <div class="paragraph _abstract">
 <p>You can use direct peering to directly connect virtual networks.
 When two networks are peered, Azure updates routes between them so that traffic automatically flows between them.</p>
@@ -2274,7 +2315,7 @@ However, the number of direct network peerings is limited.
 Direct peering becomes difficult to manage as the number of virtual networks grows, because each new network requires peering to all other networks.</p>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-nw-direct-peering_aap-azure-direct-peering"><a class="anchor" href="#proc-azure-nw-direct-peering_aap-azure-direct-peering"></a>3.3.1. Configuring direct network peering</h4>
+<h4 id="proc-azure-nw-direct-peering_azure-direct-peering"><a class="anchor" href="#proc-azure-nw-direct-peering_azure-direct-peering"></a>3.3.1. Configuring direct network peering</h4>
 <div class="paragraph">
 <p>You can configure network peering between your Azure network and your VNet in the <strong>Virtual Networks</strong> page of the Azure Portal.</p>
 </div>
@@ -2346,13 +2387,13 @@ Direct peering becomes difficult to manage as the number of virtual networks gro
 </div>
 </div>
 <div class="sect1">
-<h2 id="aap-azure-connecting-to-aap"><a class="anchor" href="#aap-azure-connecting-to-aap"></a>4. Connecting to Red Hat Ansible Automation Platform</h2>
+<h2 id="azure-connecting-to-aap"><a class="anchor" href="#azure-connecting-to-aap"></a>4. Connecting to Red Hat Ansible Automation Platform</h2>
 <div class="sectionbody">
 <div class="paragraph _abstract">
 <p>When network peering is complete and your Azure routing configuration is established, you can choose how your team accesses Ansible Automation Platform through your Azure network configuration.</p>
 </div>
 <div class="sect2">
-<h3 id="proc-azure-nw-access-details_aap-azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-access-details_aap-azure-connecting-to-aap"></a>4.1. Access details</h3>
+<h3 id="proc-azure-nw-access-details_azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-access-details_azure-connecting-to-aap"></a>4.1. Access details</h3>
 <div class="paragraph">
 <p>Regardless of whether Ansible Automation Platform was deployed with public or private access,
 a set of DNS records is created.
@@ -2363,13 +2404,13 @@ The DNS records are created so that Ansible Automation Platform can be issued a 
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-azure-nw-public-deploy_aap-azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-public-deploy_aap-azure-connecting-to-aap"></a>4.2. Public Deployments</h3>
+<h3 id="proc-azure-nw-public-deploy_azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-public-deploy_azure-connecting-to-aap"></a>4.2. Public Deployments</h3>
 <div class="paragraph">
 <p>If you selected public access when you deployed Ansible Automation Platform on Microsoft Azure, you can access the Ansible Automation Platform application URLs over the public internet from a browser.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-azure-nw-private-deploy_aap-azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-private-deploy_aap-azure-connecting-to-aap"></a>4.3. Private deployments</h3>
+<h3 id="proc-azure-nw-private-deploy_azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-private-deploy_azure-connecting-to-aap"></a>4.3. Private deployments</h3>
 <div class="paragraph">
 <p>If you selected private access when deploying Ansible Automation Platform on Microsoft Azure,
 then the DNS record issued to the Red Hat Ansible Automation Platform on Microsoft Azure application points to a private address within the CIDR block selected when the managed application was deployed.
@@ -2385,18 +2426,18 @@ Your Azure administrators must determine the right model for your organization a
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#proc-azure-nw-private-deploy-az-hosted-vm_aap-azure-connecting-to-aap">Azure hosted virtual machine</a></p>
+<p><a href="#proc-azure-nw-private-deploy-az-hosted-vm_azure-connecting-to-aap">Azure hosted virtual machine</a></p>
 </li>
 <li>
-<p><a href="#proc-azure-nw-private-deploy-vpn_aap-azure-connecting-to-aap">VPN</a></p>
+<p><a href="#proc-azure-nw-private-deploy-vpn_azure-connecting-to-aap">VPN</a></p>
 </li>
 <li>
-<p><a href="#proc-azure-nw-private-deploy-ssh-tunnel_aap-azure-connecting-to-aap">SSH tunnel</a></p>
+<p><a href="#proc-azure-nw-private-deploy-ssh-tunnel_azure-connecting-to-aap">SSH tunnel</a></p>
 </li>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-nw-private-deploy-az-hosted-vm_aap-azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-private-deploy-az-hosted-vm_aap-azure-connecting-to-aap"></a>4.3.1. Azure hosted virtual machine</h4>
+<h4 id="proc-azure-nw-private-deploy-az-hosted-vm_azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-private-deploy-az-hosted-vm_azure-connecting-to-aap"></a>4.3.1. Azure hosted virtual machine</h4>
 <div class="paragraph">
 <p>A straightforward way to configure access for a small set of users to access private network resources on Azure networks is to create a jumpbox VM in a perimeter network (DMZ VNet) that users can remotely log into from the public internet.
 The jumpbox VM requires workstation features such as a GUI and browser.</p>
@@ -2432,7 +2473,7 @@ in the Microsoft <em>Azure Cloud Adoption Framework</em> documentation.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-nw-private-deploy-vpn_aap-azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-private-deploy-vpn_aap-azure-connecting-to-aap"></a>4.3.2. VPN</h4>
+<h4 id="proc-azure-nw-private-deploy-vpn_azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-private-deploy-vpn_azure-connecting-to-aap"></a>4.3.2. VPN</h4>
 <div class="paragraph">
 <p>If your organization requires that many users access Ansible Automation Platform over a private connection, or if your organization already uses VPNs or direct connections with Azure, then this approach might be suitable.</p>
 </div>
@@ -2450,7 +2491,7 @@ The VNet connected to the Virtual Network Gateway is connected to other Azure VN
 </div>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-nw-private-deploy-ssh-tunnel_aap-azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-private-deploy-ssh-tunnel_aap-azure-connecting-to-aap"></a>4.3.3. SSH tunnel</h4>
+<h4 id="proc-azure-nw-private-deploy-ssh-tunnel_azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-private-deploy-ssh-tunnel_azure-connecting-to-aap"></a>4.3.3. SSH tunnel</h4>
 <div class="paragraph">
 <p>When VPN is not an option and your local users are more technical, the SSH tunnel approach is a secure alternative that enables users to access Ansible Automation Platform from a browser on a local machine.</p>
 </div>
@@ -2539,7 +2580,7 @@ Add the following line to your hosts file:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-04-24 08:43:39 +0100
+Last updated 2023-05-30 13:21:13 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
