@@ -453,7 +453,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#con-aap-private-access_azure-intro">1.2.2. Private deployment</a></li>
 </ul>
 </li>
-<li><a href="#con-azure-disaster-recovery_azure-intro">1.3. Disaster Recovery</a></li>
+<li><a href="#con-azure-disaster-recovery_azure-intro">1.3. Disaster recovery</a></li>
 <li><a href="#con-azure-network_azure-intro">1.4. Network</a>
 <ul class="sectlevel3">
 <li><a href="#azure-vnet-cidr_azure-intro">1.4.1. VNet CIDR blocks</a></li>
@@ -485,11 +485,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#proc-azure-proc-azure-deploy-aap_azure-install">2.3. Deploying Ansible Automation Platform from Azure Marketplace</a>
 <ul class="sectlevel3">
-<li><a href="#proc-azure-podidentity_azure-install">2.3.1. Enabling PodIdentityPreview capability in Azure</a></li>
-<li><a href="#proc-azure-locate-aap-marketplace_azure-install">2.3.2. Locating Ansible Automation Platform in Azure Marketplace</a></li>
-<li><a href="#proc-azure-provisioning-aap_azure-install">2.3.3. Provisioning Red Hat Ansible Automation Platform on Microsoft Azure</a></li>
-<li><a href="#azure-monitor-deployment-engine_azure-install">2.3.4. Monitoring deployments on the Ansible Automation Platform Deployment Engine</a></li>
-<li><a href="#azure-cancel-deployment_azure-install">2.3.5. Canceling Red Hat Ansible Automation Platform on Microsoft Azure deployments</a></li>
+<li><a href="#proc-azure-locate-aap-marketplace_azure-install">2.3.1. Locating Ansible Automation Platform in Azure Marketplace</a></li>
+<li><a href="#proc-azure-provisioning-aap_azure-install">2.3.2. Provisioning Red Hat Ansible Automation Platform on Microsoft Azure</a></li>
+<li><a href="#azure-monitor-deployment-engine_azure-install">2.3.3. Monitoring deployments on the Ansible Automation Platform Deployment Engine</a></li>
+<li><a href="#azure-cancel-deployment_azure-install">2.3.4. Canceling Red Hat Ansible Automation Platform on Microsoft Azure deployments</a></li>
 </ul>
 </li>
 <li><a href="#proc-azure-accessing-aap_azure-install">2.4. Accessing Red Hat Ansible Automation Platform on Microsoft Azure</a>
@@ -730,24 +729,24 @@ The IP ranges change based on the networking address range you set on deployment
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-azure-disaster-recovery_azure-intro"><a class="anchor" href="#con-azure-disaster-recovery_azure-intro"></a>1.3. Disaster Recovery</h3>
+<h3 id="con-azure-disaster-recovery_azure-intro"><a class="anchor" href="#con-azure-disaster-recovery_azure-intro"></a>1.3. Disaster recovery</h3>
 <div class="paragraph">
-<p>When you deploy Ansible Automation Platform on Microsoft Azure, you must enable or disable Disaster Recovery in the <code>Business Continuity</code> tab of the form.
-There is no default setting for Disaster Recovery.</p>
+<p>When you deploy Ansible Automation Platform on Microsoft Azure, you must enable or disable disaster recovery in the <code>Business Continuity</code> tab of the form.
+There is no default setting for disaster recovery.</p>
 </div>
 <div class="paragraph">
-<p>If you want to enable Disaster Recovery on an existing instance of Ansible Automation Platform on Microsoft Azure, contact Red Hat customer support.</p>
-</div>
-<div class="paragraph">
-<p>The Disaster Recovery feature creates a nightly backup of your managed application and stores it in a paired region that is geographically distant to your primary region.
-For information about regional pairings, refer to <a href="https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies">Azure cross-region replication pairings for all geographies</a> in the Azure reliability documentation.</p>
-</div>
-<div class="paragraph">
-<p>The Disaster Recovery feature incurs additional Azure infrastructure costs.
+<p>The disaster recovery feature incurs additional Azure infrastructure costs.
 See <a href="#con-azure-infrastructure-usage_azure-intro">Azure infrastructure usage</a> for details of the Service Shape of the Storage account.</p>
 </div>
 <div class="paragraph">
-<p>For information about recovering your application after a service-impacting event, see the <a href="https://access.redhat.com/articles/7010302">Disaster Recovery for Ansible Automation Platform on Azure</a> article on the Red Hat customer portal.</p>
+<p>If you want to enable disaster recovery on an existing instance of Ansible Automation Platform on Microsoft Azure, contact Red Hat customer support.</p>
+</div>
+<div class="paragraph">
+<p>The disaster recovery feature creates a nightly backup of your managed application and stores it in a paired region that is geographically distant to your primary region.
+For information about regional pairings, refer to <a href="https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies">Azure cross-region replication pairings for all geographies</a> in the Azure reliability documentation.</p>
+</div>
+<div class="paragraph">
+<p>For information about recovering your application after a service-impacting event, see the <a href="https://access.redhat.com/articles/7010302">Disaster recovery for Ansible Automation Platform on Azure</a> article on the Red Hat customer portal.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1007,17 +1006,17 @@ The settings have the following requirements:</p>
 </dd>
 <dt class="hdlist1">Storage account</dt>
 <dd>
-<p>The Azure service is used for file and block storage for local storage of projects, containers, etc.</p>
+<p>The Azure service is used for file and block storage such as local storage of projects and containers.</p>
 <div class="paragraph">
 <p><strong>Service Shape:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>StorageV2 - Standard_LRS if Disaster Recovery is not enabled</p>
+<p>StorageV2 - Standard_LRS if disaster recovery is not enabled</p>
 </li>
 <li>
-<p>StorageV2 - Standard_GRS if Disaster Recovery is enabled</p>
+<p>StorageV2 - Standard_GRS if disaster recovery is enabled</p>
 </li>
 </ul>
 </div>
@@ -1267,22 +1266,7 @@ You can create a new one when needed.</p>
 <div class="sect2">
 <h3 id="proc-azure-proc-azure-deploy-aap_azure-install"><a class="anchor" href="#proc-azure-proc-azure-deploy-aap_azure-install"></a>2.3. Deploying Ansible Automation Platform from Azure Marketplace</h3>
 <div class="sect3">
-<h4 id="proc-azure-podidentity_azure-install"><a class="anchor" href="#proc-azure-podidentity_azure-install"></a>2.3.1. Enabling PodIdentityPreview capability in Azure</h4>
-<div class="paragraph">
-<p>Ansible Automation Platform on Microsoft Azure uses Azure features that require enablement.
-Run the following command from the Azure CLI or Cloud Console to enable those features:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">az feature register --name EnablePodIdentityPreview --namespace Microsoft.ContainerService</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You only need to perform this action once for each Azure subscription that you use to install Ansible Automation Platform on Microsoft Azure.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="proc-azure-locate-aap-marketplace_azure-install"><a class="anchor" href="#proc-azure-locate-aap-marketplace_azure-install"></a>2.3.2. Locating Ansible Automation Platform in Azure Marketplace</h4>
+<h4 id="proc-azure-locate-aap-marketplace_azure-install"><a class="anchor" href="#proc-azure-locate-aap-marketplace_azure-install"></a>2.3.1. Locating Ansible Automation Platform in Azure Marketplace</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1304,7 +1288,7 @@ Run the following command from the Azure CLI or Cloud Console to enable those fe
 </div>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-provisioning-aap_azure-install"><a class="anchor" href="#proc-azure-provisioning-aap_azure-install"></a>2.3.3. Provisioning Red Hat Ansible Automation Platform on Microsoft Azure</h4>
+<h4 id="proc-azure-provisioning-aap_azure-install"><a class="anchor" href="#proc-azure-provisioning-aap_azure-install"></a>2.3.2. Provisioning Red Hat Ansible Automation Platform on Microsoft Azure</h4>
 <div class="paragraph _abstract">
 <p>When you initiate the deployment of the Red Hat Ansible Automation Platform managed app from Azure marketplace, a form is displayed in the <strong>Create Red Hat Ansible Automation Platform on Microsoft Azure</strong> window.</p>
 </div>
@@ -1383,7 +1367,7 @@ Refer to your network configuration plan before deploying the managed applicatio
 <p>Click the <strong>Business continuity</strong> tab.</p>
 </li>
 <li>
-<p>From the <strong>Disaster Recovery</strong> list, select an option to enable or disable Disaster Recovery.</p>
+<p>From the <strong>Disaster Recovery</strong> list, select an option to enable or disable disaster recovery.</p>
 </li>
 <li>
 <p>Click btn:[Review + Create].</p>
@@ -1414,7 +1398,7 @@ See <a href="#azure-monitor-deployment-engine_azure-install">Monitoring deployme
 </div>
 </div>
 <div class="sect3">
-<h4 id="azure-monitor-deployment-engine_azure-install"><a class="anchor" href="#azure-monitor-deployment-engine_azure-install"></a>2.3.4. Monitoring deployments on the Ansible Automation Platform Deployment Engine</h4>
+<h4 id="azure-monitor-deployment-engine_azure-install"><a class="anchor" href="#azure-monitor-deployment-engine_azure-install"></a>2.3.3. Monitoring deployments on the Ansible Automation Platform Deployment Engine</h4>
 <div class="paragraph _abstract">
 <p>The deployment engine displays information about your Ansible Automation Platform on Microsoft Azure deployment.
 You can monitor the progress of the deployment, restart failed deployment steps, and cancel the deployment.</p>
@@ -1466,7 +1450,7 @@ Icons indicate the steps that have been completed, the steps that are in progres
 </div>
 </div>
 <div class="sect3">
-<h4 id="azure-cancel-deployment_azure-install"><a class="anchor" href="#azure-cancel-deployment_azure-install"></a>2.3.5. Canceling Red Hat Ansible Automation Platform on Microsoft Azure deployments</h4>
+<h4 id="azure-cancel-deployment_azure-install"><a class="anchor" href="#azure-cancel-deployment_azure-install"></a>2.3.4. Canceling Red Hat Ansible Automation Platform on Microsoft Azure deployments</h4>
 <div class="paragraph _abstract">
 <p>You can gracefully cancel a Red Hat Ansible Automation Platform on Microsoft Azure deployment.</p>
 </div>
