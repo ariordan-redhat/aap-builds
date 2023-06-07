@@ -537,6 +537,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#assembly-azure-support">5. Support</a></li>
 </ul>
 </div>
 </div>
@@ -582,9 +583,6 @@ Ansible Automation Platform on Microsoft Azure provides access to a library of A
 </li>
 <li>
 <p>Private Automation Hub</p>
-</li>
-<li>
-<p>Automation Service Catalog</p>
 </li>
 <li>
 <p>Ansible Content Collections, including the Microsoft collection for Azure</p>
@@ -2558,6 +2556,57 @@ Add the following line to your hosts file:</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="assembly-azure-support"><a class="anchor" href="#assembly-azure-support"></a>5. Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Red Hat Ansible Automation Platform on Microsoft Azure is a managed application, supported and maintained by Red Hat.
+Due to the architecture of the application and the deployment strategy in Azure, there are a few situations where customizing and changing some aspects of the configuration could lead to a change in the responsibilities of some components.</p>
+</div>
+<div class="paragraph">
+<div class="title">Azure Virtual Appliance Routing with Ansible Automation Platform on Microsoft Azure</div>
+<p>Your organization may use Azure firewall services or third-party firewall appliances through a Virtual Appliance connection.
+When configuring outbound routes within the route table for Ansible Automation Platform on Microsoft Azure, you must take into account expected outbound traffic that Ansible Automation Platform on Microsoft Azure will require in order to be managed by Red Hat, including upgrades and security patching.</p>
+</div>
+<div class="paragraph">
+<p>For more information about Azure Virtual Appliance Routing, see the <a href="https://access.redhat.com/articles/6972355">Azure Virtual Appliance Routing with Ansible Automation Platform on Azure</a> article on the Red Hat customer portal.</p>
+</div>
+<div class="paragraph">
+<div class="title">Private DNS Zones</div>
+<p>Ansible Automation Platform on Microsoft Azure uses Azure&#8217;s managed DNS services when deployed.</p>
+</div>
+<div class="paragraph">
+<p>To use private DNS records that cannot be resolved publicly, you can either use Azure Private DNS Zones that are peered to the managed application VNET, or you can submit DNS zones that should be forwarded to a customer-managed private DNS server.</p>
+</div>
+<div class="paragraph">
+<p>Azure Private DNS Zones are a native Azure service. You can add, edit, and remove zones without contacting Red Hat.</p>
+</div>
+<div class="paragraph">
+<p>A limitation of Private DNS Zones is that only one instance of a given zone may be linked to a Virtual Network.
+Attempting to link zones that match the names of Private DNS Zones in the managed resource group will cause conflicts.
+Microsoft recommends consolidating DNS records into a single zone to work around this limitation.</p>
+</div>
+<div class="paragraph">
+<p>You can replicate the records from the zones in the managed resource group into your own instance of the Private DNS Zone.
+You can then unlink Private DNS Zones in the managed resource group from the Virtual Network and replace it with your own instance of the Private DNS Zone.</p>
+</div>
+<div class="paragraph">
+<p>Failure to properly maintain the records in the Private DNS Zone may prevent the managed application from operating.</p>
+</div>
+<div class="paragraph">
+<p>For more information about working with Private DNS Zones, see the <a href="https://access.redhat.com/articles/6983525">Private DNS with Red Hat Ansible Automation Platform on Microsoft Azure</a> article on the Red Hat customer portal.</p>
+</div>
+<div class="paragraph">
+<div class="title">Microsoft Azure Policies</div>
+<p>In some situations, using Azure Policies to enforce, for example, tagging rules and conventions, can adversely affect the Resource Group where the components of Ansible Automation Platform on Microsoft Azure reside.
+The enforcement of the Azure Policie could prevent changes, impact operations, or block deployment of new components in the Resource Group.</p>
+</div>
+<div class="paragraph">
+<p>These situations are identified by Red Hat during maintenance or daily operations.
+Exceptions on the enforcement of the Azure Policies could be required.</p>
 </div>
 </div>
 </div>
