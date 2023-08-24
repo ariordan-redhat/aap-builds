@@ -9,6 +9,9 @@ That is, `docs` does not appear in the URL.
 For example:
 
 https://ariordan-redhat.github.io/aap-builds/hub-installation-guide/master.html
+
+https://ariordan-redhat.github.io/aap-builds/aap-operations-guide/master.html
+
 https://ariordan-redhat.github.io/aap-builds/aap-planning-guide/master.html
 
 
