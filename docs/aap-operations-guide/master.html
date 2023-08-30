@@ -494,12 +494,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#proc-restart-controller-services">6.3. Restarting automation controller services</a></li>
 </ul>
 </li>
-<li><a href="#changing-ssl-certs-keys">7. Changing the SSL certificated used by Red Hat Ansible Automation Platform</a>
+<li><a href="#changing-ssl-certs-keys">7. Changing the SSL certificate</a>
 <ul class="sectlevel2">
-<li><a href="#change-ssl-controller_changing-ssl-certs-keys">7.1. Changing the SSL certificate and key manually on automation controller</a></li>
-<li><a href="#change-ssl-controller-ocp_changing-ssl-certs-keys">7.2. Changing the SSL certificate and key on automation controller on OpenShift Container Platform</a></li>
-<li><a href="#change-ssl-eda-controller_changing-ssl-certs-keys">7.3. Changing the SSL certificate and key on Event-Driven Ansible controller</a></li>
-<li><a href="#change-ssl-hub_changing-ssl-certs-keys">7.4. Changing the SSL certificate and key manually on automation hub</a></li>
+<li><a href="#_prerequisites">7.1. Prerequisites</a></li>
+<li><a href="#change-ssl-installer_changing-ssl-certs-keys">7.2. Changing the SSL certificate and key using the installer</a></li>
+<li><a href="#_changing_the_ssl_certificate_manually">7.3. Changing the SSL certificate manually</a>
+<ul class="sectlevel3">
+<li><a href="#change-ssl-controller_changing-ssl-certs-keys">7.3.1. Changing the SSL certificate and key manually on automation controller</a></li>
+<li><a href="#change-ssl-controller-ocp_changing-ssl-certs-keys">7.3.2. Changing the SSL certificate and key on automation controller on OpenShift Container Platform</a></li>
+<li><a href="#change-ssl-eda-controller_changing-ssl-certs-keys">7.3.3. Changing the SSL certificate and key on Event-Driven Ansible controller</a></li>
+<li><a href="#change-ssl-hub_changing-ssl-certs-keys">7.3.4. Changing the SSL certificate and key manually on automation hub</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1246,13 +1252,107 @@ Perform the following steps on each node in the cluster:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="changing-ssl-certs-keys">7. Changing the SSL certificated used by Red Hat Ansible Automation Platform</h2>
+<h2 id="changing-ssl-certs-keys">7. Changing the SSL certificate</h2>
 <div class="sectionbody">
 <div class="paragraph _abstract">
-<p>The following procedures describe how to change the SSL certificate.</p>
+<p>You must replace the SSL certificate used by Ansible Automation Platform in the following circumstances:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your current SSL certificate has expired or will expire soon.</p>
+</li>
+<li>
+<p>You want to use an SSL certificate signed by an internal certificate authority.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To change the SSL certificate, you can edit the inventory file and run the installer.
+The installer verifies that all Ansible Automation Platform components are working. The installer can take a long time to run.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can change the SSL certificates manually. This is quicker, but there is no automatic verification.</p>
+</div>
+<div class="paragraph">
+<p>Red Hat recommends that you use the installer to make changes to your Ansible Automation Platform instance.</p>
 </div>
 <div class="sect2">
-<h3 id="change-ssl-controller_changing-ssl-certs-keys">7.1. Changing the SSL certificate and key manually on automation controller</h3>
+<h3 id="_prerequisites">7.1. Prerequisites</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If there is an intermediate certificate authority, you must append it to the server certificate.</p>
+</li>
+<li>
+<p>Both automation controller and automation hub use NGINX so the server certificate must be in PEM format.</p>
+</li>
+<li>
+<p>Use the correct order for the certificates: The server certificate comes first, followed by the intermediate certificate authority.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For further information, see the <a href="http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_certificate">ssl certificate section of the NGINX documentation</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="change-ssl-installer_changing-ssl-certs-keys">7.2. Changing the SSL certificate and key using the installer</h3>
+<div class="paragraph _abstract">
+<p>The following procedure describes how to change the SSL certificate and key in the inventory file.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Copy the new SSL certificates and keys to a path relative to the Ansible Automation Platform installer.</p>
+</li>
+<li>
+<p>Add the absolute paths of the SSL certificates and keys to the inventory file.
+Refer to the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/index#ref-hub-variables">Automation controller variables</a> and
+<a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/index#ref-controller-variables">Automation hub variables</a> sections of the
+<a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/index">Red Hat Ansible Automation Platform Installation Guide</a>
+for guidance on setting these variables.</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Automation controller: <code>web_server_ssl_cert</code>, <code>web_server_ssl_key</code>, <code>custom_ca_cert</code></p>
+</li>
+<li>
+<p>Automation hub: <code>automationhub_ssl_cert</code>, <code>automationhub_ssl_key</code>, <code>custom_ca_cert</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>custom_ca_cert</code> must be the root certificate authority that signed the intermediate certificate authority.
+This file is installed in <code>/etc/pki/ca-trust/source/anchors</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Run the installer.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changing_the_ssl_certificate_manually">7.3. Changing the SSL certificate manually</h3>
+<div class="sect3">
+<h4 id="change-ssl-controller_changing-ssl-certs-keys">7.3.1. Changing the SSL certificate and key manually on automation controller</h4>
 <div class="paragraph _abstract">
 <p>The following procedure describes how to change the SSL certificate and key manually on Automation Controller.</p>
 </div>
@@ -1276,7 +1376,7 @@ Perform the following steps on each node in the cluster:</p>
 </div>
 </li>
 <li>
-<p>Copy the new SSL certificate to <code>/etc/tower/tower.cert</code></p>
+<p>Copy the new SSL certificate to <code>/etc/tower/tower.cert</code>.</p>
 </li>
 <li>
 <p>Copy the new key to <code>/etc/tower/tower.key</code>.</p>
@@ -1307,7 +1407,7 @@ chmod 0600 /etc/tower/tower.cert /etc/tower/tower.key</pre>
 </div>
 </li>
 <li>
-<p>Reload NGINX</p>
+<p>Reload NGINX:</p>
 <div class="listingblock">
 <div class="content">
 <pre>systemctl reload nginx.service</pre>
@@ -1315,7 +1415,7 @@ chmod 0600 /etc/tower/tower.cert /etc/tower/tower.key</pre>
 </div>
 </li>
 <li>
-<p>Verify that new SSL certificate and key have been installed</p>
+<p>Verify that new SSL certificate and key have been installed:</p>
 <div class="listingblock">
 <div class="content">
 <pre>true | openssl s_client -showcerts -connect ${CONTROLLER_FQDN}:443</pre>
@@ -1325,8 +1425,8 @@ chmod 0600 /etc/tower/tower.cert /etc/tower/tower.key</pre>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="change-ssl-controller-ocp_changing-ssl-certs-keys">7.2. Changing the SSL certificate and key on automation controller on OpenShift Container Platform</h3>
+<div class="sect3">
+<h4 id="change-ssl-controller-ocp_changing-ssl-certs-keys">7.3.2. Changing the SSL certificate and key on automation controller on OpenShift Container Platform</h4>
 <div class="paragraph _abstract">
 <p>The following procedure describes how to change the SSL certificate and key for automation controller running on OpenShift Container Platform.</p>
 </div>
@@ -1373,10 +1473,10 @@ In this example, it is timestamped with the date that the secret is created, to 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Wait a few minutes for the changes to be applied</p>
+<p>Wait a few minutes for the changes to be applied.</p>
 </li>
 <li>
-<p>Verify that new SSL certificate and key have been installed</p>
+<p>Verify that new SSL certificate and key have been installed:</p>
 <div class="listingblock">
 <div class="content">
 <pre>true | openssl s_client -showcerts -connect ${CONTROLLER_FQDN}:443</pre>
@@ -1386,8 +1486,8 @@ In this example, it is timestamped with the date that the secret is created, to 
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="change-ssl-eda-controller_changing-ssl-certs-keys">7.3. Changing the SSL certificate and key on Event-Driven Ansible controller</h3>
+<div class="sect3">
+<h4 id="change-ssl-eda-controller_changing-ssl-certs-keys">7.3.3. Changing the SSL certificate and key on Event-Driven Ansible controller</h4>
 <div class="paragraph _abstract">
 <p>The following procedure describes how to change the SSL certificate and key manually on Event-Driven Ansible controller.</p>
 </div>
@@ -1446,7 +1546,7 @@ In this example, it is timestamped with the date that the secret is created, to 
 </div>
 </li>
 <li>
-<p>Reload NGINX</p>
+<p>Reload NGINX:</p>
 <div class="listingblock">
 <div class="content">
 <pre>systemctl reload nginx.service</pre>
@@ -1464,8 +1564,8 @@ In this example, it is timestamped with the date that the secret is created, to 
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="change-ssl-hub_changing-ssl-certs-keys">7.4. Changing the SSL certificate and key manually on automation hub</h3>
+<div class="sect3">
+<h4 id="change-ssl-hub_changing-ssl-certs-keys">7.3.4. Changing the SSL certificate and key manually on automation hub</h4>
 <div class="paragraph _abstract">
 <p>The following procedure describes how to change the SSL certificate and key manually on automation hub.</p>
 </div>
@@ -1532,7 +1632,7 @@ In this example, it is timestamped with the date that the secret is created, to 
 </div>
 </li>
 <li>
-<p>Verify that new SSL certificate and key have been installed</p>
+<p>Verify that new SSL certificate and key have been installed:</p>
 <div class="listingblock">
 <div class="content">
 <pre>true | openssl s_client -showcerts -connect ${CONTROLLER_FQDN}:443</pre>
@@ -1545,9 +1645,10 @@ In this example, it is timestamped with the date that the secret is created, to 
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-08-23 19:37:18 +0100
+Last updated 2023-08-30 13:15:26 +0100
 </div>
 </div>
 </body>
