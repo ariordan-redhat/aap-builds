@@ -15,3 +15,4 @@ https://ariordan-redhat.github.io/aap-builds/aap-operations-guide/master.html
 https://ariordan-redhat.github.io/aap-builds/aap-planning-guide/master.html
 
 
+https://ariordan-redhat.github.io/aap-builds/controller-user-guide/master.html
