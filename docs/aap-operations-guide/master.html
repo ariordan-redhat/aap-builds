@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <title>Red Hat Ansible Automation Platform Operations Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -492,20 +489,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#proc-create-password-hashes">6.1. Creating PostgreSQL password hashes</a></li>
 <li><a href="#proc-encrypt-postgres-password">6.2. Encrypting the Postgres password</a></li>
 <li><a href="#proc-restart-controller-services">6.3. Restarting automation controller services</a></li>
-</ul>
-</li>
-<li><a href="#changing-ssl-certs-keys">7. Changing the SSL certificate</a>
-<ul class="sectlevel2">
-<li><a href="#_prerequisites">7.1. Prerequisites</a></li>
-<li><a href="#change-ssl-installer_changing-ssl-certs-keys">7.2. Changing the SSL certificate and key using the installer</a></li>
-<li><a href="#_changing_the_ssl_certificate_manually">7.3. Changing the SSL certificate manually</a>
-<ul class="sectlevel3">
-<li><a href="#change-ssl-controller_changing-ssl-certs-keys">7.3.1. Changing the SSL certificate and key manually on automation controller</a></li>
-<li><a href="#change-ssl-controller-ocp_changing-ssl-certs-keys">7.3.2. Changing the SSL certificate and key on automation controller on OpenShift Container Platform</a></li>
-<li><a href="#change-ssl-eda-controller_changing-ssl-certs-keys">7.3.3. Changing the SSL certificate and key on Event-Driven Ansible controller</a></li>
-<li><a href="#change-ssl-hub_changing-ssl-certs-keys">7.3.4. Changing the SSL certificate and key manually on automation hub</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -1251,404 +1234,10 @@ Perform the following steps on each node in the cluster:</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="changing-ssl-certs-keys">7. Changing the SSL certificate</h2>
-<div class="sectionbody">
-<div class="paragraph _abstract">
-<p>You must replace the SSL certificate used by Ansible Automation Platform in the following circumstances:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Your current SSL certificate has expired or will expire soon.</p>
-</li>
-<li>
-<p>You want to use an SSL certificate signed by an internal certificate authority.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>To change the SSL certificate, you can edit the inventory file and run the installer.
-The installer verifies that all Ansible Automation Platform components are working. The installer can take a long time to run.</p>
-</div>
-<div class="paragraph">
-<p>Alternatively, you can change the SSL certificates manually. This is quicker, but there is no automatic verification.</p>
-</div>
-<div class="paragraph">
-<p>Red Hat recommends that you use the installer to make changes to your Ansible Automation Platform instance.</p>
-</div>
-<div class="sect2">
-<h3 id="_prerequisites">7.1. Prerequisites</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>If there is an intermediate certificate authority, you must append it to the server certificate.</p>
-</li>
-<li>
-<p>Both automation controller and automation hub use NGINX so the server certificate must be in PEM format.</p>
-</li>
-<li>
-<p>Use the correct order for the certificates: The server certificate comes first, followed by the intermediate certificate authority.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>For further information, see the <a href="http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_certificate">ssl certificate section of the NGINX documentation</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="change-ssl-installer_changing-ssl-certs-keys">7.2. Changing the SSL certificate and key using the installer</h3>
-<div class="paragraph _abstract">
-<p>The following procedure describes how to change the SSL certificate and key in the inventory file.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Copy the new SSL certificates and keys to a path relative to the Ansible Automation Platform installer.</p>
-</li>
-<li>
-<p>Add the absolute paths of the SSL certificates and keys to the inventory file.
-Refer to the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/index#ref-hub-variables">Automation controller variables</a> and
-<a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/index#ref-controller-variables">Automation hub variables</a> sections of the
-<a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/index">Red Hat Ansible Automation Platform Installation Guide</a>
-for guidance on setting these variables.</p>
-<div class="openblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Automation controller: <code>web_server_ssl_cert</code>, <code>web_server_ssl_key</code>, <code>custom_ca_cert</code></p>
-</li>
-<li>
-<p>Automation hub: <code>automationhub_ssl_cert</code>, <code>automationhub_ssl_key</code>, <code>custom_ca_cert</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The <code>custom_ca_cert</code> must be the root certificate authority that signed the intermediate certificate authority.
-This file is installed in <code>/etc/pki/ca-trust/source/anchors</code>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Run the installer.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_changing_the_ssl_certificate_manually">7.3. Changing the SSL certificate manually</h3>
-<div class="sect3">
-<h4 id="change-ssl-controller_changing-ssl-certs-keys">7.3.1. Changing the SSL certificate and key manually on automation controller</h4>
-<div class="paragraph _abstract">
-<p>The following procedure describes how to change the SSL certificate and key manually on Automation Controller.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Backup the current SSL certificate:</p>
-<div class="listingblock">
-<div class="content">
-<pre>cp /etc/tower/tower.cert /etc/tower/tower.cert-$(date +%F)</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Backup the current key files:</p>
-<div class="listingblock">
-<div class="content">
-<pre>cp /etc/tower/tower.key /etc/tower/tower.key-$(date +%F)+</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Copy the new SSL certificate to <code>/etc/tower/tower.cert</code>.</p>
-</li>
-<li>
-<p>Copy the new key to <code>/etc/tower/tower.key</code>.</p>
-</li>
-<li>
-<p>Restore the SELinux context:</p>
-<div class="listingblock">
-<div class="content">
-<pre>restorecon -v /etc/tower/tower.cert /etc/tower/tower.key</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Set appropriate permissions for the certificate and key files:</p>
-<div class="listingblock">
-<div class="content">
-<pre>chown root:awx /etc/tower/tower.cert /etc/tower/tower.key
-chmod 0600 /etc/tower/tower.cert /etc/tower/tower.key</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Test the NGINX configuration:</p>
-<div class="listingblock">
-<div class="content">
-<pre>nginx -t</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Reload NGINX:</p>
-<div class="listingblock">
-<div class="content">
-<pre>systemctl reload nginx.service</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Verify that new SSL certificate and key have been installed:</p>
-<div class="listingblock">
-<div class="content">
-<pre>true | openssl s_client -showcerts -connect ${CONTROLLER_FQDN}:443</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="change-ssl-controller-ocp_changing-ssl-certs-keys">7.3.2. Changing the SSL certificate and key on automation controller on OpenShift Container Platform</h4>
-<div class="paragraph _abstract">
-<p>The following procedure describes how to change the SSL certificate and key for automation controller running on OpenShift Container Platform.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Copy the signed SSL certificate and key to a secure location.</p>
-</li>
-<li>
-<p>Create a TLS secret within OpenShift:</p>
-<div class="listingblock">
-<div class="content">
-<pre>oc create secret tls ${CONTROLLER_INSTANCE}-certs-$(date +%F) --cert=/path/to/ssl.crt --key=/path/to/ssl.key</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Modify the automation controller custom resource to add <code>route_tls_secret</code> and the name of the new secret to the spec section.</p>
-<div class="listingblock">
-<div class="content">
-<pre>oc edit automationcontroller/${CONTROLLER_INSTANCE}</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>...
-spec:
-  route_tls_secret: automation-controller-certs-2023-04-06
-...</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>The name of the TLS secret is arbitrary.
-In this example, it is timestamped with the date that the secret is created, to differentiate it from other TLS secrets applied to the automation controller instance.</p>
-</div>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Wait a few minutes for the changes to be applied.</p>
-</li>
-<li>
-<p>Verify that new SSL certificate and key have been installed:</p>
-<div class="listingblock">
-<div class="content">
-<pre>true | openssl s_client -showcerts -connect ${CONTROLLER_FQDN}:443</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="change-ssl-eda-controller_changing-ssl-certs-keys">7.3.3. Changing the SSL certificate and key on Event-Driven Ansible controller</h4>
-<div class="paragraph _abstract">
-<p>The following procedure describes how to change the SSL certificate and key manually on Event-Driven Ansible controller.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Backup the current SSL certificate:</p>
-<div class="listingblock">
-<div class="content">
-<pre>cp /etc/ansible-automation-platform/eda/server.cert /etc/ansible-automation-platform/eda/server.cert-$(date +%F)</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Backup the current key files:</p>
-<div class="listingblock">
-<div class="content">
-<pre>cp /etc/ansible-automation-platform/eda/server.key /etc/ansible-automation-platform/eda/server.key-$(date +%F)</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Copy the new SSL certificate to <code>/etc/ansible-automation-platform/eda/server.cert</code>.</p>
-</li>
-<li>
-<p>Copy the new key to <code>/etc/ansible-automation-platform/eda/server.key</code>.</p>
-</li>
-<li>
-<p>Restore the SELinux context:</p>
-<div class="listingblock">
-<div class="content">
-<pre>restorecon -v /etc/ansible-automation-platform/eda/server.cert /etc/ansible-automation-platform/eda/server.key</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Set appropriate permissions for the certificate and key files:</p>
-<div class="listingblock">
-<div class="content">
-<pre>chown root:eda /etc/ansible-automation-platform/eda/server.cert /etc/ansible-automation-platform/eda/server.key</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>chmod 0600 /etc/ansible-automation-platform/eda/server.cert /etc/ansible-automation-platform/eda/server.key</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Test the NGINX configuration:</p>
-<div class="listingblock">
-<div class="content">
-<pre>nginx -t</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Reload NGINX:</p>
-<div class="listingblock">
-<div class="content">
-<pre>systemctl reload nginx.service</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Verify that new SSL certificate and key have been installed:</p>
-<div class="listingblock">
-<div class="content">
-<pre>true | openssl s_client -showcerts -connect ${CONTROLLER_FQDN}:443</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="change-ssl-hub_changing-ssl-certs-keys">7.3.4. Changing the SSL certificate and key manually on automation hub</h4>
-<div class="paragraph _abstract">
-<p>The following procedure describes how to change the SSL certificate and key manually on automation hub.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Backup the current SSL certificate:</p>
-<div class="listingblock">
-<div class="content">
-<pre>cp /etc/pulp/certs/pulp_webserver.crt /etc/pulp/certs/pulp_webserver.crt-$(date +%F)</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Backup the current key files:</p>
-<div class="listingblock">
-<div class="content">
-<pre>cp /etc/pulp/certs/pulp_webserver.key /etc/pulp/certs/pulp_webserver.key-$(date +%F)</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Copy the new SSL certificate to <code>/etc/pulp/certs/pulp_webserver.crt</code>.</p>
-</li>
-<li>
-<p>Copy the new key to <code>/etc/pulp/certs/pulp_webserver.key</code>.</p>
-</li>
-<li>
-<p>Restore the SELinux context:</p>
-<div class="listingblock">
-<div class="content">
-<pre>restorecon -v /etc/pulp/certs/pulp_webserver.crt /etc/pulp/certs/pulp_webserver.key</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Set appropriate permissions for the certificate and key files:</p>
-<div class="listingblock">
-<div class="content">
-<pre>chown root:pulp /etc/pulp/certs/pulp_webserver.crt /etc/pulp/certs/pulp_webserver.key</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>chmod 0600 /etc/pulp/certs/pulp_webserver.crt /etc/pulp/certs/pulp_webserver.key</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Test the NGINX configuration:</p>
-<div class="listingblock">
-<div class="content">
-<pre>nginx -t</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Reload NGINX:</p>
-<div class="listingblock">
-<div class="content">
-<pre>systemctl reload nginx.service</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Verify that new SSL certificate and key have been installed:</p>
-<div class="listingblock">
-<div class="content">
-<pre>true | openssl s_client -showcerts -connect ${CONTROLLER_FQDN}:443</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-08-30 13:15:26 +0100
+Last updated 2023-09-25 13:23:52 +0100
 </div>
 </div>
 </body>
