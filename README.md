@@ -16,3 +16,6 @@ https://ariordan-redhat.github.io/aap-builds/aap-planning-guide/master.html
 
 
 https://ariordan-redhat.github.io/aap-builds/controller-user-guide/master.html
+
+https://ariordan-redhat.github.io/aap-builds/aap-on-azure/aap-on-azure.html
+
