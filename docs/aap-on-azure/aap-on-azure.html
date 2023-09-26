@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <title>Red Hat Ansible Automation Platform on Microsoft Azure guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -444,6 +441,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></li>
+<li><a href="#providing-direct-documentation-feedback">Providing feedback on Red Hat documentation</a></li>
 <li><a href="#intro-to-aap-on-azure">1. Introduction to Ansible Automation Platform on Microsoft Azure</a>
 <ul class="sectlevel2">
 <li><a href="#con-azure-about_azure-intro">1.1. About Red Hat Ansible Automation Platform on Microsoft Azure</a></li>
@@ -493,8 +491,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#proc-azure-accessing-aap_azure-install">2.4. Accessing Red Hat Ansible Automation Platform on Microsoft Azure</a>
 <ul class="sectlevel3">
-<li><a href="#proc-azure-license-association_azure-install">2.4.1. License association</a></li>
-<li><a href="#proc-azure-configure-ad-sso_azure-install">2.4.2. Azure Active Directory (Azure AD) SSO configuration</a></li>
+<li><a href="#_welcome_page">2.4.1. Welcome page</a></li>
+<li><a href="#_logging_in_to_automation_controller">2.4.2. Logging in to automation controller</a></li>
+<li><a href="#proc-azure-license-association_azure-install">2.4.3. License association</a></li>
+<li><a href="#proc-azure-configure-ad-sso_azure-install">2.4.4. Azure Active Directory (Azure AD) SSO configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -558,6 +558,69 @@ This document has been updated to include information for the latest release of 
 We are beginning with these four terms: master, slave, blacklist, and whitelist.
 Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases.
 For more details, see <a href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright&#8217;s message</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="providing-direct-documentation-feedback"><a class="anchor" href="#providing-direct-documentation-feedback"></a>Providing feedback on Red Hat documentation</h2>
+<div class="sectionbody">
+<div class="paragraph _abstract">
+<p>We appreciate your feedback on our technical content and encourage you to tell us what you think.
+If you&#8217;d like to add comments, provide insights, correct a typo, or even ask a question, you can do so directly in the documentation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You must have a Red Hat account and be logged in to the customer portal.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To submit documentation feedback from the customer portal, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the <strong>Multi-page HTML</strong> format.</p>
+</li>
+<li>
+<p>Click the <strong>Feedback</strong> button at the top-right of the document.</p>
+</li>
+<li>
+<p>Highlight the section of text where you want to provide feedback.</p>
+</li>
+<li>
+<p>Click the <strong>Add Feedback</strong> dialog next to your highlighted text.</p>
+</li>
+<li>
+<p>Enter your feedback in the text box on the right of the page and then click <strong>Submit</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>We automatically create a tracking issue each time you submit feedback.
+Open the link that is displayed after you click <strong>Submit</strong> and start watching the issue or add more comments.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Disclaimer</strong>: Links contained in this document to external website(s) are provided for convenience only. Red Hat has not reviewed the links and is not responsible for the content or its availability. The inclusion of any link to an external website does not imply endorsement by Red Hat of the website or their entities, products or services. You agree that Red Hat is not responsible or liable for any loss or expenses that may result due to your use of (or reliance on) the external site or content.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -926,27 +989,36 @@ The settings have the following requirements:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Network</th>
-<th class="tableblock halign-left valign-top">Requirements</th>
-</tr>
-</thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Network</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requirements</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Service CIDR</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Requires a /26 block at minimum. A larger block is not necessary.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A CIDR notation IP range from which to assign service cluster IPs.</p>
+<p class="tableblock">It must not overlap with any Subnet IP ranges.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires a /26 block at minimum. A larger block is not necessary.</p>
+<p class="tableblock">This CIDR block must not intersect with the CIDR of the Pod CIDR block.</p>
+<p class="tableblock">This CIDR block also must not intersect with the CIDR of the VNET CIDR block.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DNS Service IP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be an IP address in the Service CIDR other than the first IP in that range.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An IP address assigned to the Kubernetes DNS service.</p>
+<p class="tableblock">It must be within the Kubernetes service address range specified in <code>serviceCidr</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must be an IP address in the Service CIDR other than the first IP in that range.</p>
+<p class="tableblock">Red Hat recommends using the first <code>.10</code> IP address within the Service CIDR block.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pod CIDR</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Requires a /20 or larger block.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A CIDR notation IP range from which to assign pod IPs when kubenet is used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires a /20 or larger block.</p>
+<p class="tableblock">Red Hat recommends using the first <code>.10</code> IP address within the Service CIDR block.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1051,7 +1123,7 @@ This includes lifecycle management of the components.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Minimum Nodes: 1</p>
+<p>Minimum Nodes: 2</p>
 </li>
 <li>
 <p>Maximum Nodes: 20</p>
@@ -1280,7 +1352,26 @@ You can create a new one when needed.</p>
 <p>Click the card that is returned in the search. Be sure to select the official offering from Red Hat.</p>
 </li>
 <li>
-<p>Click <strong>Get it Now</strong>, <strong>Continue</strong>, and then <strong>Create</strong> to initiate the deployment process.</p>
+<p>Click  btn:[Get it Now].</p>
+</li>
+<li>
+<p>Click btn:[Continue].</p>
+</li>
+<li>
+<p>The <strong>Overview</strong> tab contains important information about activating your subscription for Ansible Automation Platform.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Read the entire <strong>Before you begin</strong> section.</p>
+</li>
+<li>
+<p>Follow the <strong>Click here</strong> link to enable your subscription. You cannot use Ansible Automation Platform without a valid subscription.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Return to the <strong>Overview</strong> tab and click btn:[Create] to initiate the deployment process.</p>
 </li>
 </ol>
 </div>
@@ -1366,6 +1457,28 @@ Refer to your network configuration plan before deploying the managed applicatio
 </li>
 <li>
 <p>From the <strong>Disaster Recovery</strong> list, select an option to enable or disable disaster recovery.</p>
+</li>
+<li>
+<p>Select the <strong>Deployment</strong> tab.</p>
+</li>
+<li>
+<p>Note the following requirements in the description:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You must have a Red Hat account.</p>
+</li>
+<li>
+<p>To use Ansible Automation Platform, you must have a valid subscription linked to your Red Hat account.</p>
+</li>
+<li>
+<p>You must use the Deployment Driver during deployment.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Select the checkboxes to indicate that you understand these requirements.</p>
 </li>
 <li>
 <p>Click btn:[Review + Create].</p>
@@ -1508,14 +1621,80 @@ Complete the form to provision Ansible Automation Platform infrastructure and re
 </li>
 <li>
 <p>Select <strong>Parameters and Outputs</strong> in the <strong>Settings</strong> section in the left navigation menu.</p>
-</li>
-<li>
-<p>Copy the URL links for automation controller and automation hub, and then save them. The names for the links are <em>automationControllerUrl</em> and <em>automationHubUrl</em>.</p>
-</li>
-<li>
-<p>In a browser, navigate to the automation controller URL, and then log in using the following credentials:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>The <strong>Parameters and Outputs</strong> page contains a link to the Welcome page.
+From the Welcome page, you can access your automation controller and automation hub instance and view notifications about your deployment.</p>
+</li>
+<li>
+<p>The <strong>Parameters and Outputs</strong> page also displays direct links to automation controller and automation hub.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Save the URL links for the Welcome page, automation controller, and automation hub.
+The names for the links are <em>automationControllerUrl</em>, <em>automationHubUrl</em>, and <em>welcomePageUrl</em>.</p>
+</li>
+<li>
+<p>Open the Welcome page.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_welcome_page"><a class="anchor" href="#_welcome_page"></a>2.4.1. Welcome page</h4>
+<div class="paragraph">
+<p>The Welcome page is a convenient landing page for private deployments of Ansible Automation Platform on Microsoft Azure.
+You can open the following views from the navigation pane:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Overview</dt>
+<dd>
+<p>Links to automation controller, automation hub, and Automation Analytics.
+You can disable the Welcome page by clicking <strong>Manage view</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/azure-welcome-page-overview.png" alt="Welcome page overview">
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Automation Controller</dt>
+<dd>
+<p>Displays links to automation controller documentation.</p>
+<div class="paragraph">
+<p>To open automation controller from this view, click <strong>Launch Automation Controller</strong>.</p>
+</div>
+</dd>
+<dt class="hdlist1">Automation Hub</dt>
+<dd>
+<p>Displays links to automation hub documentation.</p>
+<div class="paragraph">
+<p>To open automation hub from this view, click <strong>Launch Automation Hub</strong>.</p>
+</div>
+</dd>
+<dt class="hdlist1">Automation Analytics</dt>
+<dd>
+<p>Displays links to {Automation Analytics} documentation</p>
+</dd>
+<dt class="hdlist1">Documentation</dt>
+<dd>
+<p>Displays links to Ansible Automation Platform on Microsoft Azure documentation.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>To view notifications about Ansible Automation Platform on Microsoft Azure, click on the bell icon.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_logging_in_to_automation_controller"><a class="anchor" href="#_logging_in_to_automation_controller"></a>2.4.2. Logging in to automation controller</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>In a browser, navigate to the automation controller URL, and then log in using the following credentials:</p>
+</li>
 <li>
 <p><strong>Username</strong>: <code>admin</code></p>
 </li>
@@ -1524,14 +1703,12 @@ Complete the form to provision Ansible Automation Platform infrastructure and re
 </li>
 </ul>
 </div>
-</li>
-</ol>
-</div>
 <div class="paragraph">
 <p>The first time you login to Ansible Automation Platform on Microsoft Azure, you must configure a subscription and agree to the terms and conditions.</p>
 </div>
+</div>
 <div class="sect3">
-<h4 id="proc-azure-license-association_azure-install"><a class="anchor" href="#proc-azure-license-association_azure-install"></a>2.4.1. License association</h4>
+<h4 id="proc-azure-license-association_azure-install"><a class="anchor" href="#proc-azure-license-association_azure-install"></a>2.4.3. License association</h4>
 <div class="paragraph">
 <p>Red Hat provided a specific subscription entitlement manifest when you subscribed to Red Hat Ansible Automation Platform on Microsoft Azure.</p>
 </div>
@@ -1540,7 +1717,7 @@ Complete the form to provision Ansible Automation Platform infrastructure and re
 </div>
 </div>
 <div class="sect3">
-<h4 id="proc-azure-configure-ad-sso_azure-install"><a class="anchor" href="#proc-azure-configure-ad-sso_azure-install"></a>2.4.2. Azure Active Directory (Azure AD) SSO configuration</h4>
+<h4 id="proc-azure-configure-ad-sso_azure-install"><a class="anchor" href="#proc-azure-configure-ad-sso_azure-install"></a>2.4.4. Azure Active Directory (Azure AD) SSO configuration</h4>
 <div class="paragraph _abstract">
 <p>Follow the procedures below to configure SSO with Azure Active Directory (Azure AD). If your organization does not use Azure AD for application authorization, you can create users in the user management system in Ansible Automation Platform.</p>
 </div>
@@ -2384,6 +2561,9 @@ The DNS records are created so that Ansible Automation Platform can be issued a 
 <div class="paragraph">
 <p>To view a list of the URLs for the Ansible Automation Platform applications, navigate to the <strong>Parameters and Outputs</strong> page of the Azure Marketplace managed application listing for your deployment.</p>
 </div>
+<div class="paragraph">
+<p>For more details about the <strong>Parameters and Outputs</strong> page, see <a href="#proc-azure-accessing-aap_azure-install">Accessing Red Hat Ansible Automation Platform on Microsoft Azure</a>.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="proc-azure-nw-public-deploy_azure-connecting-to-aap"><a class="anchor" href="#proc-azure-nw-public-deploy_azure-connecting-to-aap"></a>4.2. Public Deployments</h3>
@@ -2564,7 +2744,7 @@ Add the following line to your hosts file:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Red Hat Ansible Automation Platform on Microsoft Azure is a managed application, supported and maintained by Red Hat.
-Due to the architecture of the application and the deployment strategy in Azure, there are a few situations where customizing and changing some aspects of the configuration could lead to a change in the responsibilities of some components.</p>
+Due to the architecture of the application and the deployment strategy in Azure, there are some situations where customizing and changing some aspects of the configuration could lead to a change in the responsibilities of some components.</p>
 </div>
 <div class="paragraph">
 <div class="title">Azure Virtual Appliance Routing with Ansible Automation Platform on Microsoft Azure</div>
@@ -2613,7 +2793,7 @@ You must exclude the enforcement of Azure Policy, for example by using exception
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-13 10:28:50 +0100
+Last updated 2023-09-26 20:57:32 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
