@@ -19,3 +19,4 @@ https://ariordan-redhat.github.io/aap-builds/controller-user-guide/master.html
 
 https://ariordan-redhat.github.io/aap-builds/aap-on-azure/aap-on-azure.html
 
+https://ariordan-redhat.github.io/aap-builds/aap-installation-guide-pr-801-2023-11-24.html
