@@ -21,3 +21,4 @@ https://ariordan-redhat.github.io/aap-builds/aap-on-azure/aap-on-azure.html
 
 https://ariordan-redhat.github.io/aap-builds/aap-installation-guide-pr-801-2023-11-24.html
 https://ariordan-redhat.github.io/aap-builds/aap-docs-testbuild-2023-11-27.html
+https://ariordan-redhat.github.io/aap-builds/getting-started-testbuild-2023-11-27.html
