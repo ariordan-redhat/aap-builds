@@ -18,3 +18,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/lightspeed-user-guide-lightstream-latest-2024-02-26.html
 * https://ariordan-redhat.github.io/aap-builds/aap-installation-guide-main-2024-02-26.html
 * https://ariordan-redhat.github.io/aap-builds/aap-operations-guide-main-2024-02-26.html
+* https://ariordan-redhat.github.io/aap-builds/titles-aap-25121-2024-06-18.html
