@@ -20,3 +20,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/aap-operations-guide-main-2024-02-26.html
 * https://ariordan-redhat.github.io/aap-builds/titles-aap-25121-2024-06-18.html
 * https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-25121-2024-06-18.html
+* https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-25121b-2024-06-21.html
