@@ -24,3 +24,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-25121b-2024-06-21.html
 * https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-25848-2024-07-02.html
 * https://ariordan-redhat.github.io/aap-builds/aap-plugin-rhdh-install-aap-27695-2024-07-25.html
+* https://ariordan-redhat.github.io/aap-builds/aap-plugin-rhdh-using-aap-27696-2024-07-26.html
