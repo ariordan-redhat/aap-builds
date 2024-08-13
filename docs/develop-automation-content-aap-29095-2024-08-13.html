@@ -459,11 +459,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#installing-devtools">3. Installing Ansible developer tools</a>
 <ul class="sectlevel2">
-<li><a href="#devtools-install-vsc_installing-devtools">3.1. Installing VS Code</a></li>
-<li><a href="#devtools-install-extension_installing-devtools">3.2. Installing the VS Code Ansible extension</a></li>
-<li><a href="#devtools-extension-settings_installing-devtools">3.3. Configuring Ansible extension settings</a></li>
-<li><a href="#devtools-install-container_installing-devtools">3.4. Installing Ansible developer tools on a container inside VS Code</a></li>
-<li><a href="#devtools-install_installing-devtools">3.5. Installing Ansible developer tools from a package on RHEL</a></li>
+<li><a href="#_requirements">3.1. Requirements</a></li>
+<li><a href="#devtools-install-vsc_installing-devtools">3.2. Installing VS Code</a></li>
+<li><a href="#devtools-install-extension_installing-devtools">3.3. Installing the VS Code Ansible extension</a></li>
+<li><a href="#devtools-extension-settings_installing-devtools">3.4. Configuring Ansible extension settings</a></li>
+<li><a href="#devtools-install-container_installing-devtools">3.5. Installing Ansible developer tools on a container inside VS Code</a></li>
+<li><a href="#devtools-install_installing-devtools">3.6. Installing Ansible developer tools from a package on RHEL</a></li>
 </ul>
 </li>
 <li><a href="#creating-playbook-project">4. Creating a playbook project</a>
@@ -685,13 +686,19 @@ You can install this option on MacOS, Windows, and Linux systems.</p>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="devtools-install-vsc_installing-devtools">3.1. Installing VS Code</h3>
+<h3 id="_requirements">3.1. Requirements</h3>
+<div class="paragraph">
+<p>Ansible developer tools require Python 3.10 or later.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="devtools-install-vsc_installing-devtools">3.2. Installing VS Code</h3>
 <div class="paragraph _abstract">
 <p>To install VS Code, follow the instructions on the <a href="https://code.visualstudio.com/download">Download Visual Studio Code page</a> in the Visual Studio Code documentation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-install-extension_installing-devtools">3.2. Installing the VS Code Ansible extension</h3>
+<h3 id="devtools-install-extension_installing-devtools">3.3. Installing the VS Code Ansible extension</h3>
 <div class="paragraph _abstract">
 <p>The Ansible extension adds language support for Ansible to VS Code.
 It incorporates Ansible developer tools to facilitate creating and running automation content.</p>
@@ -732,7 +739,7 @@ It is displayed in the Status bar.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-extension-settings_installing-devtools">3.3. Configuring Ansible extension settings</h3>
+<h3 id="devtools-extension-settings_installing-devtools">3.4. Configuring Ansible extension settings</h3>
 <div class="paragraph _abstract">
 <p>The Ansible extension supports multiple configuration options.</p>
 </div>
@@ -808,7 +815,7 @@ Modify the settings to suit your requirements:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-install-container_installing-devtools">3.4. Installing Ansible developer tools on a container inside VS Code</h3>
+<h3 id="devtools-install-container_installing-devtools">3.5. Installing Ansible developer tools on a container inside VS Code</h3>
 <div class="paragraph">
 <p>The Dev Containers VS Code extension requires a config file to store settings for your dev containers.
 After you have created a config file for your dev container, reopen your directory in a container in VS Code.</p>
@@ -948,7 +955,7 @@ After you have created a config file for your dev container, reopen your directo
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-install_installing-devtools">3.5. Installing Ansible developer tools from a package on RHEL</h3>
+<h3 id="devtools-install_installing-devtools">3.6. Installing Ansible developer tools from a package on RHEL</h3>
 <div class="paragraph _abstract">
 <p>Ansible developer tools is bundled in the Ansible Automation Platform RPM (Red Hat Package Manager) package.
 Refer to the <a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5red_hat_ansible_automation_platform_installation_guide"><em>Red Hat Ansible Automation Platform Installation guide</em></a> documentation for information on installing Ansible Automation Platform.</p>
