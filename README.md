@@ -12,3 +12,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/aap-plugin-rhdh-using-aap-27696-2024-07-26.html
 * https://ariordan-redhat.github.io/aap-builds/develop-automation-content-aap-29095-2024-08-13.html
 * https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-29709-2024-08-21.html
+* https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-29709-2024-08-21.html
