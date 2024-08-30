@@ -604,6 +604,28 @@ The Ansible plug-ins provide curated content and features to accelerate Ansible 
 <div class="paragraph _abstract">
 <p>The following procedures describe how to install Ansible plug-ins in Red Hat Developer Hub instances on Red Hat OpenShift Container Platform using a Helm chart.</p>
 </div>
+<div class="paragraph">
+<p>The workflow is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download the Ansible plug-ins files.</p>
+</li>
+<li>
+<p>Create a plug-in registry in your Openshift cluster to host the Ansible plug-ins.</p>
+</li>
+<li>
+<p>Add the plug-ins to the Helm chart.</p>
+</li>
+<li>
+<p>Create a custom ConfigMap.</p>
+</li>
+<li>
+<p>Edit your custom ConfigMap and Helm chart according to the required and optional configuration procedures.</p>
+</li>
+</ol>
+</div>
 <div class="sect2">
 <h3 id="rhdh-install-ocp-prereqs_rhdh-install-ocp">2.1. Prerequisites</h3>
 <div class="ulist">
@@ -766,7 +788,7 @@ total 3392
 <p>In the OpenShift Developer UI, navigate to <span class="menuseq"><b class="menu">Helm</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">developer-hub</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">Actions</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">Upgrade</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Yaml view</b></span>.</p>
 </li>
 <li>
-<p>Update the Helm chart configuration to add the dynamic plug-ins in the RHDH instance.
+<p>Update the Helm chart configuration to add the dynamic plug-ins in the Red Hat Developer Hub instance.
 Under the <code>plugins</code> section in the YAML file, add the dynamic plug-ins that you want to enable.</p>
 <div class="listingblock">
 <div class="content">
@@ -967,6 +989,9 @@ Update it to <code>imagePullPolicy: Always</code> if you always want to use the 
 <div class="paragraph">
 <p>Create a Red Hat Developer Hub config map named <code>app-config-rhdh</code> following the procedure in
 <a href="https://docs.redhat.com/en/documentation/red_hat_developer_hub/{RHDHVers}/html/administration_guide_for_red_hat_developer_hub/assembly-add-custom-app-file-openshift_admin-rhdh">Adding a custom application configuration file to Red Hat OpenShift Container Platform</a> in the <em>Administration guide for Red Hat Developer Hub</em>.</p>
+</div>
+<div class="paragraph">
+<p>To edit your custom ConfigMap, log in to the OpenShift UI and navigate to <span class="menuseq"><b class="menu">Select Project ( developerHubProj )</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">ConfigMaps</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">{developer-hub}-app-config</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">EditConfigMaps</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">app-config-rhdh</b></span>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1171,11 +1196,7 @@ chapter of the <em>Administration guide for Red Hat Developer Hub</em>.</p>
 <p>The Ansible plug-ins provide integrations with Ansible Automation Platform and other optional Red Hat products.</p>
 </div>
 <div class="paragraph">
-<p>Create a custom ConfigMap called <code>app-config-rhdh</code> as outlined in the
-<a href="https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html-single/administration_guide_for_red_hat_developer_hub/assembly-install-rhdh-ocp#proc-add-custom-app-file-openshift-helm_assembly-install-rhdh-ocp">Adding a custom application configuration file to OpenShift Container Platform using the Helm chart</a> of the <em>Administration guide for Red Hat Developer Hub</em>.</p>
-</div>
-<div class="paragraph">
-<p>To edit your ConfigMap, log in to the OpenShift UI and navigate to <span class="menuseq"><b class="menu">Select Project ( developerHubProj )</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">ConfigMaps</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">{developer-hub}-app-config</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">EditConfigMaps</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">app-config-rhdh</b></span>.</p>
+<p>To edit your custom ConfigMap, log in to the OpenShift UI and navigate to <span class="menuseq"><b class="menu">Select Project ( developerHubProj )</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">ConfigMaps</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">{developer-hub}-app-config</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">EditConfigMaps</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">app-config-rhdh</b></span>.</p>
 </div>
 <div class="sect4">
 <h5 id="rhdh-configure-devspaces_rhdh-ocp-configure-optional">Configuring OpenShift Dev Spaces</h5>
@@ -1964,7 +1985,7 @@ section of the <em>Administration guide for Red Hat Developer Hub</em>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-08-30 05:41:48 +0100
+Last updated 2024-08-30 13:28:56 +0100
 </div>
 </div>
 </body>
