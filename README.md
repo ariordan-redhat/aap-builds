@@ -16,3 +16,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-29709-2024-09-12.html
 * https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-29709-2024-09-13.html
 * https://ariordan-redhat.github.io/aap-builds/develop-automation-content-aap-30415-2024-09-17.html
+* https://ariordan-redhat.github.io/aap-builds/develop-automation-content-aap-30403a-2024-09-18.html
