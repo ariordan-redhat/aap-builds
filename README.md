@@ -12,4 +12,3 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-29709-2024-09-13.html
 * https://ariordan-redhat.github.io/aap-builds/aap-plugin-rhdh-install-scaffold-plugin-operator-install-2024-09-26.html
 * https://ariordan-redhat.github.io/aap-builds/develop-automation-content-aap-30912-2024-09-27.html
-* https://ariordan-redhat.github.io/aap-builds/develop-automation-content-aap-30912-2024-09-27.html
