@@ -441,23 +441,97 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#providing-feedback">Providing feedback on Red Hat documentation</a></li>
-<li><a href="#devtools-develop-collections_develop-automation-content">1. Developing collections</a></li>
-<li><a href="#devtools-create-roles-collection_develop-automation-content">2. Creating a collection for distributing roles</a>
+<li><a href="#devtools-intro">1. Ansible development tools</a>
 <ul class="sectlevel2">
-<li><a href="#plan-roles-collection_devtools-create-roles-collection">2.1. Planning your collection</a></li>
-<li><a href="#devtools-roles-collection-prerequisites_devtools-create-roles-collection">2.2. Prerequisites</a></li>
-<li><a href="#devtools-scaffold-roles-collection_devtools-create-roles-collection">2.3. Scaffolding a collection for your roles</a></li>
-<li><a href="#devtools-migrate-existing-roles-collection_devtools-create-roles-collection">2.4. Migrating existing roles to your collection</a></li>
-<li><a href="#devtools-create-new-role-in-collection_devtools-create-roles-collection">2.5. Creating a new role in your collection</a></li>
-<li><a href="#devtools-docs-roles-collection_devtools-create-roles-collection">2.6. Adding documentation for your roles collection</a>
-<ul class="sectlevel3">
-<li><a href="#_documenting_your_roles">2.6.1. Documenting your roles</a></li>
-<li><a href="#_documenting_your_collection">2.6.2. Documenting your collection</a></li>
+<li><a href="#devtools-components_devtools-intro">1.1. Ansible development tools components</a></li>
 </ul>
 </li>
-<li><a href="#devtools-publish-roles-collection-pah_devtools-create-roles-collection">2.7. Publishing your collection in private automation hub</a>
+<li><a href="#developer-workflow">2. Workflow for developing automation content</a>
+<ul class="sectlevel2">
+<li><a href="#devtools-workflow_developer-workflow">2.1. Workflow</a>
 <ul class="sectlevel3">
-<li><a href="#devtools-use-roles-collections-aap_devtools-create-roles-collection">2.7.1. Using your collection in projects in Red Hat Ansible Automation Platform</a></li>
+<li><a href="#_create">2.1.1. Create</a></li>
+<li><a href="#_test">2.1.2. Test</a></li>
+<li><a href="#_deploy">2.1.3. Deploy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#installing-devtools">3. Installing Ansible development tools</a>
+<ul class="sectlevel2">
+<li><a href="#devtools-requirements_installing-devtools">3.1. Requirements</a>
+<ul class="sectlevel3">
+<li><a href="#devtools-install-podman-desktop-wsl_installing-devtools">3.1.1. Requirements for Ansible development tools on Windows</a>
+<ul class="sectlevel4">
+<li><a href="#_installing_wsl">Installing WSL</a></li>
+<li><a href="#_installing_podman_desktop_on_a_windows_machine">Installing Podman Desktop on a Windows machine</a></li>
+<li><a href="#_configuring_settings_for_podman_desktop">Configuring settings for Podman Desktop</a></li>
+</ul>
+</li>
+<li><a href="#devtools-setup-registry-redhat-io_installing-devtools">3.1.2. Authenticating with the Red Hat container registry</a></li>
+<li><a href="#devtools-install-vsc_installing-devtools">3.1.3. Installing VS Code</a></li>
+<li><a href="#devtools-install-extension_installing-devtools">3.1.4. Installing the VS Code Ansible extension</a></li>
+<li><a href="#devtools-extension-settings_installing-devtools">3.1.5. Configuring Ansible extension settings</a></li>
+<li><a href="#devtools-extension-set-language_installing-devtools">3.1.6. Associating the Ansible language to YAML files</a></li>
+<li><a href="#devtools-ms-dev-containers-ext_installing-devtools">3.1.7. Installing and configuring the <code>Dev Containers</code> extension</a></li>
+</ul>
+</li>
+<li><a href="#devtools-install-container_installing-devtools">3.2. Installing Ansible development tools on a container inside VS Code</a></li>
+<li><a href="#devtools-install_installing-devtools">3.3. Installing Ansible development tools from a package on RHEL</a></li>
+</ul>
+</li>
+<li><a href="#creating-playbook-project">4. Creating a playbook project</a>
+<ul class="sectlevel2">
+<li><a href="#scaffolding-playbook-project_creating-playbook-project">4.1. Scaffolding a playbook project</a></li>
+</ul>
+</li>
+<li><a href="#writing-running-playbook_develop-automation-content">5. Writing and running a playbook with Ansible development tools</a>
+<ul class="sectlevel2">
+<li><a href="#devtools-set-up-ansible-config_writing-running-playbook">5.1. Setting up the Ansible configuration file for your playbook project</a></li>
+<li><a href="#writing-playbook_writing-running-playbook">5.2. Writing your first playbook</a></li>
+<li><a href="#inspect-playbook_context_writing-running-playbook">5.3. Inspecting your playbook</a>
+<ul class="sectlevel3">
+<li><a href="#_inline_help">5.3.1. Inline help</a></li>
+</ul>
+</li>
+<li><a href="#running-playbook-extension_writing-running-playbook">5.4. Running your playbook</a>
+<ul class="sectlevel3">
+<li><a href="#extension-run-ansible-playbook_writing-running-playbook">5.4.1. Running your playbook with <code>ansible-playbook</code></a></li>
+<li><a href="#extension-run-ansible-navigator_writing-running-playbook">5.4.2. Running your playbook with <code>ansible-navigator</code></a></li>
+<li><a href="#working-with-ee_writing-running-playbook">5.4.3. Working with execution environments</a></li>
+</ul>
+</li>
+<li><a href="#debugging-playbook_writing-running-playbook">5.5. Debugging your playbook</a>
+<ul class="sectlevel3">
+<li><a href="#_error_messages">5.5.1. Error messages</a></li>
+</ul>
+</li>
+<li><a href="#test-playbook_writing-running-playbook">5.6. Testing your playbooks</a></li>
+</ul>
+</li>
+<li><a href="#publishing-playbook-collection-aap">6. Publishing and running your playbooks in Ansible Automation Platform</a>
+<ul class="sectlevel2">
+<li><a href="#devtools-save-scm_publishing-playbook-collection-aap-intro">6.1. Saving your project in SCM</a></li>
+<li><a href="#create-aap-job_publishing-playbook-collection-aap-intro">6.2. Running your playbook in Ansible Automation Platform</a></li>
+</ul>
+</li>
+<li><a href="#devtools-develop-collections_develop-automation-content">7. Developing collections</a></li>
+<li><a href="#devtools-create-roles-collection_develop-automation-content">8. Creating a collection for distributing roles</a>
+<ul class="sectlevel2">
+<li><a href="#plan-roles-collection_devtools-create-roles-collection">8.1. Planning your collection</a></li>
+<li><a href="#devtools-roles-collection-prerequisites_devtools-create-roles-collection">8.2. Prerequisites</a></li>
+<li><a href="#devtools-scaffold-roles-collection_devtools-create-roles-collection">8.3. Scaffolding a collection for your roles</a></li>
+<li><a href="#devtools-migrate-existing-roles-collection_devtools-create-roles-collection">8.4. Migrating existing roles to your collection</a></li>
+<li><a href="#devtools-create-new-role-in-collection_devtools-create-roles-collection">8.5. Creating a new role in your collection</a></li>
+<li><a href="#devtools-docs-roles-collection_devtools-create-roles-collection">8.6. Adding documentation for your roles collection</a>
+<ul class="sectlevel3">
+<li><a href="#_documenting_your_roles">8.6.1. Documenting your roles</a></li>
+<li><a href="#_documenting_your_collection">8.6.2. Documenting your collection</a></li>
+</ul>
+</li>
+<li><a href="#devtools-publish-roles-collection-pah_devtools-create-roles-collection">8.7. Publishing your collection in private automation hub</a>
+<ul class="sectlevel3">
+<li><a href="#devtools-use-roles-collections-aap_devtools-create-roles-collection">8.7.1. Using your collection in projects in Red Hat Ansible Automation Platform</a></li>
 </ul>
 </li>
 </ul>
@@ -486,7 +560,1484 @@ This document has been updated to include information for the latest release of 
 </div>
 </div>
 <div class="sect1">
-<h2 id="devtools-develop-collections_develop-automation-content">1. Developing collections</h2>
+<h2 id="devtools-intro">1. Ansible development tools</h2>
+<div class="sectionbody">
+<div class="paragraph _abstract">
+<p>Ansible development tools (<code>ansible-dev-tools</code>) is a suite of tools provided with Ansible Automation Platform to help automation creators to
+create, test, and deploy playbook projects, execution environments, and collections.</p>
+</div>
+<div class="paragraph">
+<p>The Ansible VS Code extension by Red Hat integrates most of the Ansible development tools:
+you can use these tools from the VS Code user interface.</p>
+</div>
+<div class="paragraph">
+<p>Use Ansible development tools during local development of playbooks, local testing, and in a CI pipeline (linting and testing).</p>
+</div>
+<div class="paragraph">
+<p>This document describes how to use Ansible development tools to create a playbook project that contains playbooks and roles that you can reuse within the project.
+It also describes how to test the playbooks and deploy the project on your {AAP} instance so that you can use the playbooks in automation jobs.</p>
+</div>
+<div class="sect2">
+<h3 id="devtools-components_devtools-intro">1.1. Ansible development tools components</h3>
+<div class="paragraph _abstract">
+<p>You can operate some Ansible development tools from the VS Code UI when you have installed the Ansible extension,
+and the remainder from the command line.
+VS Code is a free open-source code editor available on Linux, Mac, and Windows.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Ansible VS Code extension</dt>
+<dd>
+<p>This is not packaged with the Ansible Automation Platform RPM package, but it is an integral part of the automation creation workflow.
+From the VS Code UI, you can use the Ansible development tools for the following tasks:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Scaffold directories for a playbook project or a collection.</p>
+</li>
+<li>
+<p>Write playbooks with the help of syntax highlighting and auto-completion.</p>
+</li>
+<li>
+<p>Debug your playbooks with a linter.</p>
+</li>
+<li>
+<p>Execute playbooks with Ansible Core using <code>ansible-playbook</code>.</p>
+</li>
+<li>
+<p>Execute playbooks in an execution environment with <code>ansible-navigator</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>From the VS Code extension, you can also connect to Red Hat Ansible Lightspeed with IBM watsonx Code Assistant.</p>
+</div>
+</dd>
+<dt class="hdlist1">Command-line Ansible development tools</dt>
+<dd>
+<p>You can perform the following tasks with Ansible development tools from the command line,
+including the terminal in VS Code:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create an execution environment.</p>
+</li>
+<li>
+<p>Test your playbooks, roles, modules, plugins and collections.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developer-workflow">2. Workflow for developing automation content</h2>
+<div class="sectionbody">
+<div class="sect2 _abstract">
+<h3 id="devtools-workflow_developer-workflow">2.1. Workflow</h3>
+<div class="sect3 _abstract">
+<h4 id="_create">2.1.1. Create</h4>
+<div class="paragraph">
+<p>In the create  stage, you create a new playbook project locally, using VS Code. The following is a typical workflow:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install and run the Ansible extension in VS Code.</p>
+</li>
+<li>
+<p>Scaffold a playbook project from VS Code.</p>
+</li>
+<li>
+<p>Add playbook files to your project and edit them in VS Code.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test">2.1.2. Test</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Debug your playbook with the help of <code>ansible-lint</code>.</p>
+</li>
+<li>
+<p>Select or create an automation execution environment so that your local environment replicates the environment on Ansible Automation Platform.</p>
+</li>
+<li>
+<p>Run your playbooks from VS Code, using <code>ansible-playbook</code> or using <code>ansible-navigator</code> with an execution environment.</p>
+</li>
+<li>
+<p>Test your playbooks by running them on an execution environment that replicates your production environment.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_deploy">2.1.3. Deploy</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Push your playbooks project to a source control repository.</p>
+</li>
+<li>
+<p>Set up credentials on Ansible Automation Platform to pull from your source control repository and create a project for your playbook repository.</p>
+</li>
+<li>
+<p>If you have created an execution environment, push it to private automation hub.</p>
+</li>
+<li>
+<p>Create a job template on Ansible Automation Platform that runs a playbook from your project, and specify the execution environment that you want to use.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-devtools">3. Installing Ansible development tools</h2>
+<div class="sectionbody">
+<div class="paragraph _abstract">
+<p>Red Hat provides two options for installing Ansible development tools.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Installation on a RHEL container running inside VS Code.
+You can install this option on MacOS, Windows, and Linux systems.</p>
+</li>
+<li>
+<p>Installation on your local RHEL system using an RPM (Red Hat Package Manager) package.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="devtools-requirements_installing-devtools">3.1. Requirements</h3>
+<div class="paragraph _abstract">
+<p>To install and use Ansible development tools, you must meet the following requirements.
+Extra requirements for Windows installations and containerized installations are indicated in the procedures.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Python 3.10 or later.</p>
+</li>
+<li>
+<p>VS Code (Visual Studio Code) with the Ansible extension added. See
+<a href="#devtools-install-vsc_installing-devtools">Installing VS Code</a>.</p>
+</li>
+<li>
+<p>For containerized installations, the Micorsoft Dev Containers VS Code extension. See
+<a href="#devtools-ms-dev-containers-ext_installing-devtools">Installing and configuring the Dev Containers extension</a>.</p>
+</li>
+<li>
+<p>A containerization platform, for example Podman, Podman Desktop, Docker, or Docker Desktop.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The installation procedure for Ansible development tools on Windows covers the use of Podman Desktop only.
+See <a href="devtools-install-podman-desktop-wsl_installing-devtools.html#installing_podman_desktop_on_a_windows_machine">Installing Podman Desktop on a Windows machine</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>You have a Red Hat account and you can log in to the Red Hat container registry at <code>registry.redhat.io</code>.
+For information about logging in to <code>registry.redhat.io</code>, see
+<a href="#devtools-setup-registry-redhat-io_installing-devtools">Authenticating with the Red Hat container registry</a>.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="devtools-install-podman-desktop-wsl_installing-devtools">3.1.1. Requirements for Ansible development tools on Windows</h4>
+<div class="paragraph _abstract">
+<p>If you are installing Ansible development tools on a container in VS Code on Windows, there are extra requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows Subsystem for Linux(WSL2)</p>
+</li>
+<li>
+<p>Podman Desktop</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_installing_wsl">Installing WSL</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install WSL2 without a distribution:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ `wsl --install --no-distribution`</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use <code>cgroupsv2</code> by disabling <code>cgroupsv1</code> for WSL2:</p>
+<div class="paragraph">
+<p>Edit the <code>%USERPROFILE%/wsl.conf</code> file and add the following lines to force <code>cgroupv2</code> usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[wsl2]
+kernelCommandLine = cgroup_no_v1="all"</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_installing_podman_desktop_on_a_windows_machine">Installing Podman Desktop on a Windows machine</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install Podman Desktop. Follow the instructions in
+<a href="https://podman-desktop.io/docs/installation/windows-install">Installing Podman Desktop and Podman on Windows</a>
+in the Podman Desktop documentation.</p>
+<div class="paragraph">
+<p>You do not need to change the default settings in the set-up wizard.</p>
+</div>
+</li>
+<li>
+<p>Ensure the podman machine is using <code>cgroupsv2</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ podman info | findstr cgroup</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Test Podman Desktop:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ podman run hello</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_configuring_settings_for_podman_desktop">Configuring settings for Podman Desktop</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a <code>%USERPROFILE%\bin\docker.bat</code> file with the following content:</p>
+<div class="listingblock">
+<div class="content">
+<pre>@echo off
+podman %*</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This avoids having to install Docker as required by the VS Code <code>Dev Container</code> extension.</p>
+</div>
+</li>
+<li>
+<p>Add the <code>%USERPROFILE%\bin</code> directory to the <code>PATH</code>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select <strong>Settings</strong> and search for "Edit environment variables for your account" to display all of the user environment variables.</p>
+</li>
+<li>
+<p>Highlight "Path" in the top user variables box, click <b class="button">Edit</b> and add the path.</p>
+</li>
+<li>
+<p>Click <b class="button">Save</b> to set the path for any new console that you open.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="devtools-setup-registry-redhat-io_installing-devtools">3.1.2. Authenticating with the Red Hat container registry</h4>
+<div class="paragraph _abstract">
+<p>All container images available through the Red Hat container catalog are hosted on an image registry,
+<code>registry.redhat.io</code>.
+The registry requires authentication for access to images.</p>
+</div>
+<div class="paragraph">
+<p>To use the <code>registry.redhat.io</code> registry, you must have a Red Hat login.
+This is the same account that you use to log in to the Red Hat Customer Portal (access.redhat.com) and manage your Red Hat subscriptions.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are planning to install the Ansible development tools on a container inside VS Code,
+you must log in to <code>registry.redhat.io</code> before launching VS Code so that VS Code can pull the
+<code>devtools</code> container from <code>registry.redhat.io</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you are running Ansible development tools on a container inside VS Code and you want to pull execution environments
+or the <code>devcontainer</code> to use as an execution environment,
+you must log in from a terminal prompt within the <code>devcontainer</code> from a terminal inside VS Code.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can use the <code>podman login</code> or <code>docker login</code> commands with your credentials to access content on the registry.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Podman</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>$ podman login registry.redhat.io
+Username: my__redhat_username
+Password: ***********</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Docker</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>$ docker login registry.redhat.io
+Username: my__redhat_username
+Password: ***********</pre>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information about Red Hat container registry authentication, see
+<a href="https://access.redhat.com/RegistryAuthentication">Red Hat Container Registry Authentication</a>
+on the Red Hat customer portal.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="devtools-install-vsc_installing-devtools">3.1.3. Installing VS Code</h4>
+<div class="ulist _abstract">
+<ul>
+<li>
+<p>To install VS Code, follow the instructions on the <a href="https://code.visualstudio.com/download">Download Visual Studio Code page</a> in the Visual Studio Code documentation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="devtools-install-extension_installing-devtools">3.1.4. Installing the VS Code Ansible extension</h4>
+<div class="paragraph _abstract">
+<p>The Ansible extension adds language support for Ansible to VS Code.
+It incorporates Ansible development tools to facilitate creating and running automation content.</p>
+</div>
+<div class="paragraph">
+<p>For a full description of the Ansible extension, see the <a href="https://marketplace.visualstudio.com/items?itemName=redhat.ansible">Visual Studio Code Marketplace</a>.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="https://red.ht/aap-lp-vscode-essentials">Learning path - Getting Started with the Ansible VS Code Extension</a> for tutorials on working with the extension.</p>
+</div>
+<div class="paragraph">
+<p>To install the Ansible VS Code extension:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open VS Code.</p>
+</li>
+<li>
+<p>Click the <strong>Extensions</strong> (<span class="image"><img src="images/vscode-extensions-icon.png" alt="Extensions" width="15" height="15"></span>) icon in the Activity Bar, or click <span class="menuseq"><b class="menu">View</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Extensions</b></span>, to display the <strong>Extensions</strong> view.</p>
+</li>
+<li>
+<p>In the search field in the <strong>Extensions</strong> view, type <code>Ansible Red Hat</code>.</p>
+</li>
+<li>
+<p>Select the Ansible extension and click <b class="button">Install</b>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When the language for a file is recognized as Ansible, the Ansible extension provides features such as auto-completion, hover, diagnostics, and goto.
+The language identified for a file is displayed in the Status bar at the bottom of the VS Code window.</p>
+</div>
+<div class="paragraph">
+<p>The following files are assigned the Ansible language:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YAML files in a <code>/playbooks</code> directory</p>
+</li>
+<li>
+<p>Files with the following double extension: <code>.ansible.yml</code> or <code>.ansible.yaml</code></p>
+</li>
+<li>
+<p>Certain YAML names recognized by Ansible, for example <code>site.yml</code> or <code>site.yaml</code></p>
+</li>
+<li>
+<p>YAML files whose filename contains "playbook": <code><strong>playbook</strong>.yml</code> or <code><strong>playbook</strong>.yaml</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the extension does not identify the language for your playbook files as Ansible, follow the procedure in
+<a href="#devtools-extension-set-language_installing-devtools">Associating the Ansible language to YAML files</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="devtools-extension-settings_installing-devtools">3.1.5. Configuring Ansible extension settings</h4>
+<div class="paragraph _abstract">
+<p>The Ansible extension supports multiple configuration options.</p>
+</div>
+<div class="paragraph">
+<p>You can configure the settings for the extension on a user level, on a workspace level, or for a particular directory.
+User-based settings are applied globally for any instance of VS Code that is opened.
+Workspace settings are stored within your workspace and only apply when the current workspace is opened.</p>
+</div>
+<div class="paragraph">
+<p>It is useful to configure settings for your workspace for the following reasons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you define and maintain configurations specific to your playbook project,
+you can customize your Ansible development environment for individual projects without altering your preferred setup for other work.
+You can have different settings for a Python project, an Ansible project, and a C++ project, each optimized for the respective stack without the need to manually reconfigure settings each time you switch projects.</p>
+</li>
+<li>
+<p>If you include workspace settings when setting up version control for a project you want to share with your team, everyone uses the same configuration for that project.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Open the Ansible extension settings:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click the 'Extensions' icon in the activity bar.</p>
+</li>
+<li>
+<p>Select the Ansible extension, and click the 'gear' icon and then <strong>Extension Settings</strong> to display the extension settings.</p>
+<div class="paragraph">
+<p>Alternatively, click <span class="menuseq"><b class="menu">Code</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">Settings</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Settings</b></span> to open the <strong>Settings</strong> page.</p>
+</div>
+</li>
+<li>
+<p>Enter <code>Ansible</code> in the search bar to display the settings for the extension.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Select the <strong>Workspace</strong> tab to configure your settings for the current VS Code workspace.</p>
+</li>
+<li>
+<p>The Ansible extension settings are pre-populated.
+Modify the settings to suit your requirements:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check the <span class="menuseq"><b class="menu">Ansible</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">Validation</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Lint: Enabled</b></span> box to enable ansible-lint.</p>
+</li>
+<li>
+<p>Check the <code>Ansible Execution Environment: Enabled</code> box to use an execution environment.</p>
+</li>
+<li>
+<p>Specify the execution environment image you want to use in the <strong>Ansible &gt; Execution Environment: image</strong> field.</p>
+</li>
+<li>
+<p>To use Red Hat Ansible Lightspeed, check the <strong>Ansible &gt; Lightspeed: Enabled</strong> box, and enter the URL for Lightspeed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The settings are documented on the <a href="https://marketplace.visualstudio.com/items?itemName=redhat.ansible">Ansible VS Code Extension by Red Hat page</a> in the VisualStudio marketplace documentation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="devtools-extension-set-language_installing-devtools">3.1.6. Associating the Ansible language to YAML files</h4>
+<div class="paragraph _abstract">
+<p>The Ansible VS Code extension works only when the language associated with a file is set to Ansible.
+The extension provides features that help create Ansible playbooks, such as auto-completion, hover, and diagnostics.</p>
+</div>
+<div class="paragraph">
+<p>The Ansible VS Code extension automatically associates the Ansible language with some files.
+The procedures below describe how to set the language for files that are not recognized as Ansible files.</p>
+</div>
+<div class="paragraph">
+<div class="title">Manually associating the Ansible language to YAML files</div>
+<p>The following procedure describes how to manually assign the Ansible language to a YAML file that is open in VS Code.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open or create a YAML file in VS Code.</p>
+</li>
+<li>
+<p>Hover the cursor over the language identified in the status bar at the bottom of the VS Code window to open the <strong>Select Language Mode</strong> list.</p>
+</li>
+<li>
+<p>Select <strong>Ansible</strong> in the list.</p>
+<div class="paragraph">
+<p>The language shown in the status bar at the bottom of the VS Code window for the file is changed to Ansible.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Adding persistent file association for the Ansible language to <code>settings.json</code></div>
+<p>Alternatively, you can add file association for the Ansible language in your <code>settings.json</code> file.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the <code>settings.json</code> file:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <span class="menuseq"><b class="menu">View</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Command Palette</b></span> to open the command palette.</p>
+</li>
+<li>
+<p>Enter <code>Workspace settings</code> in the search box and select <strong>Open Workspace Settings (JSON)</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Add the following code to <code>settings.json</code>.</p>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  ...
+
+  "files.associations": {
+    "*plays.yml": "ansible",
+    "*init.yml": "yaml",
+  }
+}</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="devtools-ms-dev-containers-ext_installing-devtools">3.1.7. Installing and configuring the <code>Dev Containers</code> extension</h4>
+<div class="paragraph">
+<p>If you are installing the containerized version of Ansible development tools, you must install the
+<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Microsoft Dev Containers</a>
+extension in VS Code.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open VS Code.</p>
+</li>
+<li>
+<p>Click the <strong>Extensions</strong> (<span class="image"><img src="images/vscode-extensions-icon.png" alt="Extensions" width="15" height="15"></span>) icon in the Activity Bar, or click <span class="menuseq"><b class="menu">View</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Extensions</b></span>, to display the <strong>Extensions</strong> view.</p>
+</li>
+<li>
+<p>In the search field in the <strong>Extensions</strong> view, type <code>Dev Containers</code>.</p>
+</li>
+<li>
+<p>Select the Dev Containers extension from Microsoft and click <b class="button">Install</b>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If you are using Podman or Podman Desktop as your containerization platform, you must modify the default settings in the <code>Dev Containers</code> extension.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Replace docker with podman in the <code>Dev Containers</code> extension settings:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In VS Code, open the settings editor.</p>
+</li>
+<li>
+<p>Search for <code>@ext:ms-vscode-remote.remote-containers</code>.</p>
+<div class="paragraph">
+<p>Alternatively, click the <strong>Extensions</strong> icon in the activity bar and click the gear icon for the <code>Dev Containers</code> extension.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Set <code>Dev &gt; Containers:Docker Path</code> to <code>podman</code>.</p>
+</li>
+<li>
+<p>Set <code>Dev &gt; Containers:Docker Compose Path</code> to <code>podman-compose</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="devtools-install-container_installing-devtools">3.2. Installing Ansible development tools on a container inside VS Code</h3>
+<div class="paragraph">
+<p>The Dev Containers VS Code extension requires a <code>.devcontainer</code> file to store settings for your dev containers.
+You must create a config file for your dev container and reopen your directory in a container in VS Code.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have installed a containerization platform, for example Podman, Podman Desktop, Docker, or Docker Desktop.</p>
+</li>
+<li>
+<p>You have a Red Hat login and you have logged in to the Red Hat registry at <code>registry.redhat.io</code>.
+For information about logging in to <code>registry.redhat.io</code>, see
+<a href="#devtools-setup-registry-redhat-io_installing-devtools">Authenticating with the Red Hat container registry</a>.</p>
+</li>
+<li>
+<p>You have installed VS Code.</p>
+</li>
+<li>
+<p>You have installed the Ansible extension in VS Code.</p>
+</li>
+<li>
+<p>You have installed the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Microsoft Dev Containers</a> extension in VS Code.</p>
+</li>
+<li>
+<p>If you are installing Ansible development tools on Windows, launch VS Code and connect to the WSL machine:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click the <code>Remote</code> (<span class="image"><img src="images/vscode-remote-icon.png" alt="Remote" width="15" height="15"></span>) icon.</p>
+</li>
+<li>
+<p>In the dropdown menu that appears, select the option to connect to the WSL machine.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In VS Code, open the directory where you want to store the configuration files for your development container.</p>
+</li>
+<li>
+<p>Create a subdirectory called <code>.devcontainer</code>.</p>
+</li>
+<li>
+<p>In the <code>.devcontainer</code> directory, create a file called <code>devcontainer.json</code>.</p>
+<div class="paragraph">
+<p>You must use different settings depending on whether you are using Podman or Docker.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are using Podman or Podman desktop, add the following text to <code>devcontainer.json</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "name": "ansible-dev-container-podman",
+  "image": "registry.redhat.io/ansible-automation-platform-25/ansible-dev-tools-rhel8:latest",
+  "containerUser": "root",
+  "runArgs": [
+    "--cap-add=CAP_MKNOD",
+    "--cap-add=NET_ADMIN",
+    "--cap-add=SYS_ADMIN",
+    "--cap-add=SYS_RESOURCE",
+    "--device",
+    "/dev/fuse",
+    "--security-opt",
+    "seccomp=unconfined",
+    "--security-opt",
+    "label=disable",
+    "--security-opt",
+    "apparmor=unconfined",
+    "--security-opt",
+    "unmask=/sys/fs/cgroup",
+    "--userns=host",
+    "--hostname=ansible-dev-container"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": ["redhat.ansible"]
+    }
+  }
+}</pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you are using Docker or Docker desktop, add the following text to <code>devcontainer.json</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "name": "ansible-dev-container-docker",
+  "image": "registry.redhat.io/ansible-automation-platform-25/ansible-dev-tools-rhel8:latest",
+  "containerUser": "root",
+  "runArgs": [
+    "--privileged",
+    "--device",
+    "/dev/fuse",
+    "--hostname=ansible-dev-container"
+  ],
+  "updateRemoteUserUID": true,
+  "customizations": {
+    "vscode": {
+      "extensions": ["redhat.ansible"]
+    }
+  }
+}</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Reopen the directory in a container.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If VS Code detects that your directory contains the <code>devcontainer.json</code> file, the following notification appears:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/devtools-reopen-in-container.png" alt="Reopen in container">
+</div>
+</div>
+<div class="paragraph">
+<p>Click <strong>Reopen in Container</strong>.</p>
+</div>
+</li>
+<li>
+<p>If the notification does not appear, click the <code>Remote</code> (<span class="image"><img src="images/vscode-remote-icon.png" alt="Remote" width="15" height="15"></span>) icon. In the dropdown menu that appears, select <strong>Reopen in Container</strong>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <strong>Remote ()</strong> status in the VS Code Status bar displays <code>opening Remote</code> and a notification indicates the progress in opening the container.</p>
+</div>
+<div class="paragraph">
+<div class="title">Verification</div>
+<p>When the directory reopens in a container, the <strong>Remote ()</strong> status displays <code>Dev Container: ansible-dev-container</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The base image for the container is a Universal Base Image Minimal (UBI Minimal) image that uses <code>microdnf</code> as a package manager.
+The <code>dnf</code> and <code>yum</code> package managers are not available in the container.</p>
+</div>
+<div class="paragraph">
+<p>For information about using <code>microdnf</code> in containers based on UBI Minimal images, see
+<a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/building_running_and_managing_containers/assembly_adding-software-to-a-ubi-container_building-running-and-managing-containers#proc_adding-software-in-a-minimal-ubi-container_assembly_adding-software-to-a-ubi-container">Adding software in a minimal UBI container</a>
+in the Red Hat Enterprise Linux <em>Building, running, and managing containers</em> guide.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="devtools-install_installing-devtools">3.3. Installing Ansible development tools from a package on RHEL</h3>
+<div class="paragraph _abstract">
+<p>Ansible development tools is bundled in the Ansible Automation Platform RPM (Red Hat Package Manager) package.
+Refer to the <a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/red_hat_ansible_automation_platform_installation_guide"><em>Red Hat Ansible Automation Platform Installation guide</em></a> documentation for information on installing Ansible Automation Platform.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have installed RHEL.</p>
+</li>
+<li>
+<p>You have registered your system with Red Hat Subscription Manager.</p>
+</li>
+<li>
+<p>You have installed a containerization platform, for example Podman or Docker.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Run the following command to check whether Simple Content Access (SCA) is enabled:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ su subscription-manager status</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If Simple Content Access is enabled, the output contains the following message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Content Access Mode is set to Simple Content Access.</pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If Simple Content Access is not enabled, attach the Red Hat Ansible Automation Platform SKU:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ subscription-manager attach --pool=&lt;sku-pool-id&gt;</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Install Ansible development tools with the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ sudo dnf install --enablerepo=ansible-automation-platform-2.4-for-rhel-8-x86_64-rpms ansible-dev-tools</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ sudo dnf install --enablerepo=ansible-automation-platform-2.4-for-rhel-9-x86_64-rpms ansible-dev-tools</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Verification:</div>
+<p>Verify that the Ansible development tools components have been installed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">$ rpm -aq | grep ansible</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output displays the Ansible packages that are installed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ansible-sign-0.1.1-2.el9ap.noarch
+ansible-creator-24.4.1-1.el9ap.noarch
+python3.11-ansible-runner-2.4.0-0.1.20240412.git764790f.el9ap.noarch
+ansible-runner-2.4.0-0.1.20240412.git764790f.el9ap.noarch
+ansible-builder-3.1.0-0.2.20240413.git167ed5c.el9ap.noarch
+ansible-dev-environment-24.1.0-2.el9ap.noarch
+ansible-core-2.16.6-0.1.20240413.gite636132.el9ap.noarch
+python3.11-ansible-compat-4.1.11-2.el9ap.noarch
+python3.11-pytest-ansible-24.1.2-1.el9ap.noarch
+ansible-lint-6.14.3-4.el9ap.noarch
+ansible-navigator-3.4.1-2.el9ap.noarch
+python3.11-tox-ansible-24.2.0-1.el9ap.noarch
+ansible-dev-tools-2.5-2.el9ap.noarch</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On successful installation, you can view the help documentation for ansible-creator:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ansible-creator --help
+
+usage: ansible-creator [-h] [--version] command ...
+
+The fastest way to generate all your ansible content.
+
+Positional arguments:
+ command
+  add           Add resources to an existing Ansible project.
+  init          Initialize a new Ansible project.
+
+Options:
+ --version      Print ansible-creator version and exit.
+ -h     --help  Show this help message and exit</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-playbook-project">4. Creating a playbook project</h2>
+<div class="sectionbody">
+<div class="sect2 _abstract">
+<h3 id="scaffolding-playbook-project_creating-playbook-project">4.1. Scaffolding a playbook project</h3>
+<div class="paragraph _abstract">
+<p>The following steps describe the process for scaffolding a new playbook project with the Ansible VS Code extension.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You have installed Ansible development tools.</p>
+</li>
+<li>
+<p>You have installed and opened the Ansible VS Code extension.</p>
+</li>
+<li>
+<p>You have identified a directory where you want to save the project.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Open VS Code.</p>
+</li>
+<li>
+<p>Click the Ansible icon in the VS Code activity bar to open the Ansible extension.</p>
+</li>
+<li>
+<p>Select <strong>Get started</strong> in the <strong>Ansible content creator</strong> section.</p>
+<div class="paragraph">
+<p>The <strong>Ansible content creator</strong> tab opens.</p>
+</div>
+</li>
+<li>
+<p>In the <strong>Create</strong> section, click <strong>Ansible playbook project</strong>.</p>
+<div class="paragraph">
+<p>The <strong>Create Ansible project</strong> tab opens.</p>
+</div>
+</li>
+<li>
+<p>In the form in the <strong>Create Ansible project</strong> tab, enter the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Destination directory</strong>: Enter the path to the directory where you want to scaffold your new playbook project.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you enter an existing directory name, the scaffolding process overwrites the contents of that directory.
+The scaffold process only allows you to use an existing directory if you enable the <code>Force</code> option.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are using the containerized version of Ansible Dev tools, the destination directory path is relative to the container, not a path in your local system. To discover the current directory name in the container, run the <code>pwd</code> command in a terminal in VS Code. If the current directory in the container is <code>workspaces</code>, enter <code>workspaces/&lt;destination_directory_name&gt;</code>.</p>
+</li>
+<li>
+<p>If you are using a locally installed version of Ansible Dev tools, enter the full path to the directory, for example <code>/user/&lt;username&gt;/projects/&lt;destination_directory_name&gt;</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>SCM organization and SCM project</strong>: Enter a name for the directory and subdirectory where you can store roles that you create for your playbooks.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enter a name for the directory where you want to scaffold your new playbook project.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Verification</div>
+<p>After the project directory has been created, the following message appears in the <strong>Logs</strong> pane of the <strong>Create Ansible Project</strong> tab.
+In this example, the destination directory name is <code>destination_directory_name</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>------------------ ansible-creator logs ------------------
+    Note: ansible project created at /Users/username/test_project</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following directories and files are created in your project directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tree -a -L 5 .
+├── .devcontainer
+│   ├── devcontainer.json
+│   ├── docker
+│   │   └── devcontainer.json
+│   └── podman
+│       └── devcontainer.json
+├── .gitignore
+├── README.md
+├── ansible-navigator.yml
+├── ansible.cfg
+├── collections
+│   ├── ansible_collections
+│   │   └── scm_organization_name
+│   │       └── scm_project_name
+│   └── requirements.yml
+├── devfile.yaml
+├── inventory
+│   ├── group_vars
+│   │   ├── all.yml
+│   │   └── web_servers.yml
+│   ├── host_vars
+│   │   ├── server1.yml
+│   │   ├── server2.yml
+│   │   ├── server3.yml
+│   │   ├── switch1.yml
+│   │   └── switch2.yml
+│   └── hosts.yml
+├── linux_playbook.yml
+├── network_playbook.yml
+└── site.yml</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="writing-running-playbook_develop-automation-content">5. Writing and running a playbook with Ansible development tools</h2>
+<div class="sectionbody">
+<div class="sect2 _abstract">
+<h3 id="devtools-set-up-ansible-config_writing-running-playbook">5.1. Setting up the Ansible configuration file for your playbook project</h3>
+<div class="paragraph _abstract">
+<p>When you scaffolded your playbook project, an Ansible configuration file, <code>ansible.cfg</code>,
+was added to the root directory of your project.</p>
+</div>
+<div class="paragraph">
+<p>If you have configured a default Ansible configuration file in <code>/etc/ansible/ansible.cfg</code>,
+copy any settings that you want to reuse in your project from your default Ansible configuration file
+to the <code>ansible.cfg</code> file in your project&#8217;s root directory.</p>
+</div>
+<div class="paragraph">
+<p>To learn more about the Ansible configuration file, see
+<a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html">Ansible Configuration Settings</a>
+in the Ansible documentation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="writing-playbook_writing-running-playbook">5.2. Writing your first playbook</h3>
+<div class="paragraph _abstract">
+<p>The instructions below describe how Ansible development tools help you to create and run your first playbook in VS Code.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have installed and opened the Ansible VS Code extension.</p>
+</li>
+<li>
+<p>You have opened a terminal in VS Code.</p>
+</li>
+<li>
+<p>You have installed <code>ansible-devtools</code>.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create a new .yml file in VS Code for your playbook, for example <code>example_playbook.yml</code>. Put it in the same directory level as the example <code>site.yml</code> file.</p>
+</li>
+<li>
+<p>Add the following example code into the playbook file and save the file.
+The playbook consists of a single play that executes a <code>ping</code> to your local machine.</p>
+<div class="listingblock">
+<div class="content">
+<pre>---
+- name: My first play
+  hosts: localhost
+  tasks:
+    - name: Ping my hosts
+      ansible.builtin.ping:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Ansible-lint</code> runs in the background and displays errors in the <strong>Problems</strong> tab of the terminal.
+There are no errors in this playbook:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ansible-lint-no-errors.png" alt="Ansible-lint showing no errors in a playbook">
+</div>
+</div>
+</li>
+<li>
+<p>Save your playbook file.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="inspect-playbook_context_writing-running-playbook">5.3. Inspecting your playbook</h3>
+<div class="paragraph _abstract">
+<p>The Ansible VS Code extension provides syntax highlighting and assists you with indentation in <code>.yml</code> files.</p>
+</div>
+<div class="paragraph">
+<p>The following rules apply for playbook files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Every playbook file must finish with a blank line.</p>
+</li>
+<li>
+<p>Trailing spaces at the end of lines are not allowed.</p>
+</li>
+<li>
+<p>Every playbook and every play require an identifier (name).</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_inline_help">5.3.1. Inline help</h4>
+<div class="paragraph">
+<p>The Ansible extension also provides inline help when you are editing your playbook file.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you hover your mouse over a keyword or a module name, the Ansible extension provides documentation:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ansible-lint-keyword-help.png" alt="Ansible-lint showing no errors in a playbook">
+</div>
+</div>
+</li>
+<li>
+<p>If you begin to type the name of a module, for example <code>ansible.builtin.ping</code>, the extension provides a list of suggestions.</p>
+<div class="paragraph">
+<p>Select one of the suggestions to autocomplete the line.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ansible-lint-module-completion.png" alt="Ansible-lint showing no errors in a playbook">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="running-playbook-extension_writing-running-playbook">5.4. Running your playbook</h3>
+<div class="paragraph _abstract">
+<p>The Ansible VS Code extension provides two options to run your playbook:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ansible-playbook</code> runs the playbook on your local machine using Ansible Core.</p>
+</li>
+<li>
+<p><code>ansible-navigator</code> runs the playbook in an execution environment in the same manner that Ansible Automation Platform runs an automation job.
+You specify the base image for the execution environment in the Ansible extension settings.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="extension-run-ansible-playbook_writing-running-playbook">5.4.1. Running your playbook with <code>ansible-playbook</code></h4>
+<div class="ulist">
+<div class="title">Procedure</div>
+<ul>
+<li>
+<p>To run a playbook, right-click the playbook name in the <strong>Explorer</strong> pane, then select <span class="menuseq"><b class="menu">Run Ansible Playbook via</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Run playbook via <code>ansible-playbook</code></b></span>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="images/ansible-playbook-run.png" alt="Run playbook via ansible-playbook"></span></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The output is displayed in the <strong>Terminal</strong> tab of the VS Code terminal.
+The <code>ok=2</code> and <code>failed=0</code> messages indicate that the playbook ran successfully.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/ansible-playbook-success.png" alt="Success message for ansible-playbook execution"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="extension-run-ansible-navigator_writing-running-playbook">5.4.2. Running your playbook with <code>ansible-navigator</code></h4>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>In the Ansible extension settings, enable the use of an execution environment in <strong>Ansible Execution Environment &gt; Enabled</strong>.</p>
+</li>
+<li>
+<p>Enter the path or URL for the execution environment image in <strong>Ansible &gt; Execution Environment: Image</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>To run a playbook, right-click the playbook name in the Explorer pane, then select <span class="menuseq"><b class="menu">Run Ansible Playbook via</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Run playbook via ansible-navigator run</b></span>.</p>
+<div class="paragraph">
+<p>The output is displayed in the <strong>Terminal</strong> tab of the VS Code terminal.
+The <strong>Successful</strong> status indicates that the playbook ran successfully.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/devtools-extension-navigator-output.png" alt="Output for ansible-navigator execution"></span></p>
+</div>
+</li>
+<li>
+<p>Enter the number next to a play to step into the play results.
+The example playbook only contains one play.
+Enter <code>0</code> to view the status of the tasks executed in the play.</p>
+<div class="paragraph">
+<p><span class="image"><img src="images/devtools-extension-navigator-tasks.png" alt="Tasks in ansible-navigator output"></span></p>
+</div>
+<div class="paragraph">
+<p>Type the number next to a task to review the task results.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For more information on running playbooks with automation content navigator, see
+<a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/using_content_navigator/assembly-execute-playbooks-navigator_ansible-navigator#proc-execute-playbook-tui_execute-playbooks-navigator">Executing a playbook from automation content navigator</a>
+in the <em>Using content navigator</em> Guide.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="working-with-ee_writing-running-playbook">5.4.3. Working with execution environments</h4>
+<div class="paragraph _abstract">
+<p>You can view the automation execution environments provided by Red Hat in the
+<a href="https://catalog.redhat.com/search?searchType=containers&amp;build_categories_list=Automation%20execution%20environment&amp;p=1">Red Hat Ecosystem Catalog</a>.</p>
+</div>
+<div class="paragraph">
+<p>Click on an execution environment for information on how to download it.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to <code>registry.redhat.io</code> if you have not already done so.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are running Ansible development tools on a container inside VS Code and you want to pull execution environments
+or the <code>devcontainer</code> to use as an execution environment,
+you must log in to <code>registry.redhat.io</code> from a terminal prompt within the <code>devcontainer</code> inside VS Code.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Using the information in the
+<a href="https://catalog.redhat.com/search?searchType=containers&amp;build_categories_list=Automation%20execution%20environment&amp;p=1">Red Hat Ecosystem Catalog</a>, download the execution environment you need.</p>
+<div class="paragraph">
+<p>For example, to download the minimal RHEL 8 base image, run the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ podman pull registry.redhat.io/ansible-automation-platform-25/ee-minimal-rhel9</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can build and create custom execution environments with <code>ansible-builder</code>.
+For more information about working with execution environments locally, see
+<a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/creating_and_using_execution_environments">Creating and using execution environments</a>.</p>
+</div>
+<div class="paragraph">
+<p>After customizing your execution environment, you can push your new image to the container registry in automation hub. See
+<a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/creating_and_using_execution_environments/index#assembly-publishing-exec-env">Publishing an automation execution environment</a>
+in the <em>Creating and using execution environments</em> documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="debugging-playbook_writing-running-playbook">5.5. Debugging your playbook</h3>
+<div class="sect3">
+<h4 id="_error_messages">5.5.1. Error messages</h4>
+<div class="paragraph">
+<p>The following playbook contains multiple errors:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- name:
+  hosts: localhost
+  tasks:
+   - name:
+     ansible.builtin.ping:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The errors are indicated with a wavy underline in VS Code.
+Hover your mouse over an error to view the details:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ansible-lint-errors.png" alt="Popup message explaining a playbook error">
+</div>
+</div>
+<div class="paragraph">
+<p>The errors are listed in the <strong>Problems</strong> tab of the VS Code terminal.
+Playbook files that contain errors are indicated with a number in the <strong>Explorer</strong> pane:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ansible-lint-errors-explorer.png" alt="Playbook errors shown in Problems tab and explorer list">
+</div>
+</div>
+<div class="paragraph">
+<p><code>$[0].tasks[0].name None is not of type 'string'</code> indicates that the playbook does not have a label.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="test-playbook_writing-running-playbook">5.6. Testing your playbooks</h3>
+<div class="paragraph _abstract">
+<p>To test your playbooks in your project, run them in a non-production environment such as a lab setup or a virtual machine.</p>
+</div>
+<div class="paragraph">
+<p>Automation content navigator (<code>ansible-navigator</code>) is a text-based user interface (TUI) for developing and troubleshooting Ansible content with execution environments.</p>
+</div>
+<div class="paragraph">
+<p>Running a playbook using <code>ansible-navigator</code> generates verbose output that you can inspect to check whether the playbook is running the way you expected.
+You can specify the execution environment that you want to run your playbooks on, so that your tests replicate the production setup on Ansible Automation Platform:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To run a playbook on an execution environment, run the following command from the terminal in VS Code:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ ansible-navigator run &lt;playbook_name.yml&gt; -eei &lt;execution_environment_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, to execute a playbook called <code>site.yml</code> on the Ansible Automation Platform RHEL 9 minimum execution environment, run the following command from the terminal in VS Code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ansible-navigator run site.yml --eei ee-minimal-rhel8</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The output is displayed in the terminal.
+You can inspect the results and step into each play and task that was executed.</p>
+</div>
+<div class="paragraph">
+<p>For more information about running playbooks, refer to
+<a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/using_content_navigator/assembly-execute-playbooks-navigator_ansible-navigator">Running Ansible playbooks with automation content navigator</a>
+in the <em>Using content navigator</em> guide.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="publishing-playbook-collection-aap">6. Publishing and running your playbooks in Ansible Automation Platform</h2>
+<div class="sectionbody">
+<div class="paragraph _abstract">
+<p>The following procedures describe how to deploy your new playbooks in your instance of Ansible Automation Platform so that you can use them to run automation jobs.</p>
+</div>
+<div class="sect2">
+<h3 id="devtools-save-scm_publishing-playbook-collection-aap-intro">6.1. Saving your project in SCM</h3>
+<div class="paragraph">
+<p>Save your playbook project as a repository in your source control management system, for example GitHub.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Initialize your project directory as a git repository.</p>
+</li>
+<li>
+<p>Push your project up to a source control system such as GitHub.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create-aap-job_publishing-playbook-collection-aap-intro">6.2. Running your playbook in Ansible Automation Platform</h3>
+<div class="paragraph">
+<p>To run your playbook in Ansible Automation Platform, you must create a project in automation controller for the repository where you stored your playbook project.
+You can then create a job template for each playbook from the project.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In a browser, log in to automation controller.</p>
+</li>
+<li>
+<p>Configure a Source Control credential type for your source control system if necessary. See the <a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html-single/automation_controller_user_guide/index#controller-getting-started-create-credential">Creating new credentials</a> section of the <em>Automation controller user guide</em> for more details.</p>
+</li>
+<li>
+<p>In automation controller, create a project for the GitHub repository where you stored your playbook project.
+Refer to the <a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html-single/automation_controller_user_guide/index#controller-projects">Projects</a> chapter of the <em>Automation controller user guide</em>.</p>
+</li>
+<li>
+<p>Create a job template that uses a playbook from the project that you created.
+Refer to the <a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html-single/automation_controller_user_guide/index#controller-create-job-template">Job Templates</a> chapter of the <em>Automation controller user guide</em>.</p>
+</li>
+<li>
+<p>Run your playbook from automation controller by launching the job template. Refer to the <a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html-single/automation_controller_user_guide/index#controller-launch-job-template">Launching a job template</a> section of the <em>Automation controller user guide</em>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="devtools-develop-collections_develop-automation-content">7. Developing collections</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Collections are a distribution format for Ansible content that can include playbooks, roles, modules, and plugins.
@@ -505,7 +2056,7 @@ Typically, collections of roles are distributed for use within your organization
 </div>
 </div>
 <div class="sect1">
-<h2 id="devtools-create-roles-collection_develop-automation-content">2. Creating a collection for distributing roles</h2>
+<h2 id="devtools-create-roles-collection_develop-automation-content">8. Creating a collection for distributing roles</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>An Ansible role is a self-contained unit of Ansible automation content that groups related
@@ -530,7 +2081,7 @@ Inside a collection, you can share custom plug-ins across all roles in the colle
 Push the collection to source control and configure credentials for the repository in Ansible Automation Platform.</p>
 </div>
 <div class="sect2">
-<h3 id="plan-roles-collection_devtools-create-roles-collection">2.1. Planning your collection</h3>
+<h3 id="plan-roles-collection_devtools-create-roles-collection">8.1. Planning your collection</h3>
 <div class="paragraph">
 <p>Organize smaller bundles of curated automation into separate collections for specific functions, rather than creating one big general collection for all of your roles.</p>
 </div>
@@ -540,7 +2091,7 @@ and store roles that manage and deploy networking in AWS in a collection called 
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-roles-collection-prerequisites_devtools-create-roles-collection">2.2. Prerequisites</h3>
+<h3 id="devtools-roles-collection-prerequisites_devtools-create-roles-collection">8.2. Prerequisites</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -564,7 +2115,7 @@ For information about logging in to <code>registry.redhat.io</code>, see
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-scaffold-roles-collection_devtools-create-roles-collection">2.3. Scaffolding a collection for your roles</h3>
+<h3 id="devtools-scaffold-roles-collection_devtools-create-roles-collection">8.3. Scaffolding a collection for your roles</h3>
 <div class="paragraph">
 <p>You can scaffold a collection for your roles from the Ansible extension in VS Code.</p>
 </div>
@@ -677,7 +2228,7 @@ enter the full path to the directory, for example <code>/user/&lt;username&gt;/p
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-migrate-existing-roles-collection_devtools-create-roles-collection">2.4. Migrating existing roles to your collection</h3>
+<h3 id="devtools-migrate-existing-roles-collection_devtools-create-roles-collection">8.4. Migrating existing roles to your collection</h3>
 <div class="paragraph">
 <p>The directory for a standalone role has the following structure.
 Your role might not contain all of these directories.</p>
@@ -780,7 +2331,7 @@ then the plug-in itself has import statements.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-create-new-role-in-collection_devtools-create-roles-collection">2.5. Creating a new role in your collection</h3>
+<h3 id="devtools-create-new-role-in-collection_devtools-create-roles-collection">8.5. Creating a new role in your collection</h3>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -801,12 +2352,12 @@ Use <code>ansible-lint</code> in VS Code to check your YAML code.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-docs-roles-collection_devtools-create-roles-collection">2.6. Adding documentation for your roles collection</h3>
+<h3 id="devtools-docs-roles-collection_devtools-create-roles-collection">8.6. Adding documentation for your roles collection</h3>
 <div class="paragraph">
 <p>It is important to provide documentation for your roles so that other users understand what your roles do and how to use them.</p>
 </div>
 <div class="sect3">
-<h4 id="_documenting_your_roles">2.6.1. Documenting your roles</h4>
+<h4 id="_documenting_your_roles">8.6.1. Documenting your roles</h4>
 <div class="paragraph">
 <p>When you scaffolded your collection directory, a <code>README.md</code> file was added in the role directory.
 Add your documentation for your role in this file.
@@ -853,7 +2404,7 @@ Use comments in the playbook to help users understand where to set variables.</p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_documenting_your_collection">2.6.2. Documenting your collection</h4>
+<h4 id="_documenting_your_collection">8.6.2. Documenting your collection</h4>
 <div class="paragraph">
 <p>In the <code>README.md</code> file for your collection, provide the following information:</p>
 </div>
@@ -882,7 +2433,7 @@ Use comments in the playbook to help users understand where to set variables.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="devtools-publish-roles-collection-pah_devtools-create-roles-collection">2.7. Publishing your collection in private automation hub</h3>
+<h3 id="devtools-publish-roles-collection-pah_devtools-create-roles-collection">8.7. Publishing your collection in private automation hub</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -930,7 +2481,7 @@ in the <em>Managing automation content</em> guide.</p>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="devtools-use-roles-collections-aap_devtools-create-roles-collection">2.7.1. Using your collection in projects in Red Hat Ansible Automation Platform</h4>
+<h4 id="devtools-use-roles-collections-aap_devtools-create-roles-collection">8.7.1. Using your collection in projects in Red Hat Ansible Automation Platform</h4>
 <div class="paragraph">
 <p>To use your collection in automation controller, you must add your collection to an
 execution environment and push it to private automation hub.</p>
@@ -974,7 +2525,7 @@ or you can add your collection to your own custom execution environment.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-09-26 23:51:39 +0100
+Last updated 2024-09-27 00:27:35 +0100
 </div>
 </div>
 </body>
