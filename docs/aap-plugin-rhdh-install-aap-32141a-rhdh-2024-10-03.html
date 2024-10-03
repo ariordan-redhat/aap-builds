@@ -550,7 +550,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#rhdh-uninstall-ocp-operator-plugins-cm_rhdh-uninstall-ocp-operator">8.1. Removing the Ansible plug-ins from the ConfigMap</a></li>
 <li><a href="#rhdh-uninstall-ocp-operator-rhdh-cm_rhdh-uninstall-ocp-operator">8.2. Removing Ansible Automation Platform and Dev Spaces from the custom Red Hat Developer Hub ConfigMap</a></li>
-<li><a href="#rhdh-uninstall-ocp-operator-sidecar_rhdh-uninstall-ocp-operator">8.3. Removing the Sidecar container</a></li>
+<li><a href="#_uninstalling_the_sidecar_container">8.3. Uninstalling the sidecar container</a>
+<ul class="sectlevel3">
+<li><a href="#_remove_sidecar_from_rhdh_custom_config">8.3.1. Remove sidecar from rhdh-custom-config</a></li>
+<li><a href="#rhdh-uninstall-ocp-operator-sidecar_rhdh-uninstall-ocp-operator">8.3.2. Removing the custom resource ConfigMap from the RHDH Operator Custom Resource</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#rhdh-configure-telemetry_aap-plugin-rhdh-installing">9. Red Hat Developer Hub data telemetry capturing</a></li>
@@ -3256,7 +3261,15 @@ data:
 </div>
 </div>
 <div class="sect2">
-<h3 id="rhdh-uninstall-ocp-operator-sidecar_rhdh-uninstall-ocp-operator">8.3. Removing the Sidecar container</h3>
+<h3 id="_uninstalling_the_sidecar_container">8.3. Uninstalling the sidecar container</h3>
+<div class="sect3">
+<h4 id="_remove_sidecar_from_rhdh_custom_config">8.3.1. Remove sidecar from rhdh-custom-config</h4>
+<div class="paragraph">
+<p>Do this if you need config apart from the Sidecar container to your <code>rhdh-custom-config</code> Custom Resource ConfigMap.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="rhdh-uninstall-ocp-operator-sidecar_rhdh-uninstall-ocp-operator">8.3.2. Removing the custom resource ConfigMap from the RHDH Operator Custom Resource</h4>
 <div class="paragraph">
 <p>If you created a custom resource ConfigMap
 as described in the <a href="#rhdh-create-operator-custom-configmap-operator-install_rhdh-install-ocp-operator">Creating a custom Operator ConfigMap</a>
@@ -3309,6 +3322,7 @@ spec:
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="rhdh-configure-telemetry_aap-plugin-rhdh-installing">9. Red Hat Developer Hub data telemetry capturing</h2>
 <div class="sectionbody">
@@ -3352,7 +3366,7 @@ section of the <em>Administration guide for Red Hat Developer Hub</em>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-03 19:06:39 +0100
+Last updated 2024-10-03 21:33:56 +0100
 </div>
 </div>
 </body>
