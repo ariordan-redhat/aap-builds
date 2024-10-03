@@ -494,7 +494,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#rhdh-install-ocp-prereqs_rhdh-install-ocp-operator">3.1. Prerequisites</a></li>
 <li><a href="#rhdh-recommended-preconfig_rhdh-install-ocp-operator">3.2. Recommended RHDH preconfiguration</a></li>
 <li><a href="#rhdh-backup-operator-configmap_rhdh-install-ocp-operator">3.3. Backing up your RHDH Operator ConfigMap</a></li>
-<li><a href="#rhdh-create-custom-configmap-operator-install_rhdh-install-ocp-operator">3.4. Creating a custom ConfigMap</a></li>
+<li><a href="#rhdh-create-operator-custom-configmap-operator-install_rhdh-install-ocp-operator">3.4. Creating a custom Operator ConfigMap</a></li>
 <li><a href="#rhdh-operator-add-custom-configmap-cr_rhdh-install-ocp-operator">3.5. Adding the rhdh-custom-config file to the RHDH Operator Custom Resource</a></li>
 <li><a href="#rhdh-download-plugins_rhdh-install-ocp-operator">3.6. Downloading the Ansible plug-ins files</a></li>
 <li><a href="#rhdh-create-plugin-registry_rhdh-install-ocp-operator">3.7. Creating a registry for the Ansible plug-ins</a></li>
@@ -549,10 +549,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#rhdh-uninstall-ocp-operatoraap-plugin-rhdh-installing">8. Uninstalling an Operator installation on OpenShift Container Platform</a>
 <ul class="sectlevel2">
 <li><a href="#rhdh-uninstall-ocp-operator-plugins-cm_rhdh-uninstall-ocp-operator">8.1. Removing the Ansible plug-ins from the ConfigMap</a></li>
-<li><a href="#_completely_remove_plug_ins">8.2. Completely remove plug-ins</a></li>
-<li><a href="#rhdh-uninstall-ocp-operator-rhdh-cm_rhdh-uninstall-ocp-operator">8.3. Removing the Ansible from the ConfigMap</a></li>
-<li><a href="#_remove_sidecar_from_rhdh_custom_config">8.4. Remove sidecar from rhdh-custom-config</a></li>
-<li><a href="#_remove_configmaps_from_the_rhdh_operator_cr">8.5. Remove ConfigMaps from the RHDH Operator CR</a></li>
+<li><a href="#rhdh-uninstall-ocp-operator-rhdh-cm_rhdh-uninstall-ocp-operator">8.2. Removing Ansible Automation Platform and Dev Spaces from the custom Red Hat Developer Hub ConfigMap</a></li>
+<li><a href="#rhdh-uninstall-ocp-operator-sidecar_rhdh-uninstall-ocp-operator">8.3. Removing the Sidecar container</a></li>
 </ul>
 </li>
 <li><a href="#rhdh-configure-telemetry_aap-plugin-rhdh-installing">9. Red Hat Developer Hub data telemetry capturing</a></li>
@@ -1309,7 +1307,8 @@ The plug-ins will function without it.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>If the OpenShift Dev Spaces link is not configured in the Ansible plug-ins, the <strong>Go to OpenShift Dev Spaces dashboard</strong> link in the <strong>4.DEVELOP</strong> section of the Ansible plug-ins landing page redirects users to the
+<p>If the OpenShift Dev Spaces link is not configured in the Ansible plug-ins,
+the <strong>Go to OpenShift Dev Spaces dashboard</strong> link in the <strong>DEVELOP</strong> section of the Ansible plug-ins landing page redirects users to the
 <a href="https://www.redhat.com/en/technologies/management/ansible/development-tools">Ansible development tools home page</a>.</p>
 </div>
 <div class="ulist">
@@ -1623,9 +1622,12 @@ the filename you want to use for your copy of the RHDH Operator.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="rhdh-create-custom-configmap-operator-install_rhdh-install-ocp-operator">3.4. Creating a custom ConfigMap</h3>
+<h3 id="rhdh-create-operator-custom-configmap-operator-install_rhdh-install-ocp-operator">3.4. Creating a custom Operator ConfigMap</h3>
 <div class="paragraph">
-<p>Create a ConfigMap, for instance <code>rhdh-custom-config</code>, for your project.
+<p>ZZZ Context is rhdh-create-operator-custom-configmap-operator-install_rhdh-install-ocp-operator</p>
+</div>
+<div class="paragraph">
+<p>Create a custom ConfigMap, for instance <code>rhdh-custom-config</code>, for your project.
 For more details about creating a custom ConfigMap, see the
 <a href="https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.3/html-single/administration_guide_for_red_hat_developer_hub/index#proc-add-custom-app-config-file-ocp-operator_admin-rhdh">Adding a custom application configuration file to OpenShift Container Platform using the Operator</a>
 in the <em>Administration guide for Red Hat Developer Hub</em>.</p>
@@ -2251,7 +2253,8 @@ The plug-ins will function without it.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>If the OpenShift Dev Spaces link is not configured in the Ansible plug-ins, the <strong>Go to OpenShift Dev Spaces dashboard</strong> link in the <strong>4.DEVELOP</strong> section of the Ansible plug-ins landing page redirects users to the
+<p>If the OpenShift Dev Spaces link is not configured in the Ansible plug-ins,
+the <strong>Go to OpenShift Dev Spaces dashboard</strong> link in the <strong>DEVELOP</strong> section of the Ansible plug-ins landing page redirects users to the
 <a href="https://www.redhat.com/en/technologies/management/ansible/development-tools">Ansible development tools home page</a>.</p>
 </div>
 <div class="ulist">
@@ -2410,10 +2413,10 @@ data:
 </div>
 </div>
 </div>
-<div class="sect1 _abstract">
+<div class="sect1">
 <h2 id="rhdh-subscription-warnings_aap-plugin-rhdh-installing">4. Ansible plug-ins subscription warning messages</h2>
 <div class="sectionbody">
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>The Ansible plug-ins display a subscription warning banner in the user interface in the following scenarios:</p>
 </div>
 <div class="ulist">
@@ -2639,6 +2642,18 @@ The SHA value is used during the plug-in configuration.</p>
 <div class="paragraph">
 <p>Rebuild your plug-in registry application in your OpenShift cluster with the latest Ansible plug-ins files.</p>
 </div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have downloaded the Ansible plug-ins files. See <a href="#rhdh-download-plugin_rhdh-upgrade-ocp-helm">Downloading the Ansible plug-ins files</a>.</p>
+</li>
+<li>
+<p>You have set an environment variable, for example (<code>$DYNAMIC_PLUGIN_ROOT_DIR</code>),
+to represent the path to the local directory where you have stored the <code>.tar</code> files.</p>
+</li>
+</ul>
+</div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -2654,7 +2669,14 @@ The SHA value is used during the plug-in configuration.</p>
 </div>
 </li>
 <li>
-<p>Run the following commands to update your plug-in registry build in the OpenShift cluster.</p>
+<p>Run the following commands to update your plug-in registry build in the OpenShift cluster.
+The commands assume that <code>$DYNAMIC_PLUGIN_ROOT_DIR</code> represents the directory for your <code>.tar</code> files.
+Replace this in the command if you have chosen a different environment variable name.</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc start-build plugin-registry --from-dir=$DYNAMIC_PLUGIN_ROOT_DIR --wait</pre>
+</div>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>$ oc start-build plugin-registry --from-dir=$DYNAMIC_PLUGIN_ROOT_DIR --wait</pre>
@@ -2675,7 +2697,7 @@ build.build.openshift.io/plugin-registry-1 started</pre>
 </div>
 <div class="paragraph">
 <div class="title">Verification</div>
-<p>Verify that the plugin-registry has been updated.</p>
+<p>Verify that the <code>plugin-registry</code> has been updated.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -2689,7 +2711,7 @@ build.build.openshift.io/plugin-registry-1 started</pre>
 <p>Click <strong>View logs</strong> for the plug-in registry pod.</p>
 </li>
 <li>
-<p>Open the <strong>Terminal</strong> tab and run <code>ls</code> to view the <code>.tar</code> files in the plug-in registry.</p>
+<p>Open the <strong>Terminal</strong> tab and run <code>ls</code> to view the <code>.tar</code> files in the <code>plug-in registry</code>.</p>
 </li>
 <li>
 <p>Verify that the new <code>.tar</code> file has been uploaded.</p>
@@ -2842,6 +2864,18 @@ The SHA value is used during the plug-in configuration.</p>
 <div class="paragraph">
 <p>Rebuild your plug-in registry application in your OpenShift cluster with the latest Ansible plug-ins files.</p>
 </div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have downloaded the Ansible plug-ins files. See <a href="#rhdh-download-plugin_rhdh-upgrade-ocp-helm">Downloading the Ansible plug-ins files</a>.</p>
+</li>
+<li>
+<p>You have set an environment variable, for example (<code>$DYNAMIC_PLUGIN_ROOT_DIR</code>),
+to represent the path to the local directory where you have stored the <code>.tar</code> files.</p>
+</li>
+</ul>
+</div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -2857,7 +2891,14 @@ The SHA value is used during the plug-in configuration.</p>
 </div>
 </li>
 <li>
-<p>Run the following commands to update your plug-in registry build in the OpenShift cluster.</p>
+<p>Run the following commands to update your plug-in registry build in the OpenShift cluster.
+The commands assume that <code>$DYNAMIC_PLUGIN_ROOT_DIR</code> represents the directory for your <code>.tar</code> files.
+Replace this in the command if you have chosen a different environment variable name.</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc start-build plugin-registry --from-dir=$DYNAMIC_PLUGIN_ROOT_DIR --wait</pre>
+</div>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>$ oc start-build plugin-registry --from-dir=$DYNAMIC_PLUGIN_ROOT_DIR --wait</pre>
@@ -2878,7 +2919,7 @@ build.build.openshift.io/plugin-registry-1 started</pre>
 </div>
 <div class="paragraph">
 <div class="title">Verification</div>
-<p>Verify that the plugin-registry has been updated.</p>
+<p>Verify that the <code>plugin-registry</code> has been updated.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -2892,7 +2933,7 @@ build.build.openshift.io/plugin-registry-1 started</pre>
 <p>Click <strong>View logs</strong> for the plug-in registry pod.</p>
 </li>
 <li>
-<p>Open the <strong>Terminal</strong> tab and run <code>ls</code> to view the <code>.tar</code> files in the plug-in registry.</p>
+<p>Open the <strong>Terminal</strong> tab and run <code>ls</code> to view the <code>.tar</code> files in the <code>plug-in registry</code>.</p>
 </li>
 <li>
 <p>Verify that the new <code>.tar</code> file has been uploaded.</p>
@@ -2907,9 +2948,40 @@ build.build.openshift.io/plugin-registry-1 started</pre>
 <ol class="arabic">
 <li>
 <p>Log in to your OpenShift Container Platform instance.</p>
+</li>
+<li>
+<p>In the OpenShift UI, open the ConfigMap where you added the Ansible plug-ins during installation.
+This example uses a ConfigMap file called <code>rhaap-dynamic-plugins-config</code>.</p>
+</li>
+<li>
+<p>Update <code>x.y.z</code> with the version numbers for the updated Ansible plug-ins.</p>
+</li>
+<li>
+<p>Update the integrity values for each plug-in with the <code>.integrity</code> value from the corresponding extracted Ansible plug-ins <code>.tar</code> file.</p>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>kind: ConfigMap
+apiVersion: v1
+metadata:
+ name: rhaap-dynamic-plugins-config
+data:
+ dynamic-plugins.yaml: |
+   ...
+   plugins: # Update the Ansible plug-in entries below with the updated plugin versions
+     - disabled: false
+       package: 'http://plugin-registry:8080/ansible-plugin-backstage-rhaap-x.y.z.tgz'
+       integrity: &lt;SHA512 value&gt; # Use hash in ansible-plugin-backstage-rhaap-x.y.z.tgz.integrity
+	 ...
+     - disabled: false
+       package: &gt;-
+         http://plugin-registry:8080/ansible-plugin-backstage-rhaap-backend-x.y.z.tgz
+       integrity: &lt;SHA512 value&gt; # Use hash in ansible-plugin-backstage-rhaap-backend-x.y.z.tgz.integrity
+       ...
+     - disabled: false
+       package: &gt;-
+         http://plugin-registry:8080/ansible-plugin-scaffolder-backend-module-backstage-rhaap-x.y.z.tgz
+       integrity: &lt;SHA512 value&gt; # Use hash in ansible-plugin-scaffolder-backend-module-backstage-rhaap-x.y.z.tgz.integrity
+	 ...</pre>
 </div>
 </div>
 </li>
@@ -3104,23 +3176,22 @@ metadata:
  name: rhaap-dynamic-plugins-config
 data:
  dynamic-plugins.yaml: |
-   plugins:
+   ...
+   plugins: # Remove the Ansible plug-ins entries below the ‘plugins’ YAML key
      - disabled: false
        package: 'http://plugin-registry:8080/ansible-plugin-backstage-rhaap-x.y.z.tgz'
        integrity: &lt;SHA512 value&gt;
+	 ...
      - disabled: false
        package: &gt;-
          http://plugin-registry:8080/ansible-plugin-backstage-rhaap-backend-x.y.z.tgz
        integrity: &lt;SHA512 value&gt;
+       ...
      - disabled: false
        package: &gt;-
          http://plugin-registry:8080/ansible-plugin-scaffolder-backend-module-backstage-rhaap-x.y.z.tgz
        integrity: &lt;SHA512 value&gt;
-     - disabled: false
-       package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-rbac
-     - disabled: false
-       package: &gt;-
-         ./dynamic-plugins/dist/janus-idp-backstage-plugin-analytics-provider-segment</pre>
+	 ...</pre>
 </div>
 </div>
 </li>
@@ -3134,28 +3205,13 @@ data:
 </div>
 </div>
 <div class="sect2">
-<h3 id="_completely_remove_plug_ins">8.2. Completely remove plug-ins</h3>
-<div class="paragraph">
-<p>To completely remove all the Ansible plugins remove the entire list entries that contain</p>
-</div>
-<div class="paragraph">
-<p>+</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>http://plugin-registry:8080/ansible-plugin-backstage-rhaap-x.y.z.tgz
-http://plugin-registry:8080/ansible-plugin-backstage-rhaap-backend-x.y.z.tgz
-http://plugin-registry:8080/ansible-plugin-scaffolder-backend-module-backstage-rhaap-x.y.z.tgz</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="rhdh-uninstall-ocp-operator-rhdh-cm_rhdh-uninstall-ocp-operator">8.3. Removing the Ansible from the ConfigMap</h3>
+<h3 id="rhdh-uninstall-ocp-operator-rhdh-cm_rhdh-uninstall-ocp-operator">8.2. Removing Ansible Automation Platform and Dev Spaces from the custom Red Hat Developer Hub ConfigMap</h3>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Open the custom Red Hat Developer HubConfigMap, <code>app-config-rhdh</code>.</p>
+<p>Open the custom Red Hat Developer Hub ConfigMap where you added configuration for the templates and for connecting to Ansible Automation Platform and Dev Spaces.
+In this example, the Red Hat Developer Hub ConfigMap name is <code>app-config-rhdh</code>.</p>
 <div class="listingblock">
 <div class="content">
 <pre>kind: ConfigMap
@@ -3164,35 +3220,31 @@ metadata:
  name: rhdh-app-config
 data:
  app-config-custom.yaml: |
-   app:
-     baseUrl: https://&lt;RHDH_ROUTE&gt;
-   backend:
-     baseUrl: https://&lt;RHDH_ROUTE&gt;
-     cors:
-       origin: https://&lt;RHDH_ROUTE&gt;
+   ...
    catalog:
-     rules:
-       - allow: [Component, System, Group, Resource, Location, Template, API, User]
-     locations:
+     ...
+     locations: # Remove the YAML entry below the 'locations' YAML key
        - type: url
          target: https://github.com/ansible/ansible-rhdh-templates/blob/main/all.yaml
          rules:
            - allow: [Template]
+     ...
+   # Remove the entire 'ansible' YAML key and all sub-entries
    ansible:
      devSpaces:
-       baseUrl: 'https://devspaces.apps.ansible-rhdh-dev.testing.ansible.com/'
+       baseUrl: '&lt;https://YOUR_DEV_SPACES_URL&gt;'
      creatorService:
        baseUrl: '127.0.0.1'
        port: '8000'
      rhaap:
-       baseUrl: 'https://controller.acme.demoredhat.com'
-       token: ...&lt;REDACTED&gt;
+       baseUrl: '&lt;https://YOUR_AAP_URL&gt;'
+       token: &lt;REDACTED&gt;
        checkSSL: false</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Remove the <code>locations:</code> block to delete the templates from the RHDH instance.</p>
+<p>Remove the <code>url</code> in the <code>locations:</code> block to delete the templates from the RHDH instance.</p>
 </li>
 <li>
 <p>Remove the <code>ansible:</code> block to delete the Ansible-specific configuration.</p>
@@ -3204,15 +3256,55 @@ data:
 </div>
 </div>
 <div class="sect2">
-<h3 id="_remove_sidecar_from_rhdh_custom_config">8.4. Remove sidecar from rhdh-custom-config</h3>
+<h3 id="rhdh-uninstall-ocp-operator-sidecar_rhdh-uninstall-ocp-operator">8.3. Removing the Sidecar container</h3>
 <div class="paragraph">
-<p><code>rhdh-custom-config</code> created in Section 3.4.</p>
+<p>If you created a custom resource ConfigMap
+as described in the <a href="#rhdh-create-operator-custom-configmap-operator-install_rhdh-install-ocp-operator">Creating a custom Operator ConfigMap</a>
+and you added only the Ansible development tools sidecar container to it, then you can remove the reference to the ConfigMap from the RHDH Custom Resource.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ensure that you do not have any additional need for the custom ConfigMap before you remove it from the Custom Resource.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In the OpenShift console, select the Topology view.</p>
+</li>
+<li>
+<p>Click <strong>More actions &#8942;</strong> on the RHDH Operator Custom Resource and select <strong>Edit backstage</strong> to edit the Custom Resource.</p>
+</li>
+<li>
+<p>Remove the ConfigMap reference from the RHDH Operator Custom Resource.
+For this example, the ConfigMap name is <code>rhdh-custom-config</code>.</p>
+<div class="listingblock">
+<div class="content">
+<pre>...
+spec:
+ application:
+	...
+ database:
+  	...
+ rawRuntimeConfig: # Remove the backstageConfig’ YAML key below
+   backstageConfig: rhdh-custom-config</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_remove_configmaps_from_the_rhdh_operator_cr">8.5. Remove ConfigMaps from the RHDH Operator CR</h3>
-<div class="paragraph">
-<p><code>rhdh-custom-config</code> added to Operator CR in section 3.5</p>
+</li>
+<li>
+<p>Click <b class="button">Save</b>.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -3260,7 +3352,7 @@ section of the <em>Administration guide for Red Hat Developer Hub</em>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-03 09:49:40 +0100
+Last updated 2024-10-03 19:06:39 +0100
 </div>
 </div>
 </body>
