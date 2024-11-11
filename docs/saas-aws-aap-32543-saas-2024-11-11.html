@@ -474,9 +474,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#con-saas-control-plane">5.2. Control plane</a>
 <ul class="sectlevel3">
 <li><a href="#con-saas-customer-access">5.2.1. Customer access</a></li>
-<li><a href="#con-saas-service-uptime">5.2.2. Service Uptime</a></li>
+<li><a href="#con-saas-service-uptime">5.2.2. Service uptime</a></li>
 <li><a href="#con-saas-sre-access-and-management">5.2.3. SRE access and management</a></li>
-<li><a href="#con-saas-backup-and-diaster-recovery">5.2.4. Backup and diaster recover</a></li>
+<li><a href="#con-saas-backup-and-diaster-recovery">5.2.4. Backup and disaster recovery</a></li>
 <li><a href="#con-saas-infrastructure-monitoring">5.2.5. Infrastructure monitoring</a></li>
 <li><a href="#application-monitoring-and-customer-audits">5.2.6. Application monitoring and customer audits</a></li>
 <li><a href="#con-saas-status-notification">5.2.7. Status notification</a></li>
@@ -1112,7 +1112,7 @@ You can also find this information through the Red&#160;Hat Hybrid Cloud Console
 </div>
 </div>
 <div class="sect3">
-<h4 id="con-saas-service-uptime">5.2.2. Service Uptime</h4>
+<h4 id="con-saas-service-uptime">5.2.2. Service uptime</h4>
 <div class="paragraph">
 <p>Uptime for Red Hat Ansible Automation Platform Service on AWS is measured by user access and function of the Ansible Automation Platform control plane.
 This is measured through the uptime of the product web user interface and REST APIs.
@@ -1161,7 +1161,7 @@ Any access follows a request-and-approval process and is audited to ensure only 
 </div>
 </div>
 <div class="sect3">
-<h4 id="con-saas-backup-and-diaster-recovery">5.2.4. Backup and diaster recover</h4>
+<h4 id="con-saas-backup-and-diaster-recovery">5.2.4. Backup and disaster recovery</h4>
 <div class="paragraph">
 <p>Red&#160;Hat maintains daily database and file system snapshots in a separate region from each deployment.</p>
 </div>
@@ -1279,7 +1279,9 @@ To retain this information for auditing or compliance, you must export the logs 
 <div class="paragraph">
 <p>Ansible Automation Platform includes a built-in user model for configuring users and RBAC permissions that define access.
 Red&#160;Hat recommends using an enterprise identity provider with Ansible Automation Platform to implement multi-factor authentication for users.
-See the <a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.4/html/automation_controller_administration_guide/controller-set-up-enterprise-authentication">Setting up enterprise authentication</a> section of Ansible Automation Platform documentation for a configuration guide.</p>
+See the
+<a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/access_management_and_authentication">Access management and authentication</a>
+guide for more information.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1307,7 +1309,8 @@ Data in transit is encrypted with TLS 1.2 or higher.</p>
 <div class="sect3">
 <h4 id="con-saas-hosted-components">5.2.9. Hosted components</h4>
 <div class="paragraph">
-<p>The objective of this offering is to provide a Ansible Automation Platform deployment as a managed service, relieving customers of managing the Ansible Automation Platform control plane.
+<p>The objective of this offering is to provide an Ansible Automation Platform deployment as a managed service,
+relieving customers of managing the Ansible Automation Platform control plane.
 Unless specified otherwise, all Ansible Automation Platform capabilities in the operator-based deployment model are supported.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1322,7 +1325,7 @@ Unless specified otherwise, all Ansible Automation Platform capabilities in the 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Event-Driven Ansible</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Event-Driven Ansible (EDA) is planned to be offered as a part of this service, but not at the initial release.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This service does not offer Event-Driven Ansible directly, but you can deploy a self-managed instance of Event-Driven Ansible that can be used with the service.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1497,7 +1500,7 @@ When syncing content from external sources, limit the synchronization to the col
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-11 19:15:12 UTC
+Last updated 2024-11-11 22:44:59 UTC
 </div>
 </div>
 </body>
