@@ -19,3 +19,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/aap-plugin-rhdh-install-aap-32141a-rhdh-2024-10-03.html
 * https://ariordan-redhat.github.io/aap-builds/develop-automation-content-aap-33987-2024-10-22.html
 * https://ariordan-redhat.github.io/aap-builds/develop-automation-content-aap-34017-devtools-2024-10-29.html
+* https://ariordan-redhat.github.io/aap-builds/saas-aws-aap-32543-saas-2024-11-11.html
