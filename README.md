@@ -9,3 +9,4 @@ That is, `docs` does not appear in the URL.
 For example:
 
 * https://ariordan-redhat.github.io/aap-builds/aap-on-azure-aap-29709-2024-09-13.html
+* https://ariordan-redhat.github.io/aap-builds/develop-automation-content-aap-34017-devtools-2025-01-14.html
