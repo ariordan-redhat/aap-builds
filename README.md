@@ -18,3 +18,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/devtools-plugins-1.5-updates-2025-05-12.html
 * https://ariordan-redhat.github.io/aap-builds/aap-plugin-rhdh-install-plugins-1.5-updates-2025-05-12.html
 * https://ariordan-redhat.github.io/aap-builds/navigator-guide-aap-47501-navigator-2025-06-26.html
+* https://ariordan-redhat.github.io/aap-builds/navigator-guide-aap-47501-navigator-2025-06-26.html
