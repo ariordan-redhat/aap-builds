@@ -20,3 +20,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/navigator-guide-aap-47501-navigator-2025-06-26.html
 * https://ariordan-redhat.github.io/aap-builds/navigator-guide-aap-47501-navigator-2025-06-26.html
 * https://ariordan-redhat.github.io/aap-builds/navigator-guide-aap-47501-navigator-2025-07-07.html
+* https://ariordan-redhat.github.io/aap-builds/self-service-install-aap-50253-2025-08-05.html
