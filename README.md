@@ -29,3 +29,4 @@ For example:
 * https://ariordan-redhat.github.io/aap-builds/aap-plugin-rhdh-install-aap-49869-2025-09-23.html
 * https://ariordan-redhat.github.io/aap-builds/ansible-workspaces-aap-49869-2025-09-23.html
 * https://ariordan-redhat.github.io/aap-builds/ansible-workspaces-aap-49869-2025-09-23.html
+* https://ariordan-redhat.github.io/aap-builds/self-service-install-aap-55501-portal-upgrading-2025-10-10.html
